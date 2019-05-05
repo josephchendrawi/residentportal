@@ -1,0 +1,643 @@
+﻿@{
+    ViewData["Title"] = "Resident Portal - Affordable Property, Owner & Resident Software";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeadInsertion{
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet"> 
+    <link href="~/Content/vendor/animatecss-3.5.2/animate.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .cmn-toggle {
+            position: absolute;
+            margin-left: -9999px;
+            visibility: hidden;
+        }
+        .cmn-toggle + label {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+        }
+        input.cmn-toggle-round-flat + label {
+            padding: 2px;
+            width: 60px;
+            height: 30px;
+            background-color: #198ae3;
+            border-radius: 60px;
+            transition: background 0.4s;
+        }
+        input.cmn-toggle-round-flat + label:before,
+        input.cmn-toggle-round-flat + label:after {
+            display: block;
+            position: absolute;
+            content: "";
+        }
+        input.cmn-toggle-round-flat + label:before {
+            top: 2px;
+            left: 2px;
+            bottom: 2px;
+            right: 2px;
+            background-color: #fff;
+            border-radius: 60px;
+            transition: background 0.4s;
+        }
+        input.cmn-toggle-round-flat + label:after {
+            top: 4px;
+            left: 4px;
+            bottom: 4px;
+            width: 26px;
+            background-color: #198ae3;
+            border-radius: 26px;
+            transition: margin 0.4s, background 0.4s;
+        }
+        input.cmn-toggle-round-flat:checked + label {
+            background-color: #198ae3;
+        }
+        input.cmn-toggle-round-flat:checked + label:after {
+            margin-left: 26px;
+            background-color: #198ae3;
+        } 
+
+        .header { font-family:'Open Sans', sans-serif;  text-align:center; padding:80px 20px 20px 20px; }
+        .header .leftcol { text-align:center; font-size:18px; font-weight:bold; padding-top:3px; }
+        .header .rightcol { text-align:center; padding-left:0px; padding-right:0px; margin-top:15px; }
+        .header .switch { display: flex; text-align: center; width: 225px; margin:auto; }
+        .header .switch .text { padding:1px 10px 0px 10px; font-size:20px;}
+        .header .unitwrapper { margin:auto; width:100px; }
+        @@media (min-width: 768px) {
+            .header .leftcol { text-align:right; font-size:18px; font-weight:bold; padding-top:3px; }
+            .header .rightcol { text-align:left; padding-left:0px; padding-right:0px; margin-top:0px; }
+            .header .switch { display: flex; text-align: center; width: 225px; margin-left:0px; }
+            .header .unitwrapper { margin-left:0px; }
+        }
+
+        .price { font-family:'Open Sans', sans-serif;  text-align:center; padding:50px 0px 20px 0px; }
+        .price .pricetable { border:2px solid; border-radius:5px; width:100%; background-color:white; margin-bottom:30px; }
+        .price .pricetable[packagetype=b1] { border-color:#79a933; }
+        .price .pricetable[packagetype=b2] { border-color:#20a0a7; }
+        .price .pricetable[packagetype=b3] { border-color:#146fb6; }
+        .price .packagetitle { color:white; font-size:20px; font-weight: bold; padding:10px 0px;}
+        .price .packagetitle[packagetype=b1] { background-color:#79a933; }
+        .price .packagetitle[packagetype=b2] { background-color:#20a0a7; }
+        .price .packagetitle[packagetype=b3] { background-color:#146fb6; }
+        .price .packagedesc { color:#808080; font-size:13px; padding:15px 20px; height:100px; }
+        .price .packageprice { padding:0px 0px 30px 0px; }
+        .price .packageprice span { font-size:32px; font-weight:bold; }
+        .price .packageprice[packagetype=b1] { color:#79a933; }
+        .price .packageprice[packagetype=b2] { color:#20a0a7; }
+        .price .packageprice[packagetype=b3] { color:#146fb6; }
+        .price .packageprice .priceinfo { background-color:#ebebeb; color:#808080; font-size:11px; border:none; font-weight:normal; margin-top:0px; padding:2px 10px; border-radius:5px; }
+        .price .packagefeatures { padding:0px 20px 20px 20px; }
+        .price .packagefeatures .dividertop { border-top:1px dotted #808080; margin-bottom:10px;}
+        .price .packagefeatures .dividerbottom { border-top:1px dotted #808080; margin-top:20px;}
+        .price .packagefeatures .featuretitle { color:#808080; font-size:13px; padding:5px 0px; margin-bottom:3px;}
+        .price .packagefeatures .feature { color:#808080; font-size:13px; font-weight:600; padding:5px 0px; margin-bottom:3px;}
+        .price .packagefeatures .feature[packagetype=b1] { background-color:#f1fae3; }
+        .price .packagefeatures .feature[packagetype=b2] { background-color:#f3fcfc; }
+        .price .packagefeatures .feature[packagetype=b3] { background-color:#f0f4fc; }
+        .price .packagecta { padding:0px 20px 20px 20px; }
+        .price .packagecta .ctabutton { color:white; font-size:18px; font-weight: bold; padding:20px 0px; width:80%; border:none; }
+        .price .packagecta .ctabutton[packagetype=b1] { background-color:#8fc63e; border-bottom:4px solid #79a933; }
+        .price .packagecta .ctabutton[packagetype=b1]:hover { background-color:#aae258; }
+        .price .packagecta .ctabutton[packagetype=b2] { background-color:#39bec6; border-bottom:4px solid #20a0a7; }
+        .price .packagecta .ctabutton[packagetype=b2]:hover { background-color:#5bd9e0; }
+        .price .packagecta .ctabutton[packagetype=b3] { background-color:#1a7ac5; border-bottom:4px solid #146fb6; }
+        .price .packagecta .ctabutton[packagetype=b3]:hover { background-color:#57b0f5; }
+         
+        @@media (min-width: 992px) {
+            .price { font-family:'Open Sans', sans-serif;  text-align:center; padding:50px 0px 60px 0px; }
+            .price .pricetable { border:2px solid; border-radius:5px; width:100%; background-color:white; }
+        }
+
+        .features { font-family:'Open Sans', sans-serif; text-align:center; padding:30px 20px 50px 20px; background-image:url('../../Content/images/bgtile/wall4.png'); background-repeat:repeat; }
+        .features h1 { font-weight:700; }
+        .features .icon { font-size:80px; color:#505050; }
+
+        .moneybackguarantee { background-color:#115880; color:white; padding:50px; }
+        .moneybackguarantee h2 { font-family: 'Open Sans', sans-serif; text-align:center; font-size:1.9em; padding-bottom:10px; padding-top:20px; font-weight:700;}
+        .moneybackguarantee p { font-family: 'Roboto', sans-serif; font-size:1.15em; padding-top:15px;}
+        @@media (min-width: 992px) {
+            .moneybackguarantee { background-color:#115880; color:white; padding:20px 100px; }
+            .moneybackguarantee h2 { font-family: 'Open Sans', sans-serif; text-align:center; font-size:2.3em; padding-bottom:10px; padding-top:20px; font-weight:700;}
+        }
+        @@media (min-width: 1200px) {
+            .moneybackguarantee p { font-family: 'Roboto', sans-serif; font-size:1.15em; padding-top:15px; padding-left:50px;}
+        }
+
+        .faq { font-family: 'Roboto', sans-serif; background-color:#f0efef; padding:10px 30px 20px 30px;}
+        .faq h3 { text-align:center; padding-top:20px; }
+        .faq .faqcolumn { padding:10px 0px; }
+        .faq .question { font-weight:bold; }
+        .faq .answer { font-weight:400; padding-top:0px; margin-top:0px; }
+        @@media (min-width: 992px) {
+            .faq .faqcolumn { padding:20px 40px; }
+        }
+
+        .betaprogramform {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 30px;
+            text-align: center;
+            color: white; 
+        }
+
+        .betaprogramform .title {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            transform: scale(1, 1.6);
+            line-height: 30px;
+            /*
+            -webkit-transform: scale(1, 1.8); Safari and Chrome 
+            -moz-transform: scale(1, 1.8; Firefox 
+            -ms-transform: scale(1, 1.8); IE 9+ 
+            -o-transform: scale(1, 1.8); Opera 
+            */
+        }
+
+        .betaprogramform .subtitle {
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 24px;
+            margin-top:15px; 
+        }
+
+        .betaprogramform .picture {
+            margin-bottom:20px;
+        }
+            .betaprogramform .field {
+                height: 42px;
+                width: 100%;
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-size: 24px;
+                font-weight: 400;
+                color: #313131;
+            }
+
+            .betaprogramform .button {
+                background-color: #00a651;
+                width:100%;
+                height:60px;
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-weight:bold;
+                font-size:28px;
+                border:none; 
+                border-radius: 5px;
+            }
+
+            .betaprogramform .button:hover {
+                background-color: #109752;
+            }
+
+            .betaprogramform .termagreement {
+                font-family: 'PT Sans Narrow', sans-serif;
+                font-weight: 400;
+                font-size: 15px;
+                max-width: 450px;
+                margin: 5px auto auto auto;
+            }
+
+            .betaprogramform .termagreement a {
+                color:white; 
+                text-decoration:underline;
+            }
+
+        .modal-backdrop-white {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: green;
+            opacity: 0.8;
+            width: 100%;
+            height: 100%;
+            z-index: 1040;
+        }
+
+        /* Extra small devices (phones, less than 768px) */
+        /* No media query since this is the default in Bootstrap */
+
+        /* Small devices (tablets, 768px and up) */
+        @@media (min-width: 768px) {}
+
+        /* Medium devices (desktops, 992px and up) */
+        @@media (min-width: 992px) {}
+
+        /* Large devices (large desktops, 1200px and up) */
+        @@media (min-width: 1200px) {}
+    </style>  
+}
+     
+<!-- Header -->
+<section class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 style="font-weight:700;">Get Instant Access to Resident Portal</h1>
+                <h2 style="font-size:24px; font-weight:normal; margin-top:14px;">Choose Your Plan and Get Started</h2>
+            </div>
+        </div>
+        <div class="row" style="margin-top:40px;">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <div style="font-size:14px; padding-bottom:6px; font-weight:bold; color:#146fb6;">Get 20% Savings With Annual Billing</div>
+                <div class="row" style="background-color:#ebebeb; padding:16px 20px 12px 20px; border-radius:8px; ">
+                    <div class="col-xs-12 col-sm-6 leftcol">
+                        Select Your Billing Model:
+                    </div>
+                    <div class="col-xs-12 col-sm-6 rightcol">
+                        <div class="switch">
+                            <div class="text" style="padding-left:0px;">Annual</div>
+                            <div>
+                                <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                                <label for="cmn-toggle-4"></label>
+                            </div>
+                            <div class="text" style="padding-right:0px;">Monthly</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="background-color:#ebebeb; padding:15px 20px 15px 20px; margin-top:4px;  border-radius:8px; ">
+                    <div class="col-xs-12 col-sm-6 leftcol">
+                        Total Units in Property:
+                    </div>
+                    <div class="col-xs-12 col-sm-6 rightcol">
+                        <div class="unitwrapper">
+                            <input type="text" id="txtNoOfUnits" class="form-control" style="width:100px;" value="100" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="price">
+    <div class="container">
+        <div class="col-xs-12 col-sm-4">
+            <!-- ESSENTIAL PACKAGE -->
+            <div class="pricetable" packagetype="b1">
+                <div class="packagetitle" packagetype="b1">
+                    Essential
+                </div>
+                <div class="packagedesc">
+                    Get started with the most basic and fundamental features of Resident Portal. All the essentials to get you started immediately!
+                </div>
+                <div class="packageprice" packagetype="b1">
+                    <span>RM <span id="essential-price">-</span>/mo</span> <br />
+                    <button class="priceinfo" data-toggle="tooltip" data-placement="top" title="Essential package cost RM 600 per year which include 100 units. Each additional unit will cost RM 5.00 per year per unit.">How we charge?</button>
+                </div>
+                <div class="packagefeatures">
+                    <div class="dividertop"></div>
+                    <div class="featuretitle">Product Features:</div>
+                    <div class="feature" packagetype="b1">Responsive Owner &amp; Resident Website</div>
+                    <div class="feature" packagetype="b1">Announcements</div>
+                    <div class="feature" packagetype="b1">Newletters</div>
+                    <div class="feature" packagetype="b1">Complaints &amp; Defects Management</div>
+                    <div class="feature" packagetype="b1">Facility Reservation</div>
+                    <div class="feature" packagetype="b1">Central Document Repository</div>
+                    <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                    <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                    <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                    <div class="dividerbottom"></div>
+                </div>
+                <div class="packagecta">
+                    <input class="ctabutton packagetype1" packagetype="b1" type="button" onclick="document.getElementById('black').style.display='block';document.getElementById('signup').style.display='block';" value="Let's Get Started" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- STANDARD PACKAGE -->
+            <div class="pricetable" packagetype="b2">
+                <div class="packagetitle" packagetype="b2">
+                    Standard
+                </div>
+                <div class="packagedesc">
+                    Access all the features in the Essential package and have your very own mobile application for maximum convenience of both owners and residents. 
+                </div>
+                <div class="packageprice" packagetype="b2">
+                    <span>RM <span id="standard-price">-</span>/mo</span> <br />
+                    <button class="priceinfo" data-toggle="tooltip" data-placement="top" title="Standard package cost RM 1020 per year which include 100 units. Each additional unit will cost RM 5.00 per year per unit.">How we charge?</button>
+                </div>
+                <div class="packagefeatures">
+                    <div class="dividertop"></div>
+                    <div class="featuretitle">Product Features:</div>
+                    <div class="feature" packagetype="b2">Responsive Owner &amp; Resident Website</div>
+                    <div class="feature" packagetype="b2">Announcements</div>
+                    <div class="feature" packagetype="b2">Newletters</div>
+                    <div class="feature" packagetype="b2">Complaints &amp; Defects Management</div>
+                    <div class="feature" packagetype="b2">Facility Reservation</div>
+                    <div class="feature" packagetype="b2">Central Document Repository</div>
+                    <div class="feature" packagetype="b2">IOS & Android Mobile App</div>
+                    <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                    <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                    <div class="dividerbottom"></div>
+                </div>
+                <div class="packagecta">
+                    <input class="ctabutton packagetype2" packagetype="b2" type="button" onclick="document.getElementById('black').style.display='block';document.getElementById('signup').style.display='block';" value="Let's Get Started" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <!-- PREMIUM PACKAGE -->
+            <div class="pricetable" packagetype="b3">
+                <div class="packagetitle" packagetype="b3">
+                    Premium
+                </div>
+                <div class="packagedesc">
+                    Get all the features of Essential and Standard packages plus allow both residents and owners to make payment for bills online. You can also use your own domain name for branding purposes.
+                </div>
+                <div class="packageprice" packagetype="b3">
+                    <span>RM <span id="premium-price">-</span>/mo</span> <br />
+                    <button class="priceinfo" data-toggle="tooltip" data-placement="top" title="Premium package cost RM 1500 per year which include 100 units. Each additional unit will cost RM 5.00 per year per unit.">How we charge?</button>
+                </div>
+                <div class="packagefeatures">
+                    <div class="dividertop"></div>
+                    <div class="featuretitle">Product Features:</div>
+                    <div class="feature" packagetype="b3">Responsive Owner &amp; Resident Website</div>
+                    <div class="feature" packagetype="b3">Announcements</div>
+                    <div class="feature" packagetype="b3">Newletters</div>
+                    <div class="feature" packagetype="b3">Complaints &amp; Defects Management</div>
+                    <div class="feature" packagetype="b3">Facility Reservation</div>
+                    <div class="feature" packagetype="b3">Central Document Repository</div>
+                    <div class="feature" packagetype="b3">IOS & Android Mobile App</div>
+                    <div class="feature" packagetype="b3">Online Bill Payment</div>
+                    <div class="feature" packagetype="b3">Use Your Own Domain Name</div>
+                    <div class="dividerbottom"></div>
+                </div>
+                <div class="packagecta">
+                    <input class="ctabutton packagetype3" packagetype="b3" type="button" style="" value="Let's Get Started" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="features">
+    <div class="container">
+        <div class="row">
+            <h1>All Plans Include</h1>
+            <br />
+            <h4>Your very own website branded under your property name that comes with:</h4>
+            <br /><br />
+            <div class="col-md-2 col-md-offset-1">
+                <span class="fa fa-bullhorn icon"></span>
+                <br />
+                <h4>Annoucements</h4>
+            </div>
+            <br class="visible-xs visible-sm" />
+            <div class="col-md-2">
+                <span class="fa fa-list-alt icon"></span>
+                <br />
+                <h4>Newletters</h4>
+            </div>
+            <br class="visible-xs visible-sm" />
+            <div class="col-md-2">
+                <span class="fa  fa-comments icon"></span>
+                <br />
+                <h4>Complaints &amp; Defects<br />Management</h4>
+            </div>
+            <br class="visible-xs visible-sm" />
+            <div class="col-md-2">
+                <span class="fa fa-calendar icon"></span>
+                <br />
+                <h4>Facility<br />Reservation</h4>
+            </div>
+            <br class="visible-xs visible-sm" />
+            <div class="col-md-2">
+                <span class="fa fa-database icon"></span>
+                <br />
+                <h4>Central Document<br />Repository</h4>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="moneybackguarantee">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 style="text-align:center; font-weight:700;">Try Resident Portal Totally Risk Free!</h1>
+                <h2 style="display:none;">TRY RESIDENT PORTAL RIGHT RISK FREE!</h2>
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+                <p>
+                    Can't decide if Resident Portal is right for you? Well, we don’t want anything to hold you back from getting access to Resident Portal and we want to make it totally risk free for you!
+                </p>
+                <p>
+                    That’s why we're going to give you a FULL 30 days to decide if this is for you…
+                    If for any reason, or no reason at all, you’re not 100% satisfied with Resident Portal, simply send us an email, and we’ll refund every penny of your investment…
+                </p>
+                <p>
+                    No questions asked!
+                </p>
+                <br class="hidden-xs" /><br class="hidden-xs" />
+            </div>
+            <div class="col-xs-12 col-sm-3" style="text-align:center; padding-top:10px;">
+                <img style="width:200px;" src="~/Content/images/badge/9882272_S.png">
+                <br /><br />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="faq">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"><h3>Frequently Asked Questions</h3></div>
+        </div>
+        <div class="row" style="padding-bottom: 10px; font-size: 15px;">
+            <div class="col-xs-12 col-md-6 faqcolumn">
+                <strong class="question">Q. How soon can I start using Resident Portal?</strong>
+                <div class="answer text-justify">
+                    Your will have access to Resident Portal instantly! As soon as you register, you will receive an email with your access details and you will be able to start using the Resident Portal immediately.
+                </div>
+                <br />
+                <strong class="question">Q. Do I need to install anything to use Resident Portal?</strong>
+                <div class="answer text-justify">
+                    No installation is needed and no technical knowledge is required either. To use Resident Portal, all you need to do is to open your browser, key in the URL and you can immediately start using it. Resident Portal was designed with simplicity in mind so that non-techies and ordinary users can use it. In fact, all you need to know is how to use a mouse and keyboard.
+                </div>
+                <br />
+            </div>
+            <div class="col-xs-12 col-md-6 faqcolumn">
+                <strong class="question">Q. How do I get training for Resident Portal?</strong>
+                <div class="answer text-justify">
+                    Once you have registered, you will have access to our library of online video tutorials to assist you to use Resident Portal. You will also have access to a quick guide to help you get started quickly and immediately. Plus, if you need additional support, you can contact our support team for assistance.
+                </div>
+                <br />
+                <strong class="question">Q. How do I get support for Resident Portal?</strong>
+                <div class="answer text-justify">
+                    Just email us at support@residentportal.my or should you need to speak to us, dial us at +603-86885821. On top of that, we will be establishing a network of support engineers located throughout Malaysia to assist our valued customers.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal - Beta Programme Form -->
+<div class="modal" id="betaProgrammeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" id="betaprogramform" style="opacity:1.0 !important;">
+        <br /><br />
+        <div class="modal-content betaprogramcontent" > 
+            <div class="modal-body betaprogramform">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="title">JOIN OUR BETA PROGRAMME & GET RESIDENT PORTAL FOR <b style="color:#eee441;">FREE</b></div>
+                            <div class="subtitle">LIMITED OFFER - ONLY FOR THE FIRST 30 PROPERTIES THAT REGISTER</div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-12 col-md-5">
+                            <img class="img-responsive picture" src="~/Content/images/beta/picture-form.jpg" />
+                        </div>
+                        <div class="col-xs-12 col-md-7">
+                            <div class="form-group">
+                                <input type="text" class="form-control field" id="txtProperty" placeholder="Property Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control field" id="txtName" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control field" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control field" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                            <button type="submit" class="button">Register Now (It's Free)</button>
+                            <div class="termagreement">By registering, you hereby confirm that you have read, understood and agreed with the <a href="#" onclick="javascript:open_terms_beta();">terms of use</a> & <a href="#" onclick="open_policy();">privacy policy</a> of the beta programme.</div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+
+    <script src="~/Content/vendor/backstretch-2.1.15/jquery.backstretch.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        /*
+        $(window).scroll(function() {
+            $(".slideanim").each(function() {
+                var pos = $(this).offset().top;
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 600) {
+                    $(this).addClass("slide");
+                }
+            });
+        });
+        
+        swal({
+            title: 'Resident Portal Beta Programme',
+            html: $('#betaprogrammeformholder').html() ,
+            animation: false,
+            customClass: 'animated tada'
+        })
+        */
+        
+
+        $('#betaProgrammeModal').on('show.bs.modal', function (e) {
+            $('#modal-backdrop').addClass('modal-backdrop-white');
+            $('.betaprogramcontent').addClass('animated jackInTheBox');
+        })
+        $('#betaProgrammeModal').on('shown.bs.modal', function (e) {
+            $(".betaprogramform").backstretch("content/images/beta/background-form.jpg");  
+        })
+        setTimeout(function () {
+            $('#betaProgrammeModal').modal('show');
+        }, 2500);
+       
+    })
+    </script>
+     
+    <script>
+        $(function () {
+            calculate_pricing();
+
+            $("#txtNoOfUnits").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A, Command+A
+                    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+            $("#txtNoOfUnits").keyup(function () {
+                calculate_pricing();
+            });
+
+            $('#cmn-toggle-4').change(function () {
+                calculate_pricing();
+            });
+        });
+
+        function calculate_pricing() {
+            var EssentialBasePrice = 600;
+            var StandardBasePrice = 1020;
+            var PremiumBasePrice = 1500;
+
+            var NoOfUnits = $('#txtNoOfUnits').val();
+
+            var AdditionalUnits = NoOfUnits - 100;
+            if (AdditionalUnits < 0) {
+                AdditionalUnits = 0;
+            }
+            var AdditionUnitsFeePerMonth = (5 / 12) * AdditionalUnits;
+
+            var EssentialPerMonth = (EssentialBasePrice/12) + AdditionUnitsFeePerMonth;
+            var StandardPerMonth = (StandardBasePrice/12)  + AdditionUnitsFeePerMonth;
+            var PremiumPerMonth = (PremiumBasePrice/12)  + AdditionUnitsFeePerMonth;
+
+            var isMonthly = $('#cmn-toggle-4').is(":checked");
+
+            if (isMonthly == false) {
+                $('#essential-price').html(round_pricing((EssentialPerMonth * 0.8).toFixed(2)));
+                $('#standard-price').html(round_pricing((StandardPerMonth * 0.8).toFixed(2)));
+                $('#premium-price').html(round_pricing((PremiumPerMonth * 0.8).toFixed(2)));
+            }
+            else {
+                $('#essential-price').html(round_pricing(EssentialPerMonth.toFixed(2)));
+                $('#standard-price').html(round_pricing(StandardPerMonth.toFixed(2)));
+                $('#premium-price').html(round_pricing(PremiumPerMonth.toFixed(2)));
+            }
+        }
+
+        function round_pricing(price) {
+
+            return Math.floor(price);
+            /*
+            var ones_digit = price % 10;
+
+            if (ones_digit == 0) {
+                return price - ones_digit;
+            }
+            else if (ones_digit == 5) {
+                return price - ones_digit + 5;
+            }
+            else if (ones_digit < 5) {
+                return price - ones_digit + 5;
+            }
+            else if (ones_digit < 10) {
+                return price - ones_digit + 10;
+            }
+            */
+        }
+    </script>
+}
+
+

@@ -1,0 +1,60 @@
+﻿@model ResComm.Web.Models.UnitType
+@{
+    ViewBag.Title = "Edit Street/Block";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Edit }
+@section ContentHeader{
+    <script>
+        $(function () {
+            $('#main_title').html("Street/Block");
+        });
+    </script>
+}
+
+<div class="row">
+    @using (Html.BeginForm("Edit", "UnitType", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.UnitTypeId)
+
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Detail Information</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CategoryName)
+                        @Html.DropDownEnumListFor(m => m.CategoryName, typeof(UNIT_TYPE_CATEGORY), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CategoryValue)
+                        @Html.TextBoxFor(m => m.CategoryValue, new { @class = "form-control" })
+                    </div>
+                    @*<div class="form-group" id="floor" style="display: none;">
+                        @Html.LabelFor(m => m.Floor)
+                        @Html.TextBoxFor(m => m.Floor, new { @class = "form-control" })
+                    </div>*@
+                </div><!-- /.box-body -->
+
+                <div class="box-footer text-right">
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->
+    }
+</div><!-- /.row -->
+
+@*<script type="text/javascript">
+    $(function () {
+        @if (Model.CategoryName == null || Model.CategoryName == UNIT_TYPE_CATEGORY.Block.ToString())
+        {
+            <text>$("#floor").show();</text>
+        }
+
+        $('#CategoryName').on('change', function () {
+            $("#floor").toggle();
+        });
+    });
+</script>*@

@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ResidentPortal.LandingPages</title>
+    <link rel="shortcut icon" href="~/Content/images/logo/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+
+    <!-- Component CSS --> 
+    <environment names="Development">
+        <link rel="stylesheet" href="~/Content/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/Content/vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/Content/vendor/sweetalert2/sweetalert2.css">
+        <link rel="stylesheet" href="~/Content/css//custom.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/Content/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/Content/vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/Content/vendor/sweetalert2/sweetalert2.css">
+        <link rel="stylesheet" href="~/Content/css//custom.css" asp-append-version="true" />
+    </environment>
+    
+    <style type="text/css">
+        .menu .btnlogin { background-color:#47a2fe; color:white; padding-left:22px; padding-right:22px; }
+        .menu .btnlogin:hover { background-color:#3089e3 !important; }
+        .menu .btnlogin td { color:white; } 
+     
+        .swal2-container { z-index: 99999; }
+    </style> 
+
+    @RenderSection("HeadInsertion", required: false)
+</head>
+
+<body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Menu -->
+    <section id="menu">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container menu">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index" style="padding-top:0px; padding-bottom:0px;">
+                        <img src="~/Content/images/logo/logo.png" alt="Resident Portal" title="Resident Portal">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index">Home</a></li>
+                        <li><a href="index">Features</a></li>
+                        <li><a href="pricing">Pricing</a></li>
+                        <li>
+                            <a href="javascript:void();" class="btnlogin" onclick="document.getElementById('black').style.display='block';document.getElementById('login').style.display='block';">
+                                <table>
+                                    <tr>
+                                        <td><span class="fa fa-lock" style="font-size:18px; padding-top:3px;"></span></td>
+                                        <td style="padding-left:5px;">Log In</td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </section>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 footer-img"><img src="~/Content/images/logo/logo-large.png" alt="Resident Portal" style="width:60%" /></div>
+                <div class="col-md-8">
+                    <!---->
+                    <div class="wrap-footer">
+                        <div class="footer-blk">
+                            <p>Company</p>
+                            <ul class="footer">
+                                <li><a href="#">About</a></li>
+                                <li style="display:none;"><a href="#">Careers</a></li>
+                                <li><a href="#">Affiliate Programme</a></li>
+                                <li><a href="mailto:info@residentportal.my">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-blk">
+                            <p>Help</p>
+                            <ul class="footer">
+                                <li><a href="mailto:support@residentportal.my">Support</a></li>
+                                <li style="display:none;"><a href="#">Knowledge Base</a></li>
+                                <li><a data-toggle="modal" href="common/policy-general/privacy-policy" data-target="#modal-privacypolicy">Privacy Policy</a></li>
+                                <li><a data-toggle="modal" href="common/policy-general/terms-of-use" data-target="#modal-termsofuse">Terms of Use</a></li>
+                            </ul>
+                            <!-- MODAL POP-UP SECTION -->
+                            <div id="modal-disclaimer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DisclaimerLargeModel">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="modal-privacypolicy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PrivacyPolicyLargeModel">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="modal-termsofuse" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="TermsOfUseLargeModel">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END OF MODAL POP-UP SECTION -->
+                        </div>
+                        <div class="footer-blk">
+                            <p>Get In Touch</p>
+                            <div><i class="glyphicon glyphicon-envelope"></i> <a href="mailto:info@residentportal.my">info@residentportal.my</a></div>
+                            <div><i class="glyphicon glyphicon-earphone"></i> 603-64110828</div>
+                            <div class="wrap-social" style="display:none;">
+                                <div class="social-fb">
+                                    <a href="#">
+                                        <img src="~/Content/images/fb.png" alt="Resident Portal" style="width:100%" />
+                                    </a>
+                                </div>
+                                <div class="social-g">
+                                    <a href="#">
+                                        <img src="~/Content/images/gplus.png" alt="Resident Portal" style="width:100%" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                </div>
+            </div>
+
+            <!-- copyright -->
+            <div class="copyright">
+                <span>Resident Portal &copy; Copyright 2017. All right reserved.</span>
+            </div>
+            <!-- end copyright -->
+
+        </div>
+    </footer>
+
+    <!-- account module -->
+    <div id="black" class="black-layer"></div>
+    <!-- sign in -->
+    <div id="login" class="wrap-pop">
+        <div class="pop">
+            <h3 class="text-center">Login With Email</h3>
+            <form method="post" action="@Constant.AdminURL/Frontend/Login">
+                <input type="hidden" value="" name="returnurl" id="li_returnurl" />
+                <script>
+                    document.getElementById('li_returnurl').value = window.location.href;
+                </script>
+
+                <div class="form-group" style="margin-top:10px;">
+                    <input type="email" class="form-control" name="email" placeholder="Email *" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="pass" placeholder="Password *" required>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-main"><i class="glyphicon glyphicon-log-in"></i> Login into your account</button>
+                </div>
+            </form>
+            <!-- frt pass -->
+            <a href="javascript:void();" class="frgt-btn" onclick="document.getElementById('login').style.display='none';document.getElementById('frgt').style.display='block';">Forgot Password</a>
+            <!-- end frgt pass -->
+            <!--<h3 class="text-center">OR</h3><h3 class="text-center">Login With Social Account</h3>
+            <div class="form-group" style="margin-top:10px;">
+                <a href="javascript:void();" class="btn btn-fb"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+            </div>
+            <div class="form-group">
+                <a href="javascript:void();" class="btn btn-google"><i class="fa fa-google-plus" aria-hidden="true"></i> Google+</a>
+            </div>-->
+
+            <div class="pop-footer">
+                <p>Don't have an account? <a href="pricing">Register</a></p>
+                @*<p>Don't have an account? <a href="javascript:void();" onclick="document.getElementById('login').style.display='none';document.getElementById('signup').style.display='block';">Register</a></p>*@
+            </div>
+
+            <!-- close -->
+            <a href="javascript:void();" class="close-btn" style="color: #404040 !important;" onclick="document.getElementById('black').style.display='none';document.getElementById('login').style.display='none';" title="Close"><i class="glyphicon glyphicon-remove"></i></a>
+            <!-- end close -->
+        </div>
+    </div>
+    <!-- end sign in -->
+    <!-- sign up -->
+    <div id="signup" class="wrap-pop">
+        <div class="pop">
+            <h3 class="text-center">Sign Up Now</h3>
+            <form method="post" action="@Constant.AdminURL/Frontend/SignUp">
+                <input type="hidden" value="" name="returnurl" id="su_returnurl" />
+                <script>
+                    document.getElementById('su_returnurl').value = window.location.href;
+                </script>
+
+                <div class="form-group" style="margin-top:10px;">
+                    <input type="email" class="form-control" name="email" placeholder="Email *" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="pass" placeholder="Password *" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="cpass" placeholder="Confirm Password *" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Name of Contact Person *" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="contact" placeholder="Contact Number *" required>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <input type="text" class="form-control" name="property_name" placeholder="Property Name *" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="address" placeholder="Address *" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="address2" placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <select class="form-control" name="country">
+                        <option value="Malaysia">Malaysia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" name="state">
+                        <option value="" disabled selected style="display:none;">State *</option>
+                        <option value="Johor">Johor</option>
+                        <option value="Kedah">Kedah</option>
+                        <option value="Kelantan">Kelantan</option>
+                        <option value="Kuala lumpur">Kuala Lumpur</option>
+                        <option value="Melaka">Melaka</option>
+                        <option value="Negeri Sembilan">Negeri Sembilan</option>
+                        <option value="Pahang">Pahang</option>
+                        <option value="Perak">Perak</option>
+                        <option value="Perlis">Perlis</option>
+                        <option value="Pulau Pinang">Pulau Pinang</option>
+                        <option value="Putrajaya">Putrajaya</option>
+                        <option value="Sabah">Sabah</option>
+                        <option value="Sarawak">Sarawak</option>
+                        <option value="Selangor">Selangor</option>
+                        <option value="Terengganu">Terengganu</option>
+                        <option value="Labuan">Wilayah Persekutuan – Labuan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="city" placeholder="City *" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="postcode" placeholder="Postcode *" required>
+                        </div>
+                    </div>
+                </div>
+                <table style="margin-bottom:10px;">
+                    <tr>
+                        <td><input type="checkbox" required id="chk-terms" style="margin-top: 0px; margin-bottom: 8.3px;" /></td>
+                        <td style="padding-left:5px; font-size:12px;"><label for="chk-terms">I agree with the <a href="#" onclick="open_terms();">terms of use</a> &amp; <a href="#" onclick="open_policy();">privacy policy</a>.</label></td>
+                    </tr>
+                </table>
+                <div>
+                    <button type="submit" class="btn btn-main"><i class="glyphicon glyphicon-log-in"></i> Sign Up Now</button>
+                </div>
+            </form>
+
+            <!--<h3 class="text-center">OR</h3><h3 class="text-center">Login With Social Account</h3>
+            <div class="form-group" style="margin-top:10px;">
+                <a href="javascript:void();" class="btn btn-fb"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+            </div>
+            <div class="form-group">
+                <a href="javascript:void();" class="btn btn-google"><i class="fa fa-google-plus" aria-hidden="true"></i> Google+</a>
+            </div>-->
+
+            <div class="pop-footer">
+                <p>Already have an account? <a href="javascript:void();" onclick="document.getElementById('login').style.display='block';document.getElementById('signup').style.display='none';">Sign In Now</a></p>
+            </div>
+
+            <!-- close -->
+            <a href="javascript:void();" class="close-btn" style="color: #404040 !important;" onclick="document.getElementById('black').style.display='none';document.getElementById('signup').style.display='none';" title="Close"><i class="glyphicon glyphicon-remove"></i></a>
+            <!-- end close -->
+        </div>
+    </div>
+    <!-- end sign up -->
+    <!-- frgt pass -->
+    <div id="frgt" class="wrap-pop">
+        <div class="pop">
+            <h3 class="text-center">Forgot Password</h3>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+            <form method="post" action="">
+                <div class="form-group" style="margin-top:10px;">
+                    <div class="row">
+                        <div class="col-md-8" style="padding: 0 0 0 0;">
+                            <label>Enter Your Email Address *</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8" style="padding: 0 0 0 0;">
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="col-md-4" style="padding-right: 0;">
+                            <button type="submit" class="btn btn-main">Verify Now</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- close -->
+            <a href="javascript:void();" class="close-btn" style="color: #404040 !important;" onclick="document.getElementById('black').style.display='none';document.getElementById('frgt').style.display='none';" title="Close"><i class="glyphicon glyphicon-remove"></i></a>
+            <!-- end close -->
+        </div>
+    </div>
+    <!-- end frgt pass -->
+    <!-- end account module -->
+    
+    <!-- Placeholders for Terms of Use & Privacy Policy -->
+    <div id="box-terms" style="display:none;"></div>
+    <div id="box-terms-beta" style="display:none;"></div>
+    <div id="box-policy" style="display:none;"></div> 
+
+    <environment names="Development">
+        <script src="~/Content/vendor/jquery-2.2.4/jquery-2.2.4.min.js"></script>
+        <script src="~/Content/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src="~/Content/vendor/sweetalert2/sweetalert2.min.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/Content/vendor/jquery-2.2.4/jquery-2.2.4.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/Content/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/Content/vendor/sweetalert2/sweetalert2.min.js"></script>
+    </environment>
+    <environment names="Production">
+        <!-- Google Analytic Script -->
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-92435807-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </environment>
+
+    <script>
+        // Read a page's GET URL variables and return them as an associative array.
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+        $(function () {
+            if (getUrlVars()["msg"] != null) {
+                alert(decodeURIComponent(getUrlVars()["msg"]));
+            }
+        });
+
+        $(function () {
+            $.get("common/policy-property/terms-of-use-beta", function (data) {
+                $("#box-terms-beta").html(data);
+            });
+            $.get("common/policy-property/terms-of-use", function (data) {
+                $("#box-terms").html(data);
+            });
+            $.get("common/policy-property/privacy-policy", function (data) {
+                $("#box-policy").html(data);
+            });
+        });
+
+        function open_terms() {
+            swal({ 
+                html: $('#box-terms').html(),
+                showConfirmButton: false,
+                padding: 20,
+                animation: false
+            });
+        }
+
+        function open_terms_beta() {  
+            swal({
+                html: $('#box-terms-beta').html(),
+                showConfirmButton: false,
+                padding: 20, 
+                animation: false
+            });
+        }
+        
+        function open_policy() {
+            swal({ 
+                html: $('#box-policy').html(),
+                showConfirmButton: false,
+                padding: 20,
+                animation: false
+            });
+        }
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

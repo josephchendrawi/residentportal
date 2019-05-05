@@ -1,0 +1,68 @@
+﻿@model ResComm.Web.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout_Empty.cshtml";
+}
+
+<div class="login-box">
+    <div class="login-logo">
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+        <div class="row">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6">
+                @if (ViewBag.LogoURL == null || ViewBag.LogoURL == "")
+                {
+                    <img src="~/Content/Logo - Vertical (Medium).png" class="img-responsive" />
+                }
+                else
+                {
+                    <img src="@Url.Content(ViewBag.LogoURL)" class="img-responsive" />
+                }
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+        <h4 class="text-center text-blue">AFFILIATE</h4>
+        <br />
+        @*<p class="login-box-msg">Sign in to start your session</p>*@
+        @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("ReturnURL", Request.QueryString["ReturnURL"])
+            <div class="form-group has-feedback">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            @Html.CheckBoxFor(m => m.RememberMe) Remember Me
+                        </label>
+                    </div>
+                </div><!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div><!-- /.col -->
+            </div>
+        }
+
+        <a href="#">I forgot my password</a><br>
+        <a href="@Url.Action("Index","SignUp")">Register a new membership</a><br>
+    </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->
+
+
+<style>
+    .login-page {
+        background: url("../../Content/background.jpg") no-repeat center;
+    }
+
+    .login-box-body {
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+</style>

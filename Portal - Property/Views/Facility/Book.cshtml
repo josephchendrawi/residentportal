@@ -1,0 +1,60 @@
+﻿@model ResComm.Web.Models.FacilityBook
+@{
+    ViewBag.Title = "Book Facility";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Book }
+@section ContentHeader{
+    <script>
+            $(function () {
+                $('#main_title').html("Facility");
+            });
+    </script>
+}
+
+<div class="row">
+    @using (Html.BeginForm("Book", "Facility", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.FacilityId)
+        @Html.HiddenFor(m => m.FacilityName)
+        @Html.HiddenFor(m => m.BookDate)
+
+        <div class="col-md-4">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Facility Information</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FacilityName)
+                        <div>
+                            @Model.FacilityName
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BookDate)
+                        <div>
+                            @Model.BookDate.Value.ToString("yyyy-MM-dd")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FacilitySlotId)
+                        <div>
+                            <select class="btn btn-default form-control" id="FacilitySlotId" name="FacilitySlotId">
+                                @foreach (var v in ViewBag.FacilitySlotList as List<ResComm.Web.Models.FacilitySlot>)
+                                {
+                                    <option value="@v.FacilitySlotId" @if (v.Slot <= 0) { <text>disabled</text>}>@v.StartTime - @v.EndTime</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer text-right">
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->
+    }
+</div><!-- /.row -->

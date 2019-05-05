@@ -1,0 +1,49 @@
+﻿@model ResComm.Web.Models.Announcement
+@{
+    ViewBag.Title = "Add Announcement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Add }
+@section ContentHeader{
+}
+
+<div class="row">
+    @using (Html.BeginForm("Add", "Announcement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Announcement Information</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Content)
+                        @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @rows = 8 })
+                    </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer text-right">
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->
+    }
+</div><!-- /.row -->
+
+<!-- CK Editor -->
+<script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var editor = CKEDITOR.replace('Content');
+    });
+
+    function updateValue(value) {
+        var dialog = CKEDITOR.dialog.getCurrent();
+        dialog.setValueOf('info', 'txtUrl', value);
+    }
+</script>

@@ -1,0 +1,44 @@
+﻿@model ResComm.Web.Models.Affiliate
+@{
+    Layout = null;
+}
+
+<div class="col-md-6">
+    <div class="box box-success">
+        <div class="box-header">
+            <h3 class="box-title">User Information</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContactName)
+                @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContactNo)
+                @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control" })
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>
+
+<div class="col-md-6">
+    <div class="box box-danger">
+        <div class="box-header">
+            <h3 class="box-title">Choose a password</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>

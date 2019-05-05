@@ -1,0 +1,132 @@
+﻿@model ResComm.Web.Models.PropertyInfo
+@{
+    ViewBag.Title = "Property Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    @using (Html.BeginForm("Details", "Property", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.PropertyId)
+        <!-- left column -->
+        <div class="col-md-6">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Property Information</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PropertyName)
+                        @Html.TextBoxFor(m => m.PropertyName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address1)
+                        @Html.TextBoxFor(m => m.Address1, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address2)
+                        @Html.TextBoxFor(m => m.Address2, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.City)
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.State)
+                        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ZIP)
+                        @Html.TextBoxFor(m => m.ZIP, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Country)
+                        @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                    </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer text-right">
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->        
+        
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Logo</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="files-info" class="tabs-infobox">
+                                <div class="img-wrapper">
+                                    @if (!String.IsNullOrWhiteSpace(Model.LogoURL)) { 
+                                    <a href="@Constant.UploadPath@Model.LogoURL" class="fancybox" title="@Model.LogoURL">
+                                        <div class="img-box-round">
+                                            <img src="@Constant.UploadPath@Model.LogoURL" class="img-responsive-flex img-center" />
+                                        </div>
+                                    </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="file" name="file" id="file" @*multiple="multiple"*@ style="display: none;" accept="image/*" />
+                            <span class="btn btn-success btn-flat" id="btn-browse">Add Image</span>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $("#btn-browse").click(function () {
+        $("#file").click();
+    });
+
+    $('#file').change(function () {
+        $('#files-info').html("");
+        var files = $("#file")[0].files;
+        for (var i = 0; i < files.length; i++) {
+            var size;
+            if (files[i].size > 1048576) {
+                size = (files[i].size / 1048576).toFixed(1);
+                size += " MB";
+            }
+            else if (files[i].size > 1024) {
+                size = (files[i].size / 1024).toFixed(1);
+                size += " KB";
+            }
+            else {
+                size = files[i].size;
+                size += " B";
+            }
+
+            var reader = new FileReader();
+            reader.fileName = files[i].name;
+            reader.Size = size;
+            reader.fileType = files[i].name.substring(files[i].name.lastIndexOf('.') + 1);
+            reader.onload = function (e) {
+                var img = "<div class='img-center fa fa-file-text'></div>";
+                var type = e.target.fileType;
+                if (type == "jpg" || type == "jpeg" || type == "png" || type == "gif") {
+                    img = "<img src='" + e.target.result + "' class='img-responsive-flex-landscape img-center' />";
+                }
+                var imghtml = "<div class=\"img-wrapper\">"
+                        + "<a href='" + e.target.result + "' class='fancybox' title='" + e.target.fileName + " - " + e.target.Size + "'>"
+                        + "<div class='img-box-round'>"
+                        + img
+                        + "</div>"
+                        + "</a>"
+                        + "</div>";
+                $('#files-info').append(imghtml);
+            }
+            reader.readAsDataURL(files[i]);
+        }
+    });
+</script>

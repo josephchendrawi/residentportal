@@ -1,0 +1,19 @@
+﻿@model ResComm.Web.Models.DashboardVM
+@{
+    ViewBag.Title = "Dashboard";
+}
+@section Title { @ViewBag.Title }
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="box box-warning">
+            <div class="box-header">
+                Referral Code
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div style="font-size: 28px;">@Model.ReferralCode</div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->

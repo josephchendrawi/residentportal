@@ -1,0 +1,70 @@
+﻿@model ResComm.Web.Models.PropertyAdminSignup
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading display-table">
+                <div class="row display-tr">
+                    <div>
+                        <img class="img-responsive pull-right" src="data:image/png;base64,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" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5 class="text-muted"> Credit Card Number</h5>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="tel"
+                                           class="form-control"
+                                           placeholder="Valid Card Number"
+                                           autofocus />
+                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-8">
+                            <span class="help-block text-muted small-font">Expiration Date</span>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <span class="help-block text-muted small-font">CCV</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <input type="text" class="form-control" placeholder="MM" />
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <input type="text" class="form-control" placeholder="YY" />
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <input type="text" class="form-control" placeholder="CCV" />
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12 pad-adjust">
+                            <br />
+                            <input type="text" class="form-control" placeholder="Name On The Card" />
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                            <p class="payment-errors"></p>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                            <br />
+                            <input type="submit" class="btn btn-flat btn-warning btn-block" value="PAY NOW" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

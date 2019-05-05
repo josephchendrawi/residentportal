@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{780FC393-7465-4D02-8286-FA54141D25EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ResComm.Web.Lib.Interface</RootNamespace>
+    <AssemblyName>ResComm.Web.Lib.Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\Staging\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Constants\ResCommConstants.cs" />
+    <Compile Include="Common\Enums\Account.cs" />
+    <Compile Include="Common\Enums\Billing.cs" />
+    <Compile Include="Common\Enums\Ticket.cs" />
+    <Compile Include="Common\Enums\Unit.cs" />
+    <Compile Include="Common\Enums\Common.cs" />
+    <Compile Include="Common\Enums\Property.cs" />
+    <Compile Include="Common\Enums\User.cs" />
+    <Compile Include="Common\Enums\EnumUtils.cs" />
+    <Compile Include="Common\Exceptions\Exceptions.cs" />
+    <Compile Include="Models\Account\AccountVO.cs" />
+    <Compile Include="Models\Account\AccountNoteVO.cs" />
+    <Compile Include="Models\Affiliate\AffiliateContactVO.cs" />
+    <Compile Include="Models\Audit\AuditLogVO.cs" />
+    <Compile Include="Models\Audit\AuditTrailVO.cs" />
+    <Compile Include="Models\BaseVO.cs" />
+    <Compile Include="Models\Billing\BillingCompileVO.cs" />
+    <Compile Include="Models\Billing\BillingPaymentVO.cs" />
+    <Compile Include="Models\Property\PropertyInvoiceVO.cs" />
+    <Compile Include="Models\Property\PropertySubscriptionVO.cs" />
+    <Compile Include="Models\Subscription\SubscriptionOrderVO.cs" />
+    <Compile Include="Models\Subscription\SubscriptionPackageVO.cs" />
+    <Compile Include="Models\Facility\FacilitySlotBookingVO.cs" />
+    <Compile Include="Models\Facility\FacilitySlotVO.cs" />
+    <Compile Include="Models\Facility\FacilityVO.cs" />
+    <Compile Include="Models\Billing\BillingVO.cs" />
+    <Compile Include="Models\Property\UnitTypeVO.cs" />
+    <Compile Include="Models\Property\UnitVO.cs" />
+    <Compile Include="Models\Property\PropertyVO.cs" />
+    <Compile Include="Models\Address\AddressVO.cs" />
+    <Compile Include="Models\Ticket\TicketCategoryVO.cs" />
+    <Compile Include="Models\Ticket\TicketVO.cs" />
+    <Compile Include="Models\User\UserVO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Order\" />
+    <Folder Include="Models\ServiceRequest\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

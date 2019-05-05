@@ -1,0 +1,558 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+    <title>Beta Programme Affiliate Registration</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Vendor's CSS -->
+    <link href="~/Content/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet"> <!-- Load Time: Slow -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet">
+
+    <style type="text/css">
+        html { font-size: 13px; }
+        body { font-family: 'Lato', sans-serif; }
+
+        .popupoptinbox2 { background:#efefef; border:8px solid #169ece; border-radius:10px; padding:20px 20px; text-align:left; } 
+        .popupoptinbox2 hr { border-color:#c3c3c3; margin-top:10px; margin-bottom:30px; }
+        .popupoptinbox2 .popupoptinlabel { font-family:'Roboto',sans-serif; font-size:1.4rem; font-weight:normal; text-align:center; } 
+        .popupoptinbox2 .textboxname {
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            margin-right:3px; margin-top:5px;
+            font-size:16px; height:40px;
+        } 
+        .popupoptinbox2 .textboxemail {
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            margin-right:3px; margin-top:8px;
+            font-size:16px; height:40px;
+        }  
+        .popupoptinbox2 .popupoptinbutton { width:100%; background-color:#0C7DDE; border-color:#0C7DDE; margin-top:10px; padding:15px 30px; font-size:22px; font-family:'Roboto Condensed',sans-serif; font-weight:bold; }
+        .popupoptinbox2 .formarea { padding:0px 0px 0px 0px; text-align:center;}
+        @@media (min-width: 992px) {
+            .popupoptinbox2 .formarea { padding:0px 50px 20px 50px; }
+            .popupoptinbox2 .popupoptinbutton { width:auto; margin:auto; margin-top:10px;}
+        }
+
+        .header { padding:10px; text-align:left; font-family:'Open Sans Condensed', sans-serif; font-weight:bold; color:#1B75BC; font-size:24px; }
+        .header table { margin-left:0px; line-height:26px; }
+        .header .logo { height:60px }
+        @@media (min-width: 768px) {
+            .header { text-align:center; }
+            .header table { margin:auto; }
+            .header .logo { height:48px }
+        } 
+
+        .banner { text-align:center; background-image:url('../../Content/affiliate/images/background-tile/low_contrast_linen.png'); padding:10px 20px 30px 20px; }
+        .banner h1 { font-family: 'Source Sans Pro', sans-serif; font-size:30px; color:white; font-weight:700; letter-spacing:-1px; text-align:center; padding-top:15px; padding-bottom:30px; }
+        .banner .cta { height:50px; }
+        @@media (min-width: 768px) {
+            .banner { padding:20px 20px 30px 20px; }
+            .banner h1 { font-size:36px; }
+        } 
+        @@media (min-width: 992px) {
+            .banner h1 { font-size:42px; }
+        }
+
+        .product { padding:20px; }
+        .product h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .product h2 { font-weight:bold; font-size:22px; }
+        .product p { font-size:1.3rem; } 
+        .product b { color:#169ece; } 
+        .product ul { list-style-type:none; margin-left:0px; padding-left:0px; padding-top:8px;}
+        .product li { margin-left:35px; margin-bottom:10px; font-size:1.3rem; }
+        .product li .listcheck { margin-left:-35px; margin-right:15px; }
+        .product .productbox { width:100%; }
+
+        .statement { background-color:black; padding:30px 10px; text-align:center; }
+        .statement h1 { text-align:center; font-size:22px; color:white; line-height:1.3em; padding-bottom:10px; font-weight:500;}
+        .statement h4 { font-family:'Open Sans', sans-serif; text-align:center; color:white; margin-bottom:30px; font-size:16px; }
+        .statement .icon { font-size:60px; color:white; text-align:center; margin:auto; }
+        @@media (min-width: 768px) {
+            .statement h1 { font-size:36px; }
+            .statement h4 { margin-bottom:0px; font-size:18px; }
+        } 
+        @@media (min-width: 992px) {
+            .statement { background-color:black; padding:20px 20px 40px 20px;}
+            .statement h1 { font-size:34px; }
+            .statement .icon { font-size:80px; }
+        }
+
+        .who { text-align:center; padding:20px; }
+        .who h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .who p { font-family: 'Lato', sans-serif; font-weight:400; font-size:20px; text-align:center;}
+        .who .title { font-family: 'Archivo Narrow', sans-serif; font-size:24px; padding:0px; font-weight:bold; margin:14px 0px 0px 0px; color:#2a69bf; }
+        .who .subtitle { font-size:15px; color:#808080; padding:0px; margin:0px; }
+        @@media (min-width: 992px) { 
+        }
+
+        .commission { text-align:center; padding:20px 10px 50px 10px; background-image:url('../../Content/affiliate/images/background-tile/cork-wallet.png'); }
+        .commission h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .commission p { font-family: 'Lato', sans-serif; font-weight:400; font-size:20px; text-align:center;}
+        .commission .commstructure table { margin:auto; font-family:'Archivo Narrow', sans-serif; font-size:26px; font-weight:bold; }
+        .commission .commstructure table td { background-color:#e6db3c; padding:5px 10px; }
+        @@media (min-width: 992px) {
+            .commission { padding:20px 20px 50px 20px;} 
+            .commission p { font-size:20px; }
+        }
+
+        .timeneeded { background-color:#0A86B2; padding:0px; } /* 1267ad 003366 101c44*/
+        .timeneeded h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#efefef; font-size:2.7rem; text-align:center;}
+        .timeneeded p { font-family: 'Lato', sans-serif; font-weight:400; font-size:20px; text-align:center; color:#efefef; padding-top:20px; padding-bottom:10px;}
+        .timeneeded .min { font-family: 'Roboto Condensed', 'Roboto', 'Lato' sans-serif; font-weight:400; font-size:1.0rem; text-align:left; color:#efefef; padding-top:10px;}
+
+        .faq { font-family: 'Roboto', sans-serif; background-color:#f0efef; padding:10px 30px 20px 30px;}
+        .faq h3 { text-align:center; padding-top:20px; }
+        .faq .faqcolumn { padding:10px 0px; }
+        .faq .question { font-weight:bold; }
+        .faq .answer { font-weight:400; padding-top:0px; margin-top:0px; }
+        @@media (min-width: 992px) {
+            .faq .faqcolumn { padding:20px 40px; }
+        }
+
+        .footer { background-color:#1B75BC; padding:20px 0px; text-align:center; color:white; }
+        .footer a { color:white; }
+
+        .footerpopup p { font-family:'Roboto Condensed', 'Roboto', sans-serif; }
+        .footerpopup strong { font-family: 'Open Sans Condensed', sans-serif; font-size:16px;}
+        .footerpopup li { font-family:'Roboto Condensed', 'Roboto', sans-serif; }
+        .footerpopup ul { padding-left:20px; }
+
+        /* Extra small devices (phones, less than 768px) */
+        /* No media query since this is the default in Bootstrap */
+
+        /* Small devices (tablets, 768px and up) */
+        @@media (min-width: 768px) { 
+        }
+
+        /* Medium devices (desktops, 992px and up) */
+        @@media (min-width: 992px) {   
+        }
+
+        /* Large devices (large desktops, 1200px and up) */
+        @@media (min-width: 1200px) {
+        } 
+        
+        .text-bold{
+            font-weight: bold;
+        }
+    </style>
+
+    <script src="~/Content/vendor/jquery-2.2.4/jquery-2.2.4.min.js"></script>
+
+
+    <link rel="stylesheet" href="~/Content/vendor/jquery.alertable/jquery.alertable.css">
+    <script src="~/Content/vendor/jquery.alertable/jquery.alertable.min.js"></script>
+    <script>
+        function alert(msg) {
+            $.alertable.alert(msg, {
+                html: true,
+            });
+        };
+    </script>
+
+    <link rel="stylesheet" href="~/Content/vendor/sweetalert2/sweetalert2.css">
+    <script src="~/Content/vendor/sweetalert2/sweetalert2.min.js"></script>
+</head>
+<body>
+    <section class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12"> 
+                    <table>
+                        <tr>
+                            <td><img class="logo" src="~/Content/images/logo/Logo Only@0.5x.png"/></td>
+                            <td style="padding-left:5px;">RESIDENT PORTAL <br class="visible-xs" /><span style="color:#5f5d5d;">AFFILIATE PROGRAMME</span></td>
+                        </tr>
+                    </table> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Get paid up to RM 1000 for each property you refer to Resident Portal and earn 30% commissions for the REST of your life when the properties renew their subscriptions.</h1>
+                    <div style="text-align:center">
+                        <a id="btnRegisterPopup" class="btn btn-success btn-lg cta" data-toggle="modal" data-target="#modal-optinform2">
+                            <span>Register as an Affiliate Today</span><span class="hidden-xs"> (It's Free)</span>
+                        </a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>What Will You Be Promoting?</h1>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-5">
+                    <img src="~/Content/images/softwarebox/boxwithfeatures.png" class="productbox" />
+                </div>
+                <div class="col-sm-12 col-md-7">
+                    <h2>Introducing Resident Portal</h2>
+                    <p>Resident Portal is a cost-effective property management software that was designed to help manage, increase effectiveness and efficiency of daily operational activities of a condominium, apartment or housing community. With Resident Portal, basically owners and residents can go online or use their mobile phones to:</p>
+                    <ul>
+                        <li><img src="~/Content/affiliate/images/icon/check.png" class="listcheck" /><b>PAY BILLS ONLINE</b> using their credit cards or online banking via Maybank2u, CIMBClicks, Hong Leong Connect, RHB, UOB, HSBC, Ambank, etc.</li>
+                        <li><img src="~/Content/affiliate/images/icon/check.png" class="listcheck" /><b>MAKE A COMPLAINT</b> or <b>ENQUIRY</b> directly to the property management team and get status updates of the complaints or enquiries through the website.</li>
+                        <li><img src="~/Content/affiliate/images/icon/check.png" class="listcheck" /><b>BOOK FACILITIES</b> such as make a reservation for a badminton court, BBQ area, conference hall, basketball court, etc. Cancellation and rescheduling of bookings can also be done in a few clicks!</li>
+                        <li><img src="~/Content/affiliate/images/icon/check.png" class="listcheck" /><b>GET LATEST UPDATES</b> about the property such as announcement of news updates, download the latest forms, etc.</li>
+                        <li><img src="~/Content/affiliate/images/icon/check.png" class="listcheck" /><b>PLUS</b> many other great features for maximum convenience...</li>
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="statement">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>
+                        In short, Resident Portal is an in-demand property management software that allows owners and residents to pay bills, make facilities booking, launch complaints, make enquiries, download forms and perform many others stuffs online via through the internet or mobile phone.
+                    </h1>
+                </div>
+            </div>
+            <br />
+            <div class="row"> 
+                <div class="col-xs-6 col-md-2 col-md-offset-1">
+                    <div class="fa fa-bullhorn icon"></div>
+                    <br />
+                    <h4>Annoucements</h4>
+                </div> 
+                <div class="col-xs-6 col-md-2">
+                    <div class="fa fa-list-alt icon"></div>
+                    <br />
+                    <h4>Newletters</h4>
+                </div> 
+                <div class="col-xs-6 col-md-2">
+                    <div class="fa  fa-comments icon"></div>
+                    <br />
+                    <h4>Complaints &amp; Defects<br />Management</h4>
+                </div> 
+                <div class="col-xs-6 col-md-2">
+                    <div class="fa fa-calendar icon"></div>
+                    <br />
+                    <h4>Facility<br />Reservation</h4>
+                </div>  
+                <div class="col-xs-12 col-md-2">
+                    <div class="fa fa-database icon"></div>
+                    <br />
+                    <h4>Central Document<br />Repository</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="who">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Who You Can Promote To?</h1>
+                    <br />
+                    <p>Practically, <u>ANY</u> property or residential that provides facilities and services can benefit from Resident Portal. Probably even the property that you are currently living in now needs Resident Portal. Basically, you can promote Resident Portal to:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4" style="padding-left:0px; padding-right:0px; text-align:center;">
+                    <img src="~/Content/affiliate/images/section-promote/ExistingProperties.png" class="img-responsive" />
+                    <p class="title">Existing Properties</p>
+                    <p class="subtitle">(Condominiums, Apartments, Flats, etc.)</p>
+                </div>
+                <div class="col-xs-12 col-sm-4" style="padding-left:0px; padding-right:0px; text-align:center;">
+                    <img src="~/Content/affiliate/images/section-promote/NewDevelopment.png" class="img-responsive" />
+                    <p class="title">Existing Residential</p>
+                    <p class="subtitle">(Guarded &amp; Gated Housing Estates, etc.)</p>
+                </div>
+                <div class="col-xs-12 col-sm-4" style="padding-left:0px; padding-right:0px; text-align:center;">
+                    <img src="~/Content/affiliate/images/section-promote/ExistingResidentials.png" class="img-responsive" />
+                    <p class="title">New Developments</p>
+                    <p class="subtitle">(Property Developers)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <br /><br />
+                    <p>
+                        In fact, property purchasers, owners, investors, tenants and even your friends can also help you promote Resident Portal. All you have to do is to ask them to provide you with the contact of the property they are staying in or the property that they have purchased.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="commission">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>How Much Will I Earn?</h1>
+                    <p>
+                        Basically, for every property that you sign-up for Resident Portal Beta Programme, we will be paying you 10% commission on the Beta Programme package price plus you will be getting 30% commission on the renewal rate <u>for the rest of your life</u> everytime the properties renew their subscriptions with us!
+                    </p>
+                    <br />
+                    <div class="commstructure">
+                        <table>
+                            <tr>
+                                <td>10% Commission = On Beta Programme Package Price</td>
+                            </tr>
+                        </table>
+                        <table style="margin-top:10px;">
+                            <tr>
+                                <td>30% Commission = On Renewal Rates for the Rest of Your Life!</td>
+                            </tr>
+                        </table>
+                    </div> 
+                    <br /><br />
+                    <div style="text-align:center">
+                        <a id="btnRegisterPopup" class="btn btn-success btn-lg cta" data-toggle="modal" data-target="#modal-optinform2">
+                            <span>Great. Let's Get Started.</span>
+                        </a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </section>
+    <section class="timeneeded">
+        <a name="timeneeded"></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="padding-top:30px;">
+                    <h1>How Much Time Do I Need?</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="text-align:center;">
+                    <p>In actual truth, not much! Probably even just a few minutes! This is because we have <u>DONE</u> all of the work for you.
+                    <br /><br />
+                    Registering a property could be as simple as referring someone to our Beta Programme website using your affiliate URL and from there, the website will do all the sales for you!</p>
+                    <a href="https://www.residentportal.my/beta" target="_blank" class="btn btn-success btn-lg"><span class="hidden-xs">Click Here to </span>View <span class="hidden-xs">the </span>Beta Programme Website</a>
+                    <p>In fact, to save you even more time, we have prepared a complete Quick Start Guide for you once you register as an affiliate. With this guide, you could be getting your first property registered as soon as within 24-hours!</p>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12"><h3>Frequently Asked Questions</h3></div>
+            </div>
+            <div class="row" style="padding-bottom: 10px; font-size: 15px;">
+                <div class="col-xs-12 col-md-6 faqcolumn">
+                    <strong class="question">Q. What is this affiliate programme all about?</strong>
+                    <div class="answer text-justify">
+                        Resident Portal Affiliate Programme is all about generously rewarding people that helps us grow! This is why we are not only paying out good commissions but rewarding you with an opportunity to be paid year-after-year throughout your entire life!
+                    </div>
+                    <br />
+                    <strong class="question">Q. How much does it cost to become an affiliate?</strong>
+                    <div class="answer text-justify">
+                        It's FREE and will remain free for life. There are no registration, renewal fees or so forth to become an agent. So why not register today as an agent!
+                    </div>
+                    <br />
+                    <strong class="question">Q. What are the requirements to become an affiliate?</strong>
+                    <div class="answer text-justify">
+                        Other than being above 18 years old, there are no other requirements to become our affiliate. But you will need a valid Malaysian bank account for us to pay you your commissions. 
+                    </div>
+                    <br />
+                    <strong class="question">Q. Do I need to train the customers?</strong>
+                    <div class="answer text-justify">
+                        Resident Portal comes with video tutorials to help get the customers started with the system. Therefore, all you need to do is to refer them to these tutorials for training. Aside to that, we do recommend that if you prefer to build a good relationship with your customers, you can walk them through yourself but that is really up to you.
+                    </div>
+                    <br />
+                    <strong class="question">Q. Do I need to support the customers?</strong>
+                    <div class="answer text-justify">
+                        No. Our support team here at Resident Portal will provide technical support to your customers. 
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 faqcolumn">
+                    <strong class="question">Q. How much time do I need? I'm very busy and don't have much time.</strong>
+                    <div class="answer text-justify">
+                        Well, you don't need much time at all! All you have to do is to connect the right person (possibly a contact that you already know) to your affiliate URL. Yes, it can be only just a SMS, Whatsapp message, email (which we have even written for you), etc. In fact, signing up a property can at times take only 5 minutes of your time! 
+                    </div>
+                    <br />
+                    <strong class="question">
+                        Q. I am no good with computers and am not familiar with the system.<br />
+                        Q. I don't have any software or sales experience. 
+                    </strong>
+                    <div class="answer text-justify" ">
+                        Don't worry as we have you covered and done all the work for you. Just refer your prospect to your affiliate website and let the website works its magic in walking your prospects through Resident Portal as well as performing the sales on your behalf. 
+                    </div>
+                    <br />
+                    <strong class="question">Q. How will I be paid my commissions?</strong>
+                    <div class="answer text-justify">
+                        We will bank-in your commissions directly into a Malaysian bank account that you have provided us with. Payment of commissions will only be made for all enrolments and/or sign-ups for Resident Portal software that are successful, payments received and in which the guarantee period has elapsed.
+                    </div>
+                    <br />
+                    <strong class="question">Q. How do I get more information on the Affiliate Programme?</strong>
+                    <div class="answer text-justify">
+                        Just email us at affiliate@residentportal.my or should you need to speak to us, dial us at +603-64110828 and we will be more than glad to help you with all your enquiries.
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    Copyright &#169; 2017 Resident Portal. All rights reserved.
+                    <div style="padding-bottom:0px; padding-top:5px;">
+                        <a data-toggle="modal" href="../common/policy-general/disclaimer" data-target="#modal-disclaimer">Disclaimer</a> |
+                        <a data-toggle="modal" href="../common/policy-general/privacy-policy" data-target="#modal-privacypolicy">Privacy Policy</a> |
+                        <a data-toggle="modal" href="../common/policy-general/terms-of-use" data-target="#modal-termsofuse">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL POP-UP SECTION -->
+        <div id="modal-disclaimer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DisclaimerLargeModel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+        <div id="modal-privacypolicy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PrivacyPolicyLargeModel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+        <div id="modal-termsofuse" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="TermsOfUseLargeModel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+        <!-- END OF MODAL POP-UP SECTION -->
+    </section> 
+
+    <!-- Form: Affiliate Registration -->
+    <div id="modal-optinform2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="background-color:rgba(0, 0, 0,0.8);">
+        <div class="modal-dialog modal-md" style="top:10%; max-width:700px; width:100%;">
+            <div class="modal-content" style="text-align:center; margin:auto; background-color:transparent;">
+                <div class="modal-body popupoptinbox2">
+                    <div id="formcontent">
+                        <h2 style="text-align:center;">Join Resident Portal Affiliate Programme</h2>
+                        <div class="formarea">
+                            <div class="popupoptinlabel">
+                                Fill up the form below and register for free.
+                            </div>
+                            <br />
+                            <form class="form" id="register">
+                                <div class="form-group">
+                                    <input type="text" class="form-control textboxname" id="txtPopUpLeadName1" name="txtName" placeholder="Enter Your Name" required>
+                                    <input type="email" class="form-control textboxemail" id="txtPopUpLeadEmail1" name="txtEmail" placeholder="Enter Your Email Address" required>
+                                    <input type="password" class="form-control textboxname" id="txtPassword" name="txtPassword" placeholder="Enter Your Password" required>
+                                </div>
+                                <div style="font-size:13px;">
+                                    <input type="checkbox" required name="terms" id="terms" /> <label for="terms">I have read, understood and agreed to the <a href="#" onclick="open_terms();">terms of use</a> and <a href="#" onclick="open_policy();">privacy policy</a>.</label>
+                                </div>
+                                <button type="submit" id="btnRegister" class="btn btn-warning popupoptinbutton">Register Now</button>
+                            </form>
+                                 
+                            <script>
+                                $("form#register").submit(function (event) {
+                                    event.preventDefault();
+
+                                    $("#btnRegister").html("Registering...");
+                                    $("#btnRegister").prop('disabled', true);
+
+                                    var data = { 
+                                        "name": $("#txtPopUpLeadName1").val(),
+                                        "email": $("#txtPopUpLeadEmail1").val(),
+                                        "password": $("#txtPassword").val()
+                                    };
+
+                                    $.ajax({
+                                        url: "@Constant.AdminURL/api/affiliate/register",
+                                        type: "POST",
+                                        data: JSON.stringify(data),
+                                        dataType: "json",
+                                        contentType: "application/json",
+                                        success: function (result) {
+                                            $("#btnRegister").html("Register Now");
+                                            $("#btnRegister").prop('disabled', false);
+
+                                            if (result.Success)
+                                            {
+                                                var ReferralCode = result.Result;
+                                                ///
+                                                console.log(ReferralCode);
+                                                ///
+
+                                                alert("You have registered as an Affiliate.<br/>Please check your email for further details.");
+                                            }
+                                            else
+                                            {                                                                   
+                                                alert(result.Message);
+                                            }
+                                        },
+                                        error: function () {
+                                            alert("Error!");
+                                        }
+                                    });
+                                });
+
+                                function open_terms() {
+                                    swal({
+                                        title: 'Terms of Use',
+                                        html: $('#box-terms').html(),
+                                        showCloseButton: true,
+                                        animation: false,
+                                    });
+                                }
+
+                                function open_policy() {
+                                    swal({
+                                        title: 'Privacy Policy',
+                                        html: $('#box-policy').html(),
+                                        showCloseButton: true,
+                                        animation: false,
+                                    });
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <div id="processingcontent" style="display:none; text-align:center;">
+                        <img src="~/Content/images/loaders/Cube - Light Blue.gif" style="width:75px" />
+                        <br /><br />
+                        <b style="font-family:'Oswald', sans-serif; font-size:30px;">GREAT.</b><br /><br />
+                        <span style="font-family:'Lato', sans-serif; font-size:16px;">Please wait a moment while we prepare your access.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor's JS -->
+    <script src="~/Content/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    
+    <div id="box-terms" style="display:none;"></div>
+    <div id="box-policy" style="display:none;"></div>
+    <script>
+        $(function () {
+            $.get("../common/policy-affiliate/terms-of-use-beta", function (data) {
+                $("#box-terms").html(data);
+            });
+            $.get("../common/policy-affiliate/privacy-policy", function (data) {
+                $("#box-policy").html(data);
+            });
+        });
+    </script>
+</body>
+</html>

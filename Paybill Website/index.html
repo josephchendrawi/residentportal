@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resident Portal - Online Bill Payment</title>
+
+    <link rel="shortcut icon" href="images/logo/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Vendor CSS -->
+    <link href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet" />
+    <style>
+        body { font-family:"Open Sans", sans-serif; font-size:16px; }
+        /*
+        .header { padding:5px 10px; background-color:#e4e4e4; text-align:center; }
+        .header .logo { height:40px; }
+        */
+        .header { padding:10px 10px;  text-align:center; font-family:'Open Sans Condensed', sans-serif; font-weight:bold; background-color:#23669b; color:white; font-size:20px; }
+        .header table { margin:auto; line-height:26px; }
+        .header .logo { height:32px }
+        @media (min-width: 768px) { 
+            .header table { margin:auto; }
+            .header .logo { height:32px }
+        } 
+
+        .title { text-align:center; padding:20px; }
+        .title h1 { font-weight:300; padding-top:10px; padding-bottom:20px; }
+        .title .text { font-size:18px; max-width:1000px; margin:auto; }
+
+        .services { text-align:center; padding:20px; }
+        .services .iconpanel { background-color:#eaeaea; border-radius:8px; width:160px; height:160px; margin:auto; padding:30px 20px; }
+        .services .icon { font-size:100px; color:#5e5d5d; }
+        .services p { padding-top:10px; }
+
+        .cta { padding:20px 20px 30px 20px; text-align:center; }
+        .cta .ctabutton { background-color:#25be73; color:white; padding:14px 30px; font-weight:400; font-size:20px; }
+
+        .paymentmethods { padding:10px 20px 40px 20px; text-align:center; background-color:#23669b; }
+        .paymentmethods h3 { font-weight:300; padding-top:10px; padding-bottom:20px; color:white; font-size:22px; }
+        .paymentmethods .paymethod { margin-right:10px; font-size:45px; color:white; }
+
+        .footer { padding:12px 20px 13px 20px; text-align:center; background-color:#e4e4e4; }
+        .footer p { font-weight:400; font-size:12px; color:black; padding:0px; margin:0px; }
+        .footer span { font-weight:400; font-size:12px; color:black; padding:0px; margin:0px; }
+        .footer .policylink { color:#23669b; text-decoration:none; }
+        .footer .policylink:active { color:#23669b; text-decoration:none; }
+        .footer .policylink:hover { color:#23669b; text-decoration:underline; }
+        .footer .policylink:visited { color:#23669b; text-decoration:none; }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table>
+                        <tr>
+                            <td><img class="logo" src="images/logo/Logo Only - White@0.5x.png" /></td>
+                            <td style="padding-left:5px;">RESIDENT PORTAL <br class="visible-xs" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="title">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12"> 
+                    <h1>Resident Portal Online Bill Payment</h1>
+                    <div class="text">With Resident Portal, you can now conveniently pay your property bills online from your computer or your mobile phones using your credit cards or via online banking (e.g. Maybank2u, CIMB Clicks, Hong Leong Connect, etc).</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-md-3 col-lg-2 col-lg-offset-2">
+                    <div class="iconpanel">
+                        <span class="fa fa-cogs icon"></span>
+                    </div>
+                    <p>Maintenance Fees</p>
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-2">
+                    <div class="iconpanel">
+                        <span class="fa fa-file-text-o icon"></span>
+                    </div>
+                    <p>Insurance</p>
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-2">
+                    <div class="iconpanel">
+                        <span class="fa fa-flash icon"></span>
+                    </div>
+                    <p>Utility Bills</p>
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-2">
+                    <div class="iconpanel">
+                        <span class="fa fa-hashtag icon"></span>
+                    </div>
+                    <p>Misc. Bills</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-lg ctabutton" data-toggle="modal" data-target="#myModal">Start Paying Your Bills Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br />
+    <section class="paymentmethods">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Payment Methods We Support</h3>
+                    <span class="fa fa-cc-visa paymethod"></span>
+                    <span class="fa fa-cc-mastercard  paymethod"></span>
+                    <span class="fa fa-cc-amex paymethod"></span>
+                    <span class="fa fa-cc-paypal  paymethod"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer -->
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p style="font-weight:600;">
+                        Resident Portal is a product of Business Origin Sdn. Bhd. &copy; Copyright 2017. All right reserved.
+                        &nbsp;<a class="policylink" data-toggle="modal" href="https://www.residentportal.my/common/policy-residentowner/terms-of-use.html" data-target="#modal-termsofuse">Terms of Use</a>
+                        &nbsp;<a class="policylink" data-toggle="modal" href="https://www.residentportal.my/common/policy-residentowner/privacy-policy.html" data-target="#modal-privacypolicy">Privacy Policy</a>
+                    </p>
+                    <p style="padding-top:4px;"><span class="fa fa-map-marker"></span>&nbsp;Suite 118, P3-19, Shaftbury Square, Persiaran Multimedia, 63000 Cyberjaya, Selangor&nbsp;&nbsp;&nbsp;<span class="fa fa-envelope"></span>&nbsp;support@residentportal.my&nbsp;&nbsp;&nbsp;<span class="fa fa-phone"></span>&nbsp;03-64110828</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- POP-UP FORM: Sign In -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="max-width:460px;">
+            <div class="modal-content"> 
+                <div class="modal-body">
+                    <div id="login" style="display:inline;">
+                        <div class="pop" style="padding:30px;">
+                            <h3 class="text-center">Login to Pay Bills</h3>
+                            <form method="post" action="http://staging.residentportal.my/Frontend/Login">
+                                <input type="hidden" value="" name="returnurl" id="li_returnurl" />
+                                <script>
+                                    document.getElementById('li_returnurl').value = window.location.href;
+                                </script>
+
+                                <div class="form-group" style="margin-top:10px;">
+                                    <input type="email" class="form-control" name="email" placeholder="Email *" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="pass" placeholder="Password *" required>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-main"><i class="glyphicon glyphicon-log-in"></i> Login into your account</button>
+                                </div>
+                            </form> 
+                            <hr />
+                            <div style="font-size:12px;">
+                                <span class="fa fa-angle-double-right"></span> Don't have an account? Contact your property.
+                                <br />
+                                <span class="fa fa-angle-double-right"></span> Your property is not registered? <a data-dismiss="modal" data-toggle="modal" data-target="#frmPropertyRegistration">Register</a>
+                                <br />
+                                <span class="fa fa-angle-double-right"></span> Forgotten your password? <a href="javascript:void();" onclick="document.getElementById('login').style.display='none';document.getElementById('frgt').style.display='block';">Retrieve</a>
+                            </div> 
+                            <!-- close button -->
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute; top:3px; right:8px;"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- END POP-UP FORM: Sign In -->
+
+    <!-- POP-UP FORM: Property Registration-->
+    <div class="modal fade" id="frmPropertyRegistration" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="text-center" style="font-weight:bold;">Property Registration Form</h3>
+                </div>
+                <div class="modal-body">  
+                    <form method="post" action="http://staging.residentportal.my/Frontend/SignUp">
+                        <input type="hidden" value="" name="returnurl" id="su_returnurl" />
+                        <script>
+                            document.getElementById('su_returnurl').value = window.location.href;
+                        </script>
+
+                        <div class="form-group" style="margin-top:10px;">
+                            <input type="email" class="form-control" name="email" placeholder="Email *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="pass" placeholder="Password *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="cpass" placeholder="Confirm Password *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Name of Contact Person *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="contact" placeholder="Contact Number *" required>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="property_name" placeholder="Property Name *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="address" placeholder="Address *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="address2" placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="country">
+                                <option value="Malaysia">Malaysia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="state">
+                                <option value="" disabled selected style="display:none;">State *</option>
+                                <option value="Johor">Johor</option>
+                                <option value="Kedah">Kedah</option>
+                                <option value="Kelantan">Kelantan</option>
+                                <option value="Kuala lumpur">Kuala Lumpur</option>
+                                <option value="Melaka">Melaka</option>
+                                <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                <option value="Pahang">Pahang</option>
+                                <option value="Perak">Perak</option>
+                                <option value="Perlis">Perlis</option>
+                                <option value="Pulau Pinang">Pulau Pinang</option>
+                                <option value="Putrajaya">Putrajaya</option>
+                                <option value="Sabah">Sabah</option>
+                                <option value="Sarawak">Sarawak</option>
+                                <option value="Selangor">Selangor</option>
+                                <option value="Terengganu">Terengganu</option>
+                                <option value="Labuan">Wilayah Persekutuan – Labuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="city" placeholder="City *" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="postcode" placeholder="Postcode *" required>
+                                </div>
+                            </div>
+                        </div> 
+                        <div style="font-size:12px;">
+                            <input type="checkbox" />&nbsp;&nbsp;I hereby agree to the <a class="policylink" data-toggle="modal" href="https://www.residentportal.my/common/policy-property/terms-of-use-beta.html" data-target="#modal-termsofuse">Terms of Use</a> and <a class="policylink" data-toggle="modal" href="https://www.residentportal.my/common/policy-property/privacy-policy.html" data-target="#modal-privacypolicy">Privacy Policy</a>.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-main"><i class="glyphicon glyphicon-log-in"></i> Register</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END POP-UP FORM: Property Registration-->
+
+    <!-- POP-UP: Terms of Use & Privacy Policy -->
+    <div id="modal-privacypolicy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PrivacyPolicyLargeModel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <div id="modal-termsofuse" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="TermsOfUseLargeModel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <!-- END OF MODAL POP-UP SECTION -->
+
+    <!-- Vendor Javascripts -->
+    <script src="vendor/jquery-2.2.4/jquery-2.2.4.min.js"></script>
+    <script src="vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

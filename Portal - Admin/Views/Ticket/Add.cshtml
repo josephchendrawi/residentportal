@@ -1,0 +1,85 @@
+﻿@model ResComm.Web.Models.Ticket
+@{
+    ViewBag.Title = "Add Ticket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Add }
+@section ContentHeader{
+    <script>
+        $(function () {
+            $('#main_title').html("Complain & Defect");
+        });
+    </script>
+
+}
+
+<div class="row">
+    @using (Html.BeginForm("Add", "Ticket", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Ticket Information</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CategoryId)
+                        @Html.DropDownListFor(m => m.CategoryId, Helper.GetTicketCategoryList(long.Parse((string)Session["UserId"])), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Priority)
+                        @Html.DropDownEnumListFor(m => m.Priority, typeof(PRIORITY), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Status)
+                        @Html.DropDownEnumListFor(m => m.Status, typeof(TICKET_STATUS), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = "4" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Type)
+                        @Html.DropDownEnumListFor(m => m.Type, typeof(TICKET_TYPE), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EstStartDate)
+                        @Html.TextBox("EstStartDate_", Model.EstStartDate, "{0:MM/dd/yyyy}")
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EstEndDate)
+                        @Html.TextBox("EstEndDate_", Model.EstEndDate, "{0:MM/dd/yyyy}")
+                    </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer text-right">
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->
+    }
+</div><!-- /.row -->
+
+<!-- date-dropdowns -->
+<script src="@Url.Content("~/Content/date-dropdowns/jquery.date-dropdowns.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+        $(function () {
+            $("#EstStartDate_").dateDropdowns({
+                submitFieldName: "EstStartDate",
+                defaultDateFormat: "mm/dd/yyyy",
+                submitFormat: "mm/dd/yyyy",
+                dropdownClass: "form-control form-control-inline-auto"
+            });
+            $("#EstEndDate_").dateDropdowns({
+                submitFieldName: "EstEndDate",
+                defaultDateFormat: "mm/dd/yyyy",
+                submitFormat: "mm/dd/yyyy",
+                dropdownClass: "form-control form-control-inline-auto"
+            });
+        });
+</script>

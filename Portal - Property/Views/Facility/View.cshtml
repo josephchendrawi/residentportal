@@ -1,0 +1,74 @@
+﻿@model ResComm.Web.Models.Facility
+@{
+    ViewBag.Title = "Facility Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Details }
+@section ContentHeader{
+    <script>
+            $(function () {
+                $('#main_title').html("Facility");
+            });
+    </script>
+
+    <div class="pull-right">
+        <a href="@Url.Action("List", "Facility")" class="btn btn-primary inline"><i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="box box-success">
+            <div class="box-body">
+                <div id="calendar-booking">
+
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </div><!--/.col (left) -->
+</div><!-- /.row -->
+
+<!-- FULL CALENDAR -->
+<link href="@Url.Content("~/Content/plugins/fullcalendar/fullcalendar.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Content/plugins/fullcalendar/moment.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/plugins/fullcalendar/fullcalendar.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#calendar-booking').fullCalendar({
+            eventLimit: true,
+            aspectRatio: 1.2,
+            events: {
+                url: '@Url.Action("FC_FacilityBooking", "Facility")?FacilityId=@Model.FacilityId',
+                error: function() {
+                    alert("Error");
+                }
+            },
+            dayRender: function (date, cell) {
+                var html = '<a class="btn btn-xs btn-warning btn-flat" href="@Url.Action("Book","Facility")?FacilityId=@Model.FacilityId&Date=' + date.format() + '"><i class="fa fa-plus"></i></a>';
+
+                $('.fc-today.fc-day-top[data-date="' + date.format() + '"]').prepend(html);
+                $('.fc-future.fc-day-top[data-date="' + date.format() + '"]').prepend(html);
+            },
+            eventClick: function (calEvent, jsEvent, view) {
+                if (confirm('Are you sure to delete this Booking (' + calEvent.title + ')?')) {
+                    window.location.replace("@Url.Action("DeleteBooking","Facility")?FacilityId=@Model.FacilityId&FacilityBookingId=" + calEvent.id);
+                }
+            },
+        })
+    });
+</script>
+
+<style>
+.fc-event:hover {
+    background-color: #b0493c;
+    border-color: #b0493c;
+}
+.fc-event:hover:before {
+    content: 'Delete this?'
+}
+.fc-event:hover .fc-title {
+    display: none;
+}
+</style>

@@ -1,0 +1,659 @@
+﻿@{
+    ViewData["Title"] = "Resident Portal - Affordable Property, Owner & Resident Software";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeadInsertion { 
+    <!-- FLOOR MAT CSS -->
+    <link rel="stylesheet" href="~/Content/css/floormat.css" />
+
+    <style type="text/css"> 
+        #features { background-image:url('../../Content/images/bgtile/greyzz.png'); background-repeat:repeat; padding-top:20px; padding-bottom:50px; }
+        .featurebox { background-color:#efefef; padding:20px; margin-top:20px;}
+        .featurebox p { font-family:'Open Sans', sans-serif; font-size:1.5rem; }
+
+        .mobile { padding:30px 20px; background-color:#0D88B1; color:black; }
+        .mobile h1 { text-transform:uppercase; }
+        .mobile p { font-family:'Open Sans', sans-serif; font-size:1.3rem; }
+        .mobile .textwrapper { margin-top:0px; padding:20px; background-color:rgba(255, 255, 255, 0.7) }
+        .mobile .appstoreimage { width:110px; height:42px; }
+        .mobile .mobiledeviceimage { margin-top:20px; }
+        @@media (min-width: 992px) {
+            .mobile .textwrapper { margin-top:20px; padding:20px; background-color:rgba(255, 255, 255, 0.7) }
+            .mobile .appstoreimage { width:160px; height:55px; }
+            .mobile p { font-family:'Open Sans', sans-serif; font-size:1.5rem; }
+            .mobile .mobiledeviceimage { margin-top:-30px; }
+        }
+
+        .contact { padding:20px; background-color:#f7f5f5;}
+        .contact h2 { padding-bottom:10px; }
+        .contact .left-block { padding:10px 20px; }
+        .contact .left-block label { font-weight:400 !important; }
+        .contact .right-block { padding:10px 20px; }
+        .contact .right-block .fcolor { color:#4a4848; font-size:24px; padding-top:7px; font-weight:300; }
+        .contact .mobileformater { margin-top:15px; }
+        @@media (min-width: 992px) {
+            .contact .right-block { padding:10px 20px 10px 50px; }
+            .contact .mobileformater { margin-top:0px; }
+        }
+
+        .floormatcontent { text-align:left; height:100%; margin-top:5%; }
+        .floormatcontent .header { padding:20px; }
+        .floormatcontent .headerbg { background-color: #838383; text-align:center; padding:1px 10px; }	/* #0072bc; */
+        .floormatcontent .header h1 { color: white; font-family:'PT Sans Narrow', sans-serif; font-weight:bold; font-size:22px; margin:10px 0px; }
+		.floormatcontent .heroimage { width:300px; padding-top:0px; margin-left:-25px;}
+        .floormatcontent .content { padding:0px 15px; margin:0px; }
+        .floormatcontent .contentbg { background-color:rgba(255,255,255,0.9); margin-top:20px; border-radius:15px; padding:0px 20px; }
+        .floormatcontent .contentleft { margin-top:30px; text-align:left;}
+        .floormatcontent .contentright { margin-top:0px; padding:0px 20px 20px 20px; }
+        .floormatcontent .textcontext { max-width:400px; }
+        .floormatcontent .textcontext h1 { font-family:"Open Sans", sans-serif; font-size:36px; font-weight:600; margin-top:0px; margin-bottom:0px; }
+        .floormatcontent .textcontext h2 { font-family:"Open Sans", sans-serif; font-size:26px; font-weight:400; margin-top:10px; margin-bottom:30px; }
+        .floormatcontent .textcontext p { font-family:"Open Sans", sans-serif; font-size:16px; font-weight:400; }
+		.floormatcontent .formpopupbutton {font-weight:bold; font-size:20px; height:70px; margin-top:10px; padding:15px 0px; color:white; background-color:#2dad44; width:100%; max-width:300px; border-bottom:7px solid #14992d;}
+		.floormatcontent .formpopupbutton:hover {font-size:20px; background-color:#35c44f; border-bottom:7px solid #14992d;}
+		@@media (min-width: 768px) {
+            .floormatcontent .header h1 { font-size:28px; }
+            .floormatcontent .textcontext h1 { margin-top:60px; }
+			.floormatcontent .heroimage { width:200px; padding-top:40px; margin-left:-20px;}
+		}
+		@@media (min-width: 992px) {
+            .floormatcontent .header { padding:0px; margin-top:50px; }
+			.floormatcontent .heroimage { width:100%; max-width:360px; padding-top:60px; margin-left:0px;}
+            .floormatcontent .content { padding:0px; margin:0px; }
+            .floormatcontent .contentleft { margin-top:0px; padding:0px 0px; text-align:right;}
+            .floormatcontent .contentright { margin-top:0px; padding:0px 0px 0px 26px; }
+		}
+
+        .popupoptinbox { background:#efefef; border-radius:6px; padding:20px 20px; text-align:left; }
+		.popupoptinbox .progressbar-customstyle { margin-bottom:5px; background-color:#cacaca; }
+		.popupoptinbox .progressbar-label { font-size:13px; text-align:center; font-weight:bold; }
+		.popupoptinbox hr { border-color:#c3c3c3; margin-top:10px; margin-bottom:30px; }
+		.popupoptinbox .popupoptinlabel { font-family:'Roboto',sans-serif; font-size:1.8rem; font-weight:bold; text-align:center; }
+		.popupoptinbox .popupoptinlabelpolicy { font-family:'Roboto',sans-serif; font-size:1rem; padding-top:8px; text-align:center;}
+		.popupoptinbox .fieldlabel { font-family:'Roboto',sans-serif; font-size:1rem; padding-top:5px; font-weight:400; }
+		.popupoptinbox .textboxname {
+			border-color: #66afe9;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+			box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+			margin-right:3px; margin-top:5px;
+			font-size:16px; height:40px;
+		}
+		.popupoptinbox .textboxemail {
+			border-color: #66afe9;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+			box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+			margin-right:3px; margin-top:8px;
+			font-size:16px; height:40px;
+		}
+		.popupoptinbox .popupoptinbutton { width:100%; background-color:#0C7DDE; border-color:#0C7DDE; padding:15px 30px; font-size:24px; font-family:'Roboto Condensed',sans-serif; font-weight:bold; }
+		.popupoptinbox .formarea { padding:0px 0px 0px 0px; }
+		@@media (min-width: 768px) {
+			.popupoptinbox .formarea { padding:0px 50px 20px 50px; }
+		}
+
+		.optin { background-color: #0f79bf; color:white; padding:0px 0px 20px 0px; }
+		.optin .optinbox { background:rgba(15, 121, 191, 1.0); border-radius:6px; padding:20px 5px; width:100%; }
+		.optin .optinbox .optinlabel { font-family: 'Oswald', sans-serif; font-size:1.6rem; font-weight:400; color:white; text-align:center; padding-top:0px; }
+		.optin .optinbox .txtname {
+			border-color: #66afe9;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(233, 228, 102, 0.80); /* blue glow: rgba(102,175,233,0.6) */
+			box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(233, 228, 102, 0.80); /* blue glow: rgba(102,175,233,0.6) */
+			margin-right:3px; margin-top:5px;
+			font-size:16px; height:40px;
+		}
+		.optin .optinbox .txtemail {
+			border-color: #66afe9;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(233, 228, 102, 0.80); /* blue glow: rgba(102,175,233,0.6) */
+			box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(233, 228, 102, 0.80); /* blue glow: rgba(102,175,233,0.6) */
+			margin-right:3px; margin-top:8px;
+			font-size:16px; height:40px;
+		}
+		.optin .optinbox .ctabutton {font-weight:bold; font-size:20px; height:auto; padding:15px 50px; color:#223c56; text-transform:uppercase; background-color:#fddf3a; border-color:#fddf3a; width:100%;}
+		.optin .optinbox .ctabutton:hover { background-color:#dd8a16; border-color:#bb7510; }
+		@@media (min-width: 768px) {
+			.optin { padding:0px 50px 10px 50px; }
+			.optin .optinbox { padding:20px 50px; width:100%; }
+			.optin .optinbox .txtname { margin-top:-9px; }
+			.optin .optinbox .txtemail { margin-top:-9px; }
+			.optin .optinbox .ctabutton { width:auto; padding:6px 15px 6px 15px; height:40px; font-size:16px; background-color:#fddf3a; border-color:#fddf3a; color:#223c56; text-transform:uppercase; }
+		}
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]--> 
+}
+
+    <!-- slideshow -->
+    <section id="banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12" style="padding-left:0px; padding-right:0px;">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="~/Content/images/slideshow/slide1.jpg" alt="Resident Portal" width="100%">
+                                <div class="carousel-caption" style="top:30% !important;">
+                                    <h3>Manage Your Property With Ease!</h3>
+                                    <p>A simple and cost efficient way to get your property management tasks organised.</p>
+                                    <p><a href="#" class="btn btn-main" style="margin-top:30px;"><b>Let's Get Started</b></a></p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="~/Content/images/slideshow/slide2.jpg" alt="Resident Portal" width="100%">
+                                <div class="carousel-caption" style="top:30% !important;">
+                                    <h3>Effectively connect with both owners & residence.</h3>
+                                    <p>Keep them informed and updated.</p>
+                                    <p><a href="#" class="btn btn-main" style="margin-top:30px;"><b>Let's Get Started</b></a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end slideshow -->
+    <!-- features -->
+    <section id="features">
+        <div class="container">
+            <div class="row slideanim">
+                <div class="col-xs-12">
+                    <div class="text-center">
+                        <h1>FEATURES</h1>
+                        <span>Here are some of the amazing things that you can do with Resident Portal...</span>
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6 text-center">
+                            <img src="~/Content/images/compact-responsive.png" alt="Resident Portal" class="img-responsive" />
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Your Own Property Website</h2>
+                            <p>
+                                Have your very own property community website where owners and residents can get latest updates as well as being in
+                                touch with your property management team with ease. This website serves as a central collaboration point between all
+                                parties. With a website, it not only streamlines your work operations but also exhibits your commitment in providing
+                                the best to the owners and residents. And better yet, your website is responsive – meaning it works on both desktop or
+                                mobile devices.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6">
+                            <h2>Announcements</h2>
+                            <p>
+                                Reaching out to owners and residents has never been easier. An informative digital notice board made available on your
+                                very own property website allows you to effectively communicate updates and latest happenings to the owners and
+                                residents effortlessly. Alternately, send out e-newsletters via the portal to keep them informed and updated.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="~/Content/images/announcement.png" alt="Resident Portal" class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6 text-center">
+                            <img src="~/Content/images/facilities.png" alt="Resident Portal" class="img-responsive" />
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Facilities Reservation</h2>
+                            <p>
+                                Allow owners and residents to make reservations with ease online or through their mobile phones for function rooms, conference hall, squash courts, tennis courts,
+                                basketball courts or any other shared common facilities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6">
+                            <h2>Complaints & Defects Management</h2>
+                            <p>
+                                A full-fledge inquiry, complaints and defects management system whereby owners and residents themselves can login to
+                                submit inquiries or complaints. Having a centralised repository also enables owners and residents to view the status
+                                of their inquiries or complaints online without the need to always contact the property management team.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="~/Content/images/defect.png" alt="Resident Portal" class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6 text-center">
+                            <img src="~/Content/images/onlinebill.png" alt="Resident Portal" class="img-responsive" />
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Online Bill Payments</h2>
+                            <p>
+                                Provide the flexibility for the owners and residents to view their statement of account and pay for outstanding
+                                bills online using their credit cards or via online banking (e.g. Maybank2u, CIMB Clicks, Hong Leong Connect,
+                                etc). Resident Portal also automatically sends out email reminders to both owners and residents for due items.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+    <!-- mobile platform -->
+    <section class="mobile">
+        <div class="row slideanim">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    <h1>Your Very Own Mobile Apps</h1>
+                    <br class="hidden-sm hidden-xs" /><br class="hidden-sm hidden-xs" />
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row">
+                        <div class="col-md-5 slideanim">
+                            <div class="textwrapper">
+                                <h3 style="font-family:'Roboto Condensed', sans-serif; font-weight:bold;">Coming Soon on iOS and Android</h3>
+                                <p>
+                                    Have your very own mobile application on both Android and Apple (iOS) for owners and residents
+                                    to get the latest updates, make enquiries, book a facility, monitor statuses of complaints or to make payments for bills. Both owners
+                                    and residents will love you for such convenience provided to them!
+                                </p>
+                                <div style="margin-left:-2px; padding-top:10px;">
+                                    <img src="~/Content/images/appstore.png" alt="Resident Portal" class="appstoreimage" />&nbsp;&nbsp;
+                                    <img src="~/Content/images/playstore.png" alt="Resident Portal" class="appstoreimage" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 text-center">
+                            <img src="~/Content/images/mobile.png" alt="Resident Portal" style="display:none;" />
+                            <img src="~/Content/images/section-mobileapp/mobile.png" class="img-responsive mobiledeviceimage" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end mobile platform -->
+    <!-- contact -->
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <!-- contact form -->
+                <div class="col-md-6 left-block">
+                    <h2><b>Contact</b> Us</h2>
+                    <form action="@Constant.AdminURL/Frontend/ContactUs" method="post">
+                        <input type="hidden" value="" name="returnurl" id="txtReturnURL" />
+                        <script>
+                            document.getElementById('txtReturnURL').value = window.location.href;
+                        </script>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Your name *</label>
+                                    <input type="text" class="form-control" name="fname" id="txtName" required>
+                                </div>
+                                <div class="col-md-6 mobileformater">
+                                    <label>Your email address *</label>
+                                    <input type="email" class="form-control" name="email" id="txtEmail" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input type="text" class="form-control" name="subject" id="txtSubject" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea class="form-control" rows="5" name="message" id="txtMessage"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- end contact form -->
+                <!-- address -->
+                <div class="col-md-6 right-block">
+                    <h3 class="fcolor">Get In <b>Touch</b></h3>
+                    <p>
+                        Have any questions? Need any assistance? <br class="hidden-xs hidden-sm" />Feel free to contact us. We are always more than happy to help.
+                    </p>
+                    <div class="address-blk">
+                        <h3 class="fcolor">Our <b>Office</b></h3>
+                        <div class="inner-address">
+                            <table>
+                                <tr>
+                                    <td style="width:80px; vertical-align:top;"><i class="glyphicon glyphicon-map-marker"></i> <b>Address</b></td>
+                                    <td style="vertical-align:top;">:</td>
+                                    <td style="padding-left:3px;">Suite 118, P3-9 Shaftbury Square, Persiaran Multimedia, Cyber 6, 63000 Cyberjaya, Selangor Darul Ehsan, Malaysia.</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="inner-address" style="padding-top:3px;">
+                            <table>
+                                <tr>
+                                    <td style="width:80px; vertical-align:top;"><i class="glyphicon glyphicon-earphone"></i> <b>Phone</b></td>
+                                    <td style="vertical-align:top;">:</td>
+                                    <td style="padding-left:3px;">+60 (3) 64110828</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="inner-address" style="padding-top:3px;">
+                            <table>
+                                <tr>
+                                    <td style="width:80px; vertical-align:top;"><i class="glyphicon glyphicon-envelope"></i> <b>Email</b></td>
+                                    <td style="vertical-align:top;">:</td>
+                                    <td style="padding-left:3px;"><a href="mailto:info@residentportal.my">info@residentportal.my</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="address-blk">
+                        <h3 class="fcolor">Business <b>Hours</b></h3>
+                        <i class="glyphicon glyphicon-time"></i> Monday - Friday 9am to 5pm<br />
+                        <i class="glyphicon glyphicon-time"></i> We are closed on Saturday &amp; Sunday
+                    </div>
+                </div>
+                <!-- end address -->
+            </div>
+        </div>
+    </section>
+    <!-- contact -->
+
+    <!-- MARKETING FLOORMAT -->
+    <section id="floormatcontentsection" class="floormatcontent">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-1">
+                    <div class="contentbg">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-10 col-md-offset-1 header">
+                                <div class="headerbg">
+                                    <h1>Launching Soon - A New Property Management Software</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-5 contentleft">
+                                <img src="~/Content/images/softwarebox/boxwithfeatures_small.png" class="heroimage" />
+                            </div>
+                            <div class="col-xs-12 col-md-7 contentright">
+                                <div class="textcontext">
+                                    <h1>Property Management</h1>
+                                    <h2>Easier. Simpler. Faster.</h2>
+                                    <p>
+                                        Resident Portal, our new cutting-edge property management software will be launching this July.
+                                    </p>
+                                    <p>
+                                        In conjunction with our launch, we are giving away FREE copies of Resident Portal.
+                                        To participate in our contest, click on the button below:
+                                    </p>
+                                    <a id="btnRegisterPopup" class="btn formpopupbutton" data-toggle="modal" data-target="#modal-optinform">
+                                        Get My Free Software
+                                    </a>
+                                    <div style="margin-top:8px;">
+                                        <a href="javascript:hideFloormat();">No. I don't want the free software.</a>
+                                    </div>
+                                    <br /><br /><br class="hidden-xs" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 content" style="margin:auto;">
+
+                    <br class="visible-xs" /><br class="visible-xs" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL POP-UP SECTION -->
+    <div id="modal-optinform" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="background-color:rgba(0, 0, 0,0.8);">
+        <div class="modal-dialog modal-md" style="top:10%; max-width:700px; width:100%;">
+            <div class="modal-content" style="text-align:center; margin:auto;">
+                <div class="modal-body popupoptinbox">
+                    <div id="formcontent">
+                        <div class="progress progressbar-customstyle">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                50% Complete
+                            </div>
+                        </div>
+                        <div class="progressbar-label">
+                            Almost there! We just need some information on how to reach you when you win the free software...
+                            <hr />
+                        </div>
+                        <div class="formarea">
+                            <div class="popupoptinlabel">
+                                To participate in Resident Portal FREE software giveaway contest, please fill up your details below.
+                                <span style="display:none;">Fill up your details below to let us know how to reach you if you are one of the lucky winners to receive Resident Portal for FREE!</span>
+                            </div>
+                            <br />
+                            <div class="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control textboxname" id="txtPopUpPropertyName" name="txtPropertyName" placeholder="Enter Your Property Name" style="margin-top:0px;">
+                                    <input type="text" class="form-control textboxname" id="txtPopUpLeadName" name="txtName" placeholder="Enter Your Name" style="margin-top:8px;">
+                                    <input type="email" class="form-control textboxemail" id="txtPopUpLeadEmail" name="txtEmail" placeholder="Enter Your Email Address">
+                                </div>
+                                <input type="hidden" id="txtPopUpReferralId" name="txtReferralId" />
+                                <button type="button" id="btnRegister" class="btn btn-warning popupoptinbutton" onclick="registerSubscriber()">Enter Contest</button>
+                            </div>
+                            <div class="popupoptinlabelpolicy">
+                                *Your email is 100% secure. We will never sell, share, or spam your email address.
+                                **By participating, you would have read, understood and agreed to the contest terms &amp; conditions.
+                            </div>
+                        </div>
+                    </div>
+                    <div id="processingcontent" style="display:none; text-align:center; padding:20px;">
+                        <img src="~/Content/images/loaders/Cube - Light Blue.gif" style="width:75px" />
+                        <br /><br />
+                        <b style="font-family:'Oswald', sans-serif; font-size:30px;">GREAT.</b><br /><br />
+                        <span style="font-family:'Lato', sans-serif; font-size:16px;">Please wait a moment while we register your participation.</span>
+                    </div>
+                    <div id="thankyoucontent" style="display:none; text-align:center; padding:20px;">
+                        <h3 class="modal-title" style="color:black; padding-bottom:5px;">Congratulations! You're now in the running to get Resident Portal for FREE!</h3>
+                        <p style="font-family:'Roboto Condensed', 'Roboto', sans-serif; font-size:18px; padding:15px 10px;">
+                            We will be announcing the results of the contest when we official launch resident portal.
+                            <br /><br />
+                            Please check your email often as winners will be notified by email. Thank you for your participation.
+                        </p>
+                        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+@section Scripts{ 
+    <!-- Component Javascripts -->
+    <script src="~/Content/vendor/backstretch-2.1.15/jquery.backstretch.min.js"></script>
+    <script src="https://services.businessorigin.com/contactus/js/contactus.js"></script>
+    <script src="https://services.businessorigin.com/autoresponder/js/getresponse.js"></script>
+    <script src="~/Content/js/floormat.js"></script>
+    <script src="~/Content/vendor/js-cookie/src/js.cookie.js"></script>
+
+    <!-- Business Origin JS -->
+    <script src="https://services.businessorigin.com/autoresponder/js/getresponse.js"></script>
+
+    <script>
+        setupFloormat("topinsert", $("#floormatcontentsection"));
+
+        function processContactUs() {
+            alert($('#txtName').val());
+            alert($('#txtEmail').val());
+            alert($('#txtSubject').val());
+            alert($('#txtMessage').val());
+            $(document).contactus({
+                systemid: "ResidentPortal",
+                contactusdetails: {
+                    name: $('#txtName').val(),
+                    subject: $('#txtSubject').val(),
+                    email: $('#txtEmail').val(),
+                    phone: "",
+                    message: $('#txtMessage').val(),
+                    custom: {
+                        testyourfield1: "testfield1value",
+                        testyourfield2: "testfield2value",
+                        testyourfield3: "testfield3value"
+                    }
+                },
+                success: function () {
+                    alert("Thank you for your enquiry. We will get back to you soon.");
+                    //document.location = "thankyou";
+                },
+                error: function () {
+                    alert("Opps. An error occured while submitting your enquiry. Please try again later or contact us via email.");
+                    //document.location = "error";
+                }
+            });
+        }
+
+        //Method to check and set the affiliate id
+        function checkForReferralId() {
+
+            var AffiliateId = getParameterByName('ref');
+
+            if (AffiliateId == null || AffiliateId == "") {
+                //Checks if there is any existing cookie
+                AffiliateId = Cookies.get("ResidentPortalAffiliateId");
+            }
+
+            if (AffiliateId != null && AffiliateId != "") {
+                //Set the hidden field value
+                $('#txtPopUpReferralId').val(AffiliateId);
+                //Set the AffiliateId to the cookie
+                Cookies.set("ResidentPortalAffiliateId", AffiliateId);
+            }
+        }
+
+        function getParameterByName(name, url) {
+
+            //Reference URL: https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+
+            // Return example if query string: ?foo=lorem&bar=&baz
+			/*
+			var foo = getParameterByName('foo'); // "lorem"
+			var bar = getParameterByName('bar'); // "" (present with empty value)
+			var baz = getParameterByName('baz'); // "" (present with no value)
+			var qux = getParameterByName('qux'); // null (absent)
+			*/
+        }
+
+        function registerSubscriber() {
+            //Hiding the opt-in form
+            $('#formcontent').hide();
+            //Showing the processing panel
+            $('#processingcontent').show();
+            //Registering the lead in the autoresponder
+            $(document).getresponse({
+                action: "AddContact",
+                systemid: "ResidentPortal",
+                campaignid: "TkoeA",
+                name: $('#txtPopUpLeadName').val(),
+                email: $('#txtPopUpLeadEmail').val(),
+                customfields: [
+                    {
+                        "customFieldId": "klcEU", //klcEU is the id for the referral custom field
+                        "value": [$('#txtPopUpReferralId').val() == "" ? "none" : $('#txtPopUpReferralId').val()]
+                    },
+                    {
+                        "customFieldId": "ksVej", //ksVej is the id for the propertyname custom field
+                        "value": [$('#txtPopUpPropertyName').val() == "" ? "none" : $('#txtPopUpPropertyName').val()]
+                    }
+                ],
+                success: function () {
+                    if (ispopupsource) {
+                        //Hiding the processing panel
+                        $('#processingcontent').hide();
+                        //Showing the thank you panel
+                        $('#thankyoucontent').show();
+                    } else {
+                        document.location = "thankyou";
+                    }
+                },
+                error: function () {
+                    document.location = "error";
+                }
+            });
+        }
+
+        function closeOptinModal() {
+            $('#modal-optinform').modal({
+                show: false
+            })
+        }
+
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                $(".slideanim").each(function () {
+                    var pos = $(this).offset().top;
+                    var winTop = $(window).scrollTop();
+                    if (pos < winTop + 600) {
+                        $(this).addClass("slide");
+                    }
+                });
+            });
+
+            $(".mobile").backstretch("../../Content/images/section-mobileapp/background.jpg");
+
+            checkForReferralId();
+
+            setTimeout(function () {
+                showFloormat("../../Content/images/background/bg-cityskyline.jpg");
+            }, 2000);
+        })
+    </script>
+}

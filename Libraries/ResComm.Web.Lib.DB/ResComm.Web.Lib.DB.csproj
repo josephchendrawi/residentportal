@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D4B1B23A-FE3C-4E6B-BC17-AC7850A21D41}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ResComm.Web.Lib.DB</RootNamespace>
+    <AssemblyName>ResComm.Web.Lib.DB</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\Staging\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\AccountDALImpl.cs" />
+    <Compile Include="DAL\AuditLogDALImpl.cs" />
+    <Compile Include="DAL\AuditTrailDALImpl.cs" />
+    <Compile Include="DAL\BillingCompileDALImpl.cs" />
+    <Compile Include="DAL\BillingPaymentDALImpl.cs" />
+    <Compile Include="DAL\IBillingCompileDAL.cs" />
+    <Compile Include="DAL\IBillingPaymentDAL.cs" />
+    <Compile Include="DAL\PropertyInvoiceDALImpl.cs" />
+    <Compile Include="DAL\PropertySubscriptionDALImpl.cs" />
+    <Compile Include="DAL\SubscriptionOrderDALImpl.cs" />
+    <Compile Include="DAL\AffiliateContactDALImpl.cs" />
+    <Compile Include="DAL\SubscriptionPackageDALImpl.cs" />
+    <Compile Include="DAL\FacilitySlotBookingDALImpl.cs" />
+    <Compile Include="DAL\FacilitySlotDALImpl.cs" />
+    <Compile Include="DAL\IAccountDAL.cs" />
+    <Compile Include="DAL\IAuditLogDAL.cs" />
+    <Compile Include="DAL\IAuditTrailDAL.cs" />
+    <Compile Include="DAL\IAddressDAL.cs" />
+    <Compile Include="DAL\IFacilitySlotBookingDAL.cs" />
+    <Compile Include="DAL\IFacilitySlotDAL.cs" />
+    <Compile Include="DAL\ITicketCategoryDAL.cs" />
+    <Compile Include="DAL\IFacilityDAL.cs" />
+    <Compile Include="DAL\IBillingDAL.cs" />
+    <Compile Include="DAL\ITicketDAL.cs" />
+    <Compile Include="DAL\IAccountNoteDAL.cs" />
+    <Compile Include="DAL\IUnitTypeDAL.cs" />
+    <Compile Include="DAL\IUnitDAL.cs" />
+    <Compile Include="DAL\IPropertyDAL.cs" />
+    <Compile Include="DAL\IUserDAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\TicketCategoryDALImpl.cs" />
+    <Compile Include="DAL\FacilityDALImpl.cs" />
+    <Compile Include="DAL\BillingDALImpl.cs" />
+    <Compile Include="DAL\TicketDALImpl.cs" />
+    <Compile Include="DAL\AccountNoteDALImpl.cs" />
+    <Compile Include="DAL\UnitTypeDALImpl.cs" />
+    <Compile Include="DAL\UnitDALImpl.cs" />
+    <Compile Include="DAL\ResCommDALAbstract.cs" />
+    <Compile Include="DAL\AddressDALImpl.cs" />
+    <Compile Include="DAL\PropertyDALImpl.cs" />
+    <Compile Include="DAL\UserDALImpl.cs" />
+    <Compile Include="EF\PropComDbContext.cs" />
+    <Compile Include="EF\P_ACCNT.cs" />
+    <Compile Include="EF\P_ACCNT_ACT.cs" />
+    <Compile Include="EF\P_ACCNT_ATT.cs" />
+    <Compile Include="EF\P_ACCNT_NOTE.cs" />
+    <Compile Include="EF\P_ADDR.cs" />
+    <Compile Include="EF\P_AFFLIATE_LEADS.cs" />
+    <Compile Include="EF\P_ASSET.cs" />
+    <Compile Include="EF\P_ASSET_CON.cs" />
+    <Compile Include="EF\P_ASSET_OM.cs" />
+    <Compile Include="EF\P_AUDIT_LOG.cs" />
+    <Compile Include="EF\P_AUDIT_TRAIL.cs" />
+    <Compile Include="EF\P_BILLING.cs" />
+    <Compile Include="EF\P_BILLING_COMPILE.cs" />
+    <Compile Include="EF\P_BILLING_PAYMENT.cs" />
+    <Compile Include="EF\P_CLIENT_MAP.cs" />
+    <Compile Include="EF\P_CONTACT.cs" />
+    <Compile Include="EF\P_CON_ACCNT.cs" />
+    <Compile Include="EF\P_CON_ADDR.cs" />
+    <Compile Include="EF\P_DEMAND_LST.cs" />
+    <Compile Include="EF\P_EMAIL_LOG.cs" />
+    <Compile Include="EF\P_FACILITY.cs" />
+    <Compile Include="EF\P_FACILITY_SLOT.cs" />
+    <Compile Include="EF\P_FACILITY_SLOT_BOOKING.cs" />
+    <Compile Include="EF\P_GROUP.cs" />
+    <Compile Include="EF\P_GROUP_ACCESS.cs" />
+    <Compile Include="EF\P_LKP_GENERAL.cs" />
+    <Compile Include="EF\P_MODULE.cs" />
+    <Compile Include="EF\P_ORDER.cs" />
+    <Compile Include="EF\P_ORDER_ACT.cs" />
+    <Compile Include="EF\P_ORDER_ATT.cs" />
+    <Compile Include="EF\P_ORDER_ITEM.cs" />
+    <Compile Include="EF\P_ORDER_ITEM_OM.cs" />
+    <Compile Include="EF\P_ORDER_NOTE.cs" />
+    <Compile Include="EF\P_PROD.cs" />
+    <Compile Include="EF\P_PROD_ATTR.cs" />
+    <Compile Include="EF\P_PROD_ISP.cs" />
+    <Compile Include="EF\P_PROD_ITEM.cs" />
+    <Compile Include="EF\P_PROD_OM.cs" />
+    <Compile Include="EF\P_PROPERTY.cs" />
+    <Compile Include="EF\P_PROPERTY_INVOICE.cs" />
+    <Compile Include="EF\P_PROPERTY_SUBSCRIPTION.cs" />
+    <Compile Include="EF\P_PROPERTY_SUBSCRIPTION_ORDER.cs" />
+    <Compile Include="EF\P_SRV_ACT.cs" />
+    <Compile Include="EF\P_SRV_ATT.cs" />
+    <Compile Include="EF\P_SRV_CATEGORY.cs" />
+    <Compile Include="EF\P_SRV_KEYVAL.cs" />
+    <Compile Include="EF\P_SRV_NOTE.cs" />
+    <Compile Include="EF\P_SRV_TIC.cs" />
+    <Compile Include="EF\P_SUBSCRIPTION_PACKAGE.cs" />
+    <Compile Include="EF\P_UNIT.cs" />
+    <Compile Include="EF\P_UNIT_TYPE.cs" />
+    <Compile Include="EF\P_USER.cs" />
+    <Compile Include="EF\P_USER_COMMISSION.cs" />
+    <Compile Include="EF\P_USER_GROUP.cs" />
+    <Compile Include="EF\P_USER_GROUP_DEPT.cs" />
+    <Compile Include="EF\P_USER_PAYOUT.cs" />
+    <Compile Include="EF\P_USER_TRX.cs" />
+    <Compile Include="EF\P_VAL_LST.cs" />
+    <Compile Include="EF\P_VAL_MST.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ResComm.Web.Lib.Interface\ResComm.Web.Lib.Interface.csproj">
+      <Project>{780fc393-7465-4d02-8286-fa54141d25eb}</Project>
+      <Name>ResComm.Web.Lib.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

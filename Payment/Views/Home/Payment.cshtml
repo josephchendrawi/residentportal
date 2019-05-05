@@ -1,0 +1,80 @@
+﻿@model ResComm.Web.Payment.Models.Billing
+@{
+    ViewBag.Title = "Payment Page";
+    Layout = "~/Views/Shared/_LayoutLite.cshtml";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Billing Information</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.InvoiceNo)
+                        <div>
+                            @Model.InvoiceNo
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CreatedDate)
+                        <div>
+                            @Model.CreatedDateText
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Amount)
+                        <div>
+                            RM @Model.Amount
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DueDate)
+                        <div>
+                            @Model.DueDateText
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Reference)
+                        <div>
+                            @Model.Reference
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Status)
+                        <div>
+                            @Model.Status
+                        </div>
+                    </div>
+                @if (Model.Status == "Unpaid")
+                {
+                    <div class="form-group">
+                        <form method="post" name="ePayment" action="@ViewBag.paymenturl">
+                            <input type="hidden" name="MerchantCode" value="@ViewBag.code">
+                            <input type="hidden" name="PaymentId" value="">
+                            <input type="hidden" name="RefNo" value="@ViewBag.refno">
+                            <input type="hidden" name="Amount" value="@ViewBag.total.ToString("N2")">
+                            <input type="hidden" name="Currency" value="MYR">
+                            <input type="hidden" name="ProdDesc" value="@Model.InvoiceNo @Model.Reference">
+                            <input type="hidden" name="UserName" value="@ViewBag.username">
+                            <input type="hidden" name="UserEmail" value="@ViewBag.useremail">
+                            <input type="hidden" name="UserContact" value="">
+                            <input type="hidden" name="Remark" value="">
+                            <input type="hidden" name="Lang" value="UTF-8">
+                            <input type="hidden" name="Signature" value="@ViewBag.signature">
+                            <input type="hidden" name="ResponseURL" value="@ViewBag.ResponseURL?r=@ViewBag.id">
+                            <input type="hidden" name="BackendURL" value="@ViewBag.BackendURL">
+                            <input type="submit" class="btn btn-primary" value="Make Payment" name="Submit">
+                            <a href="@ViewBag.returntobill" class="btn btn-default">Back</a>
+                        </form>
+                    </div>
+                }
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->
+    </div><!-- /.row -->
+
+</div>

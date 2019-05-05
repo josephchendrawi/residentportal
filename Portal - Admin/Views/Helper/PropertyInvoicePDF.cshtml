@@ -1,0 +1,188 @@
+﻿@model ResComm.Web.Models.PropertyInvoicePDF
+@{
+    ViewBag.Title = "Property Invoice Details";
+    Layout = "~/Views/Shared/_Layout_Empty.cshtml";
+}
+<div style="background: white; padding: 10px;">
+    <div class="row">
+        <div class="col-xs-8">
+            <div style="font-size: 35px;">business<span style="color: #0070C0;">origin</span></div>
+            <div style="font-size: 14px;">Suite 118, P3-19, Shaftbury Square, Persiaran Multimedia, 63000 Cyberjaya, Selangor, Malaysia.</div>
+            <div style="font-size: 14px;"><img src="~/Content/pdf/phone.jpg"/> +603-64110828 &emsp; <img src="~/Content/pdf/email.jpg" /> sales@businesorigin.com  &emsp; <img src="~/Content/pdf/globe.jpg" /> www.businessorigin.com</div>
+        </div>
+        <div class="col-xs-4">
+            <div style="font-size: 74px; color: #697889; text-align:right; font-weight: bold; padding-right: 20px;">invoice</div>
+        </div>
+    </div>
+    <div style="height: 40px;"></div>
+    <div class="row">
+        <div class="col-xs-6">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TO:</th>
+                        <th>@Model.PropertyName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Address:</td>
+                        <td>
+                            <div>@Model.AddressLine1</div>
+                            <div>@Model.AddressLine2</div>
+                            <div>@Model.AddressLine3</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Contact:</td>
+                        <td>
+                            @Model.Contact
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone:</td>
+                        <td>
+                            @Model.PhoneNo
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-6">
+            <table>
+                <thead>
+                    <tr>
+                        <th>INVOICE NO:</th>
+                        <th>@Model.InvoiceNo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Invoice Date:</td>
+                        <td>
+                            @Model.InvoiceDate.Value.ToString("dd-MM-yyyy")
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="height: 30px;"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="tbl-items">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>ITEM DESCRIPTION</th>
+                        <th>PRICE</th>
+                        <th>AMOUNT</th>
+                        <th>TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>@Model.Description</td>
+                        <td>RM @Model.Amount.Value.ToString("n")</td>
+                        <td>1</td>
+                        <td class="sub-total">RM @Model.Amount.Value.ToString("n")</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="sub-total"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="sub-total"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="sub-total"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="sub-total"></td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="4" style="text-align: right;">TOTAL</td>
+                        <td>RM @Model.Amount.Value.ToString("n")</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="height: 30px;"></div>
+    <div class="row">
+        <div class="col-xs-12" style="font-size: 14px;">
+            <div>TERMS:</div>
+            <div>1.&emsp;Payment must be made within 30 days from invoice date.</div>
+            <div>2.&emsp;Kindly notify us once payment has been made.</div>
+        </div>
+    </div>
+    <div style="height: 20px;"></div>
+    <div class="row">
+        <div class="col-xs-12" style="font-size: 14px;">
+            <div>PAYMENT METHOD:</div>
+            <div>1.&emsp;All cheques must be crossed and made payable to ‘Business Origin Sdn. Bhd.’. Please write the invoice number at the back of the cheque.</div>
+            <div>2.&emsp;For bank transfer or cash deposit, please email (payment@businessorigin.com) the transfer slip or bank-in receipt. Please remember to provide the invoice number. Payments are to be made to the following account:</div>
+        </div>
+    </div>
+    <div style="height: 10px;"></div>
+    <div class="row">
+        <div class="col-xs-12" style="font-size: 14px;">
+            <div>Bank &emsp;&ensp;: Hong Leong Bank</div>
+            <div>Name &emsp;&nbsp;: Business Origin Sdn. Bhd.</div>
+            <div>A/C No. &ensp;: 20900033926</div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    table {
+        width: 100%;
+    }
+    table thead {
+        background-color: #2E74B5;
+        color: white;
+    }
+    table tbody {
+        background-color: #EFEFF1;
+    }
+    table th, table td {
+        padding : 7px 10px;
+        border: 1px solid white;
+        font-size: 15px;
+        font-weight: normal !important;
+    }
+    td.sub-total {
+        background-color: #DFE0E5;
+    }
+    tr.total-row {
+        background-color: #7F7F7F;
+        color: white;
+    }
+    table.tbl-items th {
+        text-align: center;
+    }
+    table.tbl-items td {
+        text-align: center;
+        padding: 16px 10px;
+    }
+    table.tbl-items th, table.tbl-items tr.total-row td {
+        font-size: 17px;
+    }
+</style>

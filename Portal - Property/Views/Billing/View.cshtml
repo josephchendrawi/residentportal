@@ -1,0 +1,60 @@
+﻿@model ResComm.Web.Models.Billing
+@{
+    ViewBag.Title = "Billing Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Details }
+@section ContentHeader{
+    <div class="pull-right">
+        <a href="@Url.Action("List", "Billing")" class="btn btn-success inline"><i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-success">
+            <div class="box-header">
+                <h3 class="box-title">Billing Information</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.InvoiceNo)
+                    <div>
+                        @Model.InvoiceNo
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CreatedDate)
+                    <div>
+                        @Model.CreatedDateText
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Amount)
+                    <div>
+                        RM @Model.Amount
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DueDate)
+                    <div>
+                        @Model.DueDateText
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Reference)
+                    <div>
+                        @Model.Reference
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Status)
+                    <div>
+                        @Model.Status
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </div><!--/.col (left) -->
+</div><!-- /.row -->

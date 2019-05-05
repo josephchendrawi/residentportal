@@ -1,0 +1,712 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Resident Portal Beta Programme Registration</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+
+    <link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> 
+    <link href="../vendor/icheck-1.x/skins/square/square.css" rel="stylesheet" />
+    <link href="../vendor/icheck-1.x/skins/square/blue.css" rel="stylesheet" />
+    <link href="../vendor/clingify-master/clingify.css" rel="stylesheet" />
+
+    <style type="text/css">
+        body { font-family:'Source Sans Pro', sans-serif; }
+
+        #stickyheader { padding:5px 15px; font-family:'Open Sans',sans-serif; font-size:14px; text-align:center; font-weight:600; background-color:#a41c1c; color:white; z-index:999;}   
+        #stickyheader .countnumber { font-size:16px; }
+        /* 333E54 */
+        @media (min-width: 992px) {
+            #stickyheader { padding:5px 15px; font-family:'Open Sans',sans-serif; font-size:20px; text-align:center; font-weight:600; background-color:#a41c1c; color:white; z-index:999;}   
+            #stickyheader .countnumber { font-size:22px; }
+        }
+
+        #main { font-family:'Source Sans Pro',sans-serif; text-align:center; padding:20px 10px 20px 10px; }
+        #main h1 { font-size:32px; font-weight:700; color:white; }
+        #main .comingsoon { font-size:18px; color:white; }
+        #main .highlight { color:#44d0de; }
+        #main .leftcolumn { background-color:#0e59b8; padding:30px 20px; }
+        #main .leftcolumn h2 { color:#4f4c4c; font-family:Roboto; font-weight:700; padding-bottom:20px; }
+        #main .leftcolumn p { color:white; font-family:Roboto; font-size:16px; text-align:left; } 
+        #main .benefitbox { color:black; font-size:18px; padding:15px 40px 30px 40px; background-image:url('../images/bgtile/bgnoise_lg.png'); background-repeat:repeat; text-align:left; }
+        #main .benefitbox ul { margin-left:0px; padding-left:0px; margin-top:10px; margin-bottom:20px; list-style:none; }
+        #main .benefitbox li { margin-left:25px; margin-top:10px; font-weight:400;}
+        #main .benefitbox .benefitcheck { margin-left:-25px; margin-right:8px; font-size:20px; color:#1775B2;}
+        @media (min-width: 992px) {
+            #main { font-family:'Source Sans Pro',sans-serif; text-align:center; padding:20px; }
+            #main h1 { font-size:38px; font-weight:700; color:white; }
+            #main .leftcolumn { background-color:#0e59b8; padding:30px 40px; }
+            #main .rightcolumn{ padding:10px 60px 30px 60px; }
+        }
+        
+        #info { background-image:url('../images/bgtile/wall4.png'); background-repeat:repeat; background-color:#224d84; color:white; padding:20px 20px 30px 20px; }
+        #info h1 { font-family:'Archivo Narrow',sans-serif; font-size:38px; font-weight:700; color:black; text-align:center; padding-bottom:8px; }
+        #info p { font-family:'Open Sans',sans-serif; font-size:18px; font-weight:400; color:black; text-align:center; }
+
+        #price { background-image:url('../images/bgtile/brushed_alu_dark_bluish_1.png'); background-repeat:repeat; background-color:#224d84; color:white; padding:20px; }
+        #price h1 { font-family:'Archivo Narrow',sans-serif; font-size:38px; font-weight:700; color:white; text-align:center; padding-bottom:8px; }
+        #price p { font-family:'Open Sans',sans-serif; font-size:18px; font-weight:300; color:white; text-align:center; }
+        #price .package1 { text-align:center; padding: 15px 0px 20px 0px; margin:auto; }
+        #price .package1 img { width:100%; max-width:250px; border:1px solid white;  margin-bottom:12px; }
+        #price .package1 .packagebox { width:100%; max-width:250px; text-align:center; position:relative; margin:auto; }
+        #price .package1 .packagebutton { background-color:#5CB85C; }
+        #price .package2 { text-align:center; padding: 20px 0px 25px 0px; }
+        #price .package2 img { width:100%; max-width:280px; border:5px double white; margin-bottom:12px; }
+        #price .package3 { text-align:center; padding: 5px 0px; }
+        #price .package3 img { width:100%; max-width:250px; border:1px solid white;  margin-bottom:12px; }
+        #price .package3 .packagebox { width:100%;  max-width:250px; text-align:center; position:relative; margin:auto; }
+        #price .package3 .packagebutton { background-color:#5CB85C; }
+        @media (min-width: 768px) {  
+            #price .package1 { text-align:right; padding: 55px 0px; margin:auto; }
+            #price .package1 .packagebox { width:100%; max-width:250px; text-align:center; position:absolute; right:0px; }
+            #price .package2 { text-align:center; padding: 15px 0px; }
+            #price .package3 { text-align:left; padding: 65px 0px; }
+            #price .package3 .packagebox { width:100%;  max-width:250px; text-align:center; position:absolute; left:0px; }
+            #price .package3 { text-align:center; padding: 55px 0px; }
+        }
+        @media (min-width: 1000px) {
+            #price .package1 img { width:100%; max-width:250px; border:1px solid white;  margin-bottom:12px; }
+            #price .package3 img { width:100%; max-width:250px; border:1px solid white;  margin-bottom:12px; }
+        }
+
+        #features { background-image:url('../images/bgtile/brushed_alu_dark.png'); background-repeat:repeat; padding-top:20px; padding-bottom:40px; }
+        #features h1 { font-family:'Archivo Narrow',sans-serif; font-size:38px; color:white; font-weight:700; }
+        #features span { font-family:'Open Sans',sans-serif; color:white; font-size:16px; }
+        .featurebox { background-color:rgba(255,255,255,0.7); padding:20px; margin-top:20px;}
+        .featurebox p { font-family:'Open Sans', sans-serif; font-size:15px; }
+
+        .mobile { padding:40px 20px 50px 30px; background-color:#0D88B1; color:black; }
+        .mobile h1 { font-family:'Archivo Narrow',sans-serif; font-size:38px; font-weight:700; color:white; text-align:center; margin-top:0px; margin-bottom:20px; }
+        .mobile p { font-family:'Open Sans',sans-serif; font-size:18px; font-weight:400; color:white; text-align:center; padding-bottom:10px; }
+        .mobile .textwrapper { margin-top:0px; padding:5px 20px 20px 20px; background-color:rgba(255, 255, 255, 0.7) }
+        .mobile .textwrapper p { font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:300; color:#505050; text-align:left; padding-bottom:10px; }
+        .mobile .appstoreimage { width:120px; height:45px; }
+        .mobile .mobiledeviceimage { margin-top:20px; }
+        @media (min-width: 992px) {
+            .mobile p { font-family:'Open Sans',sans-serif; font-size:18px; font-weight:400; color:white; text-align:center; padding-bottom:35px; }
+            .mobile .textwrapper { padding:10px 30px 25px 30px; background-color:rgba(255, 255, 255, 0.7) }
+            .mobile .textwrapper p { font-family:'Roboto Condensed',sans-serif; font-size:18px; font-weight:300; color:#505050; text-align:left; padding-bottom:10px; }
+            .mobile .appstoreimage { width:160px; height:55px; }
+            .mobile .mobiledeviceimage { margin-top:-30px; }
+        }
+
+        .faq { font-family: 'Roboto', sans-serif; background-color:#f0efef; padding:10px 30px 20px 30px;}
+        .faq h3 { text-align:center; padding-top:20px; }
+        .faq .faqcolumn { padding:10px 0px; }
+        .faq .question { font-weight:bold; }
+        .faq .answer { font-weight:400; padding-top:0px; margin-top:0px; }
+        @media (min-width: 992px) {
+            .faq .faqcolumn { padding:20px 40px; }
+        }
+
+        .footer { background-color:black; padding:20px 0px; text-align:center; color:white; }
+        .footer a { color:white; }
+
+        .footerpopup p { font-family:'Roboto Condensed', 'Roboto', sans-serif; }
+        .footerpopup strong { font-family: 'Open Sans Condensed', sans-serif; font-size:16px;}
+        .footerpopup li { font-family:'Roboto Condensed', 'Roboto', sans-serif; }
+        .footerpopup ul { padding-left:20px; }
+
+        .popupoptinbox2 { background:#efefef; border-radius:6px; padding:20px 20px; text-align:left; }
+        .popupoptinbox2 .progressbar-customstyle { margin-bottom:5px; background-color:#cacaca; }
+        .popupoptinbox2 .progressbar-label { font-size:13px; text-align:center; font-weight:bold; }
+        .popupoptinbox2 hr { border-color:#c3c3c3; margin-top:10px; margin-bottom:30px; }
+        .popupoptinbox2 .popupoptinlabel { font-family:'Roboto',sans-serif; font-size:1.4rem; font-weight:bold; text-align:center; }
+        .popupoptinbox2 .popupoptinlabelpolicy { font-family:'Roboto',sans-serif; font-size:0.8rem; padding-top:5px; text-align:center;} 
+        .popupoptinbox2 .fieldlabel { font-family:'Roboto',sans-serif; font-size:1rem; padding-top:5px; font-weight:400; } 
+        .popupoptinbox2 .textbox {
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            margin-right:3px; margin-top:5px;
+            font-size:16px; height:40px;
+        } 
+        .popupoptinbox2 .textboxemail {
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            margin-right:3px; margin-top:8px;
+            font-size:16px; height:40px;
+        }  
+        .popupoptinbox2 .popupoptinbutton { width:100%; background-color:#0C7DDE; border-color:#0C7DDE; padding:15px 30px; font-size:24px; font-family:'Roboto Condensed',sans-serif; font-weight:bold; }
+        .popupoptinbox2 .formarea { padding:0px 0px 0px 0px; }
+        .popupoptinbox2 .packageselection { }
+        .popupoptinbox2 .packageselection .title { font-size:16px; font-weight:400; } 
+        .popupoptinbox2 .packageselection label { font-size:15px; font-weight:400; } 
+        .popupoptinbox2 .packageselection .packageoptions { padding:5px 0px 5px 0px; }
+        .popupoptinbox2 .registrantdetails .title { font-size:16px; font-weight:400; } 
+        @media (min-width: 768px) {
+            .popupoptinbox2 .formarea { padding:0px 20px 20px 20px; }
+        }
+
+         /* Extra small devices (phones, less than 768px) */
+        /* No media query since this is the default in Bootstrap */
+
+        /* Small devices (tablets, 768px and up) */
+        @media (min-width: 768px) { 
+        }
+
+        /* Medium devices (desktops, 992px and up) */
+        @media (min-width: 992px) {  
+            html { font-size: 16px; }
+        }
+
+        /* Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) { 
+        
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Script for Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-92435807-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <link rel="stylesheet" href="../vendor/jquery.alertable/jquery.alertable.css">
+    <script src="../vendor/jquery.alertable/jquery.alertable.min.js"></script>
+    <script>
+        function alert(msg) {
+            $.alertable.alert(msg, {
+                html: true,
+            });
+        };
+    </script>
+</head>
+<body>
+    <section id="stickyheader">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="clock"></div> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <h1>Be an early adopter to use Resident Portal and get if for a special <b class="highlight">LIFETIME OFFER</b> instead of our usual monthly subscription fee package.</h1>
+                </div>
+            </div>
+            <br /><br />
+            <div class="row" style="background-color:white;">
+                <div class="col-md-7 leftcolumn">
+                    <h2 style="display:none;">About the Beta Programme</h2>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/om3c_-0OQLc?rel=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p style="font-size:14px;">
+                        <br />
+                        IMPORTANT: Please note that registration for the beta programme is <b style="color:white;">only available to the first 30 privileged users</b> that registers for the programme on a first-come, first-served basis. Please register early to avoid disappointment.
+                    </p>
+                </div>
+                <div class="col-md-5 benefitbox">
+                    <img src="../images/logo/logo-large.png" style="width:240px;" />
+                    <span style="display:none;">Resident Portal allows you to effortless transform the way you manage your properties. With Resident Portal, you can:</span>
+                    <ul>
+                        <li><span class="fa fa-check-circle benefitcheck"></span>Have your own property website</li>
+                        <li><span class="fa fa-check-circle benefitcheck"></span>Connect better with owners &amp; residents</li>
+                        <li><span class="fa fa-check-circle benefitcheck"></span>Effectively control &amp; monitor processes</li>
+                        <li><span class="fa fa-check-circle benefitcheck"></span>Easily manage feedback, complains &amp; defects</li>
+                        <li><span class="fa fa-check-circle benefitcheck"></span>Make quick and prompt announcements</li>
+                        <li><span class="fa fa-check-circle benefitcheck"></span>Automated online facility reservations</li>
+                        <li><span class="fa fa-check-circle benefitcheck"></span>Collect payments online via credit card or internet banking (Maybank2u, CIMBClicks, Hong Leong Connect, etc.)</li>
+                    </ul>
+                    <a href="#packages" class="btn btn-success btn-lg">Get Started Now</a>
+                </div>
+            </div>
+        </div>
+        <br /><br />
+    </section>
+    <section id="info">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1" style="text-align:center;">
+                    <h1>About the Beta Programme</h1>
+                    <p>Resident Portal Beta Programme is an initiative where we work closely with a select group of 'real' users using the software. This will allow us to gather valuable feedbacks on the effectiveness and shortcomings of the system. The system will then be fine tuned before releasing it to the general public.</p>
+                    <p>In return, all 30 of our beta programme participants will get an opportunity to register for a very special lifetime package of Resident Portal as detailed below.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="price">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1" style="text-align:center;">
+                    <a name="packages"></a>
+                    <h1>Beta Programme Special Packages</h1>
+                    <p>
+                        For a limited time, we are giving away a LIFETIME package. Our Beta Programme registrants have the opportunity to pay a one-time fee instead of our usual monthy subscription package. This super-exclusive offer is indeed a rare opportunity that will never be repeated - so grab it while you still can.
+                    </p>
+                    <p style="padding-top:10px;">
+                        Here are the beta programme packages:
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-push-4 package2">
+                            <b style="font-size:18px; color:#e8e89d; margin-top:5px; font-weight:700;">LIMITED UNITS - ONLY 30 AVAILABLE!</b><br />
+                            <img src="../images/packages/beta-lifetime.png" /><br />
+                            <a class="btn btn-success btn-lg packagebutton" data-toggle="modal" data-target="#modal-optinform" data-package="@lifetime">
+                                Select Package
+                            </a>
+                        </div>
+                        <div class="col-sm-4 col-sm-pull-4 package1">
+                            <div class="packagebox">
+                                <img src="../images/packages/beta-10years.png" /><br />
+                                <a class="btn btn-success btn-lg packagebutton" data-toggle="modal" data-target="#modal-optinform" data-package="@10years">Select Package</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 package3">
+                            <div class="packagebox">
+                                <img src="../images/packages/beta-5years.png" /><br />
+                                <a class="btn btn-success btn-lg packagebutton" data-toggle="modal" data-target="#modal-optinform" data-package="@5years">Select Package</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <p>
+                        All plans above is for <b style="text-transform:uppercase;">unlimited units</b> in the property. Once we have launched, the price for Resident Portal will be RM 600.00 per annum (for up to 100 units) plus RM 5.00 per year for each additional unit. This means that a property with 680 units will cost RM 3500 per year! But for now, with just RM 3000, you get 5 Years and if you want the ultimate savings, opt for our lifetime package. This is exactly why our beta programme packages are just worth getting! Remember, this offer is only available to the first 30 registrants. So hurry, <a href="#" data-toggle="modal" data-target="#modal-optinform" data-package="@lifetime" style="color:#86f0fb;">register now</a>!
+                    </p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="features">
+        <div class="container">
+            <div class="row slideanim">
+                <div class="col-xs-12">
+                    <div class="text-center">
+                        <h1>Key Features</h1>
+                        <span>Here are some of the amazing things that you will get with Resident Portal...</span>
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6 text-center">
+                            <img class="img-responsive" src="../images/compact-responsive.png" alt="Resident Portal" />
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Your Own Property Website</h2>
+                            <p>
+                                Have your very own property community website where owners and residents can get latest updates as well as being in
+                                touch with your property management team with ease. This website serves as a central collaboration point between all
+                                parties. With a website, it not only streamlines your work operations but also exhibits your commitment in providing
+                                the best to the owners and residents. And better yet, your website is responsive – meaning it works on both desktop or
+                                mobile devices.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6">
+                            <h2>Announcements</h2>
+                            <p>
+                                Reaching out to owners and residents has never been easier. An informative digital notice board made available on your
+                                very own property website allows you to effectively communicate updates and latest happenings to the owners and
+                                residents effortlessly. Alternately, send out e-newsletters via the portal to keep them informed and updated.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img class="img-responsive" src="../images/announcement.png" alt="Resident Portal" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6 text-center">
+                            <img class="img-responsive" src="../images/facilities.png" alt="Resident Portal" />
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Facilities Reservation</h2>
+                            <p>
+                                Allow owners and residents to make reservations with ease online or through their mobile phones for function rooms, conference hall, squash courts, tennis courts,
+                                basketball courts or any other shared common facilities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6">
+                            <h2>Complaints & Defects Management</h2>
+                            <p>
+                                A full-fledge inquiry, complaints and defects management system whereby owners and residents themselves can login to
+                                submit inquiries or complaints. Having a centralised repository also enables owners and residents to view the status
+                                of their inquiries or complaints online without the need to always contact the property management team.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img class="img-responsive" src="../images/defect.png" alt="Resident Portal" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row featurebox">
+                        <div class="col-md-6 text-center">
+                            <img class="img-responsive" src="../images/onlinebill.png" alt="Resident Portal" />
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Online Bill Payments</h2>
+                            <p>
+                                Provide the flexibility for the owners and residents to view their statement of account and pay for outstanding
+                                bills online using their credit cards or via online banking (e.g. Maybank2u, CIMB Clicks, Hong Leong Connect,
+                                etc). Resident Portal also automatically sends out email reminders to both owners and residents for due items.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- mobile platform -->
+    <section class="mobile">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="text-center">
+                    <h1>Limited Bonus - FREE Mobile App</h1> 
+                    <p>
+                        Exclusively ONLY for our LIFETIME beta programme package customers, we will be giving away our Resident Portal mobile application for free! Yes, you will be getting our mobile app at no extra charge when we launch it.
+                        <br /><br />
+                        This is truly an amazing special bonus not to be missed!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="row">
+                        <div class="col-md-5" style="padding:10px 0px;">
+                            <div class="textwrapper">
+                                <h3 style="font-family:'Roboto Condensed', sans-serif; font-weight:bold;">Coming Soon on iOS and Android</h3>
+                                <p>
+                                    Have your very own mobile application on both Android and Apple (iOS) for owners and residents
+                                    to get the latest updates, make enquiries, book a facility, monitor statuses of complaints or to make payments for bills. Both owners
+                                    and residents will love you for such convenience provided to them!
+                                </p>
+                                <div style="margin-left:-2px;">
+                                    <img src="../images/appstore.png" alt="Resident Portal" class="appstoreimage" />&nbsp;&nbsp;
+                                    <img src="../images/playstore.png" alt="Resident Portal" class="appstoreimage" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 text-center">
+                            <img src="../images/section-mobileapp/mobile.png" class="img-responsive mobiledeviceimage" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end mobile platform -->
+    <section class="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12"><h3>Frequently Asked Questions</h3></div>
+            </div>
+            <div class="row" style="padding-bottom: 10px; font-size: 15px;">
+                <div class="col-xs-12 col-md-6 faqcolumn">
+                    <strong class="question">Q. What is this beta programme all about?</strong>
+                    <div class="answer text-justify">
+                        Resident Portal Beta Programme is an initiative where we work closely with a select group of 'real' users using the software and provide feedbacks. This will allow use to provide the finishing touches to Resident Portal and iron out any minor issue before releasing it to the general public.
+                        <br /><br />
+                        In return, we are providing our beta programme registrants with a very special offer whereby they can get Resident Portal for an exclusive LIFETIME deal instead of the normal subscription based packages.
+                    </div>
+                    <br />
+                    <strong class="question">Q. How do I secure my spot in Resident Portal Beta Programme?</strong>
+                    <div class="answer text-justify">
+                        Simple. Sign up immediately before all the spots are filled up once registration opens. There is no guarantee as registration for the beta programme <u>is only opened to the first 30 registrations on a first-come, first-served basis</u>. So the sooner you register, the better.
+                    </div>
+                    <br />
+                    <strong class="question">Q. Why do you limit the spots for Resident Portal Beta Programme?</strong>
+                    <div class="answer text-justify">
+                        Exclusitivity. We want this to be a super-exclusive offer, an offer that will never be repeated. Aside from that, we want to ensure that we can give enough attention to the first 30 registrants and work closely with them to make Resident Portal as perfect as possible for everyone.
+                    </div>
+                    <br />
+                    <strong class="question">Q. What happens to my data when the beta programme is over?</strong>
+                    <div class="answer text-justify">
+                        When Resident Portal is officially launched and is made available to the general public, all your data will still remain intact in the live system. This transition will be effortless and seamless in terms of user experiences for you, the owners and residents.
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 faqcolumn">
+                    <strong class="question">Q. How soon can I start using Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        Our scheduled launch date for our beta system is on 15th March 2017. Once launched, you will receive an email and you will be able to start using the Resident Portal immediately.
+                    </div>
+                    <br />
+                    <strong class="question">Q. Do I need to install anything to use Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        No installation is needed and no technical knowledge is required either. To use Resident Portal, all you need to do is to open your browser, key in the URL and you can immediately start using it. Resident Portal was designed with simplicity in mind so that non-techies and ordinary users can use it. In fact, all you need to know is how to use a mouse and keyboard.
+                    </div>
+                    <br />
+                    <strong class="question">Q. How do I get started with Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        We will be having online tutorials, live conferences, webinars and if required, we will even drop by your office to assist you to use Resident Portal.
+                    </div>
+                    <br />
+                    <strong class="question">Q. How do I get support for Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        Just email us at support@residentportal.my or should you need to speak to us, dial us at +603-86885821. On top of that, we will be establishing a network of support engineers located throughout Malaysia to assist our valued customers.
+                    </div>
+                    <br />
+                    <strong class="question">Q. What happens once my 5-Years or 10-Years package expires?</strong>
+                    <div class="answer text-justify">
+                        Once your 5-Years or 10-Years package expires, you will be provided with an option to renew Resident Portal at the prevailing monthly subscription rates at the renewal point of time. This is why we highly recommend you sieze this opportunity to opt for the lifetime package today.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    Copyright &#169; 2017 Resident Portal. All rights reserved.
+                    <div style="padding-bottom:0px; padding-top:5px;">
+                        <a data-toggle="modal" href="../common/disclaimer.html" data-target="#modal-disclaimer">Disclaimer</a> |
+                        <a data-toggle="modal" href="../common/privacy-policy.html" data-target="#modal-privacypolicy">Privacy Policy</a> |
+                        <a data-toggle="modal" href="../common/terms-of-use.html" data-target="#modal-termsofuse">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL POP-UP SECTION -->
+        <div id="modal-disclaimer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DisclaimerLargeModel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+        <div id="modal-privacypolicy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PrivacyPolicyLargeModel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+        <div id="modal-termsofuse" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="TermsOfUseLargeModel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+        <!-- END OF MODAL POP-UP SECTION -->
+    </section>
+
+    <!-- MODAL POP-UP SECTION -->
+    <div id="modal-optinform" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="background-color:rgba(0, 0, 0,0.8);">
+        <div class="modal-dialog modal-md" style="top:10%; max-width:700px; width:100%;">
+            <div class="modal-content" style="text-align:center; margin:auto;">
+                <div class="modal-body popupoptinbox2">
+                    <div id="formcontent">
+                        <div class="progress progressbar-customstyle">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                50% Complete
+                            </div>
+                        </div>
+                        <div class="progressbar-label">
+                            Almost there! Please complete the form and click the button below to register.
+                            <hr />
+                        </div>
+                        <div class="formarea">
+                            <div class="popupoptinlabel">
+                                Resident Portal Beta Programme Registration
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-6 packageselection">
+                                    <div style="padding:10px; background-color:white;">
+                                        <label class="title">Choose your package:</label>
+                                        <div class="packageoptions">
+                                            <input type="radio" class="icheckradio" id="square-radio-1" name="package-radio" value="1" checked />
+                                            <label for="square-radio-1">&nbsp;Lifetime, Unlimited Units @ RM 10000</label>
+                                            <br />
+                                            <input type="radio" class="icheckradio" id="square-radio-2" name="package-radio" value="2" />
+                                            <label for="square-radio-2">&nbsp;10 Years, Unlimited Units @ RM 5000</label>
+                                            <br />
+                                            <input type="radio" class="icheckradio" id="square-radio-3" name="package-radio" value="3" />
+                                            <label for="square-radio-3">&nbsp;5 Years, Unlimited Units @ RM 3000</label>
+                                        </div>
+                                    </div>
+                                    <div style="text-align:center; padding:0px 20px 20px 20px; background-color:white;">
+                                        <img class="img-responsive" id="selectedpackageimage" src="../images/packages/beta-lifetime.png" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 registrantdetails" style="background-color:#d1d0d0; padding:10px 20px 15px 20px;">
+                                    <form id="beta-register">
+                                        <label class="title">Enter your details below:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control textbox" placeholder="Property Name" id="txtPropertyName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control textbox" placeholder="Your Name" id="txtName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control textbox" placeholder="Contact No." id="txtContactNo" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control textbox" placeholder="Email" id="txtEmail" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control textbox" placeholder="Password" id="txtPassword" required>
+                                        </div>
+                                        <table style="margin-bottom:10px;">
+                                            <tr>
+                                                <td><input type="checkbox" required id="chk-terms" /></td>
+                                                <td style="padding-left:5px; font-size:12px;"><label for="chk-terms">I agree with the terms &amp; conditions.</label></td>
+                                            </tr>
+                                        </table>
+                                        <button class="btn btn-success btn-lg" id="btnRegister" style="width:100%;" type="submit">Register Now</button>
+                                    </form>
+                                    <script>
+                                        $("form#beta-register").submit(function (event) {
+                                            event.preventDefault();
+
+                                            $("#btnRegister").html("Registering...");
+                                            $("#btnRegister").prop('disabled', true);
+
+                                            var data = { 
+                                                "propertyname": $("#txtPropertyName").val(),
+                                                "name": $("#txtName").val(),
+                                                "contactno": $("#txtContactNo").val(),
+                                                "email": $("#txtEmail").val(),
+                                                "password": $("#txtPassword").val(),
+                                                "package": "Lifetime",
+                                                "affiliatereferral": getParameterByName("referral"),
+                                                "packageid" : $('input[name=package-radio]:checked').val()
+                                            };
+
+                                            $.ajax({
+                                                url: "https://residentportalmy-admin-staging.azurewebsites.net/api/property/register/beta",
+                                                type: "POST",
+                                                data: JSON.stringify(data),
+                                                dataType: "json",
+                                                contentType: "application/json",
+                                                success: function (result) {
+                                                    $("#btnRegister").html("Register Now");
+                                                    $("#btnRegister").prop('disabled', false);
+
+                                                    if (result.Success)
+                                                    {
+                                                        window.location.href = "BetaThankYou.html";
+                                                    }
+                                                    else
+                                                    {                                                                   
+                                                        alert(result.Message);
+                                                    }
+                                                },
+                                                error: function () {
+                                                    alert("Error!");
+                                                }
+                                            });
+                                        });
+
+                                        function getParameterByName(name, url) {
+                                            if (!url) url = window.location.href;
+                                            name = name.replace(/[\[\]]/g, "\\$&");
+                                            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                                                results = regex.exec(url);
+                                            if (!results) return null;
+                                            if (!results[2]) return '';
+                                            return decodeURIComponent(results[2].replace(/\+/g, " "));
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="../vendor/backstretch-2.1.15/jquery.backstretch.min.js"></script>
+    <script src="../vendor/icheck-1.x/icheck.js"></script>
+    <script src="../vendor/jquery.countdown-2.2.0/jquery.countdown.min.js"></script> 
+    <script src="../vendor/clingify-master/jquery.clingify.js"></script>
+
+    <script type="text/javascript">
+        $('#main').backstretch("../images/background/klccblur.jpg");
+        //$(".mobile").backstretch("../images/section-mobileapp/background.jpg");
+
+        $('#clock').countdown('2017/05/05', function (event) {
+            var $this = $(this).html(event.strftime('Registration closes in '
+              + '<span class="countnumber">%D</span> days '
+              + '<span class="countnumber">%H</span> hours '
+              + '<span class="countnumber">%M</span> minutes '
+              + '<span class="countnumber">%S</span> seconds'));
+        });
+
+        $(document).ready(function () {
+            $(".icheckradio").iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+
+            $("#stickyheader").clingify();
+
+            $('#square-radio-1').on('ifChecked', function (event) {
+                $('#selectedpackageimage').attr("src", "../images/packages/beta-lifetime.png");
+            });
+            $('#square-radio-2').on('ifChecked', function (event) {
+                $('#selectedpackageimage').attr("src", "../images/packages/beta-10years.png");
+            });
+            $('#square-radio-3').on('ifChecked', function (event) {
+                $('#selectedpackageimage').attr("src", "../images/packages/beta-5years.png");
+            });
+        }); 
+
+        $('#modal-optinform').on('show.bs.modal', function (event) { 
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var recipient = button.data('package'); // Extract info from data-* attributes
+            if (recipient == "@lifetime") {
+                $('#square-radio-1').iCheck('check');
+                $('#selectedpackageimage').attr("src","../images/packages/beta-lifetime.png");
+            }
+            else if(recipient == "@10years") {
+                $('#square-radio-2').iCheck('check');
+                $('#selectedpackageimage').attr("src","../images/packages/beta-10years.png");
+            }
+            else if(recipient == "@5years") {
+                $('#square-radio-3').iCheck('check');
+                $('#selectedpackageimage').attr("src","../images/packages/beta-5years.png");
+            }
+        })
+    </script>
+</body>
+</html>

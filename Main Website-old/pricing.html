@@ -1,0 +1,849 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resident Portal</title>
+    <link rel="shortcut icon" href="images/logo/favicon.ico" type="image/x-icon"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Component CSS -->
+    <link href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+
+    <!-- Component JS -->
+    <script src="vendor/jquery-2.2.4/jquery-2.2.4.min.js"></script>
+    <script src="vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <!-- Google Analytic Script -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-92435807-1', 'auto');
+        ga('send', 'pageview'); 
+    </script>
+
+    <style type="text/css"> 
+
+        .cmn-toggle {
+            position: absolute;
+            margin-left: -9999px;
+            visibility: hidden;
+        }
+        .cmn-toggle + label {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+        }
+        input.cmn-toggle-round-flat + label {
+            padding: 2px;
+            width: 60px;
+            height: 30px;
+            background-color: #198ae3;
+            border-radius: 60px;
+            transition: background 0.4s;
+        }
+        input.cmn-toggle-round-flat + label:before,
+        input.cmn-toggle-round-flat + label:after {
+            display: block;
+            position: absolute;
+            content: "";
+        }
+        input.cmn-toggle-round-flat + label:before {
+            top: 2px;
+            left: 2px;
+            bottom: 2px;
+            right: 2px;
+            background-color: #fff;
+            border-radius: 60px;
+            transition: background 0.4s;
+        }
+        input.cmn-toggle-round-flat + label:after {
+            top: 4px;
+            left: 4px;
+            bottom: 4px;
+            width: 26px;
+            background-color: #198ae3;
+            border-radius: 26px;
+            transition: margin 0.4s, background 0.4s;
+        }
+        input.cmn-toggle-round-flat:checked + label {
+            background-color: #198ae3;
+        }
+        input.cmn-toggle-round-flat:checked + label:after {
+            margin-left: 26px;
+            background-color: #198ae3;
+        }
+
+        .header { font-family:'Open Sans', sans-serif;  text-align:center; padding:80px 20px 20px 20px; }
+        .header .leftcol { text-align:center; font-size:18px; font-weight:bold; padding-top:3px; }
+        .header .rightcol { text-align:center; padding-left:0px; padding-right:0px; margin-top:15px; }
+        .header .switch { display: flex; text-align: center; width: 225px; margin:auto; }
+        .header .switch .text { padding:1px 10px 0px 10px; font-size:20px;}
+        .header .unitwrapper { margin:auto; width:100px; }
+        @media (min-width: 768px) {
+            .header .leftcol { text-align:right; font-size:18px; font-weight:bold; padding-top:3px; }
+            .header .rightcol { text-align:left; padding-left:0px; padding-right:0px; margin-top:0px; }
+            .header .switch { display: flex; text-align: center; width: 225px; margin-left:0px; }
+            .header .unitwrapper { margin-left:0px; }
+        }
+
+        .price { font-family:'Open Sans', sans-serif;  text-align:center; padding:50px 0px 20px 0px; }
+        .price .pricetable { border:2px solid; border-radius:5px; width:100%; background-color:white; margin-bottom:30px; }
+        .price .pricetable[packagetype=b1] { border-color:#79a933; }
+        .price .pricetable[packagetype=b2] { border-color:#20a0a7; }
+        .price .pricetable[packagetype=b3] { border-color:#146fb6; }
+        .price .packagetitle { color:white; font-size:20px; font-weight: bold; padding:10px 0px;}
+        .price .packagetitle[packagetype=b1] { background-color:#79a933; }
+        .price .packagetitle[packagetype=b2] { background-color:#20a0a7; }
+        .price .packagetitle[packagetype=b3] { background-color:#146fb6; }
+        .price .packagedesc { color:#808080; font-size:13px; padding:15px 20px; height:100px; }
+        .price .packageprice { padding:0px 0px 30px 0px; }
+        .price .packageprice span { font-size:32px; font-weight:bold; }
+        .price .packageprice[packagetype=b1] { color:#79a933; }
+        .price .packageprice[packagetype=b2] { color:#20a0a7; }
+        .price .packageprice[packagetype=b3] { color:#146fb6; }
+        .price .packageprice .priceinfo { background-color:#ebebeb; color:#808080; font-size:11px; border:none; font-weight:normal; margin-top:0px; padding:2px 10px; border-radius:5px; }
+        .price .packagefeatures { padding:0px 20px 20px 20px; }
+        .price .packagefeatures .dividertop { border-top:1px dotted #808080; margin-bottom:10px;}
+        .price .packagefeatures .dividerbottom { border-top:1px dotted #808080; margin-top:20px;}
+        .price .packagefeatures .featuretitle { color:#808080; font-size:13px; padding:5px 0px; margin-bottom:3px;}
+        .price .packagefeatures .feature { color:#808080; font-size:13px; font-weight:600; padding:5px 0px; margin-bottom:3px;}
+        .price .packagefeatures .feature[packagetype=b1] { background-color:#f1fae3; }
+        .price .packagefeatures .feature[packagetype=b2] { background-color:#f3fcfc; }
+        .price .packagefeatures .feature[packagetype=b3] { background-color:#f0f4fc; }
+        .price .packagecta { padding:0px 20px 20px 20px; }
+        .price .packagecta .ctabutton { color:white; font-size:18px; font-weight: bold; padding:20px 0px; width:80%; border:none; }
+        .price .packagecta .ctabutton[packagetype=b1] { background-color:#8fc63e; border-bottom:4px solid #79a933; }
+        .price .packagecta .ctabutton[packagetype=b1]:hover { background-color:#aae258; }
+        .price .packagecta .ctabutton[packagetype=b2] { background-color:#39bec6; border-bottom:4px solid #20a0a7; }
+        .price .packagecta .ctabutton[packagetype=b2]:hover { background-color:#5bd9e0; }
+        .price .packagecta .ctabutton[packagetype=b3] { background-color:#ebebeb; border-bottom:4px solid #ebebeb; cursor:default; }
+        .price .packagecta .ctabutton[packagetype=b3]:hover { background-color:#ebebeb; }
+        /*
+            .price .packagecta .ctabutton[packagetype=b3] { background-color:#4096d9; border-bottom:4px solid #146fb6; }
+            .price .packagecta .ctabutton[packagetype=b3]:hover { background-color:#57b0f5; }
+        */
+        @media (min-width: 992px) {
+            .price { font-family:'Open Sans', sans-serif;  text-align:center; padding:50px 0px 60px 0px; }
+            .price .pricetable { border:2px solid; border-radius:5px; width:100%; background-color:white; }
+        }
+
+        .features { font-family:'Open Sans', sans-serif; text-align:center; padding:30px 20px 50px 20px; background-image:url('images/bgtile/wall4.png'); background-repeat:repeat; }
+        .features h1 { font-weight:700; }
+        .features .icon { font-size:80px; color:#505050; }
+
+        .moneybackguarantee { background-color:#115880; color:white; padding:50px; }
+        .moneybackguarantee h2 { font-family: 'Open Sans', sans-serif; text-align:center; font-size:1.9em; padding-bottom:10px; padding-top:20px; font-weight:700;}
+        .moneybackguarantee p { font-family: 'Roboto', sans-serif; font-size:1.15em; padding-top:15px;}
+        @media (min-width: 992px) {
+            .moneybackguarantee { background-color:#115880; color:white; padding:20px 100px; }
+            .moneybackguarantee h2 { font-family: 'Open Sans', sans-serif; text-align:center; font-size:2.3em; padding-bottom:10px; padding-top:20px; font-weight:700;}
+        }
+        @media (min-width: 1200px) {
+            .moneybackguarantee p { font-family: 'Roboto', sans-serif; font-size:1.15em; padding-top:15px; padding-left:50px;}
+        }
+
+        .faq { font-family: 'Roboto', sans-serif; background-color:#f0efef; padding:10px 30px 20px 30px;}
+        .faq h3 { text-align:center; padding-top:20px; }
+        .faq .faqcolumn { padding:10px 0px; }
+        .faq .question { font-weight:bold; }
+        .faq .answer { font-weight:400; padding-top:0px; margin-top:0px; }
+        @media (min-width: 992px) {
+            .faq .faqcolumn { padding:20px 40px; }
+        }
+
+        /* Extra small devices (phones, less than 768px) */
+        /* No media query since this is the default in Bootstrap */
+
+        /* Small devices (tablets, 768px and up) */
+        @media (min-width: 768px) {}
+
+        /* Medium devices (desktops, 992px and up) */
+        @media (min-width: 992px) {}
+
+        /* Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {}
+    </style>
+</head>
+
+<body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!-- Menu -->
+    <section id="menu">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container menu">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html" style="padding-top:0px; padding-bottom:0px;">
+                        <img src="images/logo/logo.png" alt="Resident Portal" title="Resident Portal">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li>
+                            <a href="javascript:void();" class="btn-main" onclick="document.getElementById('black').style.display='block';document.getElementById('login').style.display='block';">Log In</a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </section>
+    <section class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 style="font-weight:700;">Get Instant Access to Resident Portal</h1>
+                    <h2 style="font-size:24px; font-weight:normal; margin-top:14px;">Choose Your Plan and Get Started</h2> 
+                </div>
+            </div>
+            <div class="row" style="margin-top:40px;">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <div style="font-size:14px; padding-bottom:6px; font-weight:bold; color:#146fb6;">Get 20% Savings With Annual Billing</div>
+                    <div class="row" style="background-color:#ebebeb; padding:16px 20px 12px 20px; border-radius:8px; ">
+                        <div class="col-xs-12 col-sm-6 leftcol">
+                            Select Your Billing Model:
+                        </div>
+                        <div class="col-xs-12 col-sm-6 rightcol">
+                            <div class="switch">
+                                <div class="text" style="padding-left:0px;">Annual</div>
+                                <div>
+                                    <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                                    <label for="cmn-toggle-4"></label>
+                                </div>
+                                <div class="text" style="padding-right:0px;">Monthly</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color:#ebebeb; padding:15px 20px 15px 20px; margin-top:4px;  border-radius:8px; ">
+                        <div class="col-xs-12 col-sm-6 leftcol">
+                            Total Units in Property:
+                        </div>
+                        <div class="col-xs-12 col-sm-6 rightcol">
+                            <div class="unitwrapper">
+                                <input type="text" id="txtNoOfUnits" class="form-control" style="width:100px;" value="100" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(function () {
+                        calculate_pricing();
+
+                        $("#txtNoOfUnits").keydown(function (e) {
+                            // Allow: backspace, delete, tab, escape, enter and .
+                            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                                // Allow: Ctrl+A, Command+A
+                                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                                // Allow: home, end, left, right, down, up
+                                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                                // let it happen, don't do anything
+                                return;
+                            }
+                            // Ensure that it is a number and stop the keypress
+                            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                                e.preventDefault();
+                            }
+                        });
+                        $("#txtNoOfUnits").keyup(function () {
+                            calculate_pricing();
+                        });
+
+                        $('#cmn-toggle-4').change(function () {
+                            calculate_pricing();
+                        });
+                    });
+
+                    function calculate_pricing() {
+                        var NoOfUnits = $('#txtNoOfUnits').val();
+
+                        var AdditionalUnits = NoOfUnits - 100;
+                        if (AdditionalUnits < 0) {
+                            AdditionalUnits = 0;
+                        }
+                        var AdditionUnitsFeePerMonth = (5 / 12) * AdditionalUnits;
+
+                        var EssentialPerMonth = 30 + AdditionUnitsFeePerMonth;
+                        var StandardPerMonth = 50 + AdditionUnitsFeePerMonth;
+                        var PremiumPerMonth = 125 + AdditionUnitsFeePerMonth;
+                        
+                        var isMonthly = $('#cmn-toggle-4').is(":checked");
+
+                        if (isMonthly == false) {
+                            $('#essential-price').html(round_pricing((EssentialPerMonth * 0.8).toFixed(2)));
+                            $('#standard-price').html(round_pricing((StandardPerMonth * 0.8).toFixed(2)));
+                            $('#premium-price').html(round_pricing((PremiumPerMonth * 0.8).toFixed(2)));
+                        }
+                        else {
+                            $('#essential-price').html(round_pricing(EssentialPerMonth.toFixed(2)));
+                            $('#standard-price').html(round_pricing(StandardPerMonth.toFixed(2)));
+                            $('#premium-price').html(round_pricing(PremiumPerMonth.toFixed(2)));
+                        }
+                    }
+
+                    function round_pricing(price) { 
+
+                        return Math.floor(price);
+                        /*
+                        var ones_digit = price % 10;
+
+                        if (ones_digit == 0) {
+                            return price - ones_digit;
+                        }
+                        else if (ones_digit == 5) {
+                            return price - ones_digit + 5;
+                        }
+                        else if (ones_digit < 5) {
+                            return price - ones_digit + 5;
+                        }
+                        else if (ones_digit < 10) {
+                            return price - ones_digit + 10;
+                        }
+                        */
+                    }
+                </script>
+            </div>
+        </div>
+    </section> 
+    <section class="price">
+        <div class="container">
+            <div class="col-xs-12 col-sm-4">
+                <!-- ESSENTIAL PACKAGE -->
+                <div class="pricetable" packagetype="b1">
+                    <div class="packagetitle" packagetype="b1">
+                        Essential
+                    </div>
+                    <div class="packagedesc">
+                        Get started with the most basic and fundamental features of Resident Portal. All the essentials to get you started immediately!
+                    </div>
+                    <div class="packageprice" packagetype="b1">
+                        <span>RM <span id="essential-price">-</span>/mo</span> <br />
+                        <button class="priceinfo" data-toggle="tooltip" data-placement="top" title="Essential package cost RM 360 per year which include 100 units. Each additional unit will cost RM 5.00 per year per unit.">How we charge?</button>
+                    </div>
+                    <div class="packagefeatures">
+                        <div class="dividertop"></div>
+                        <div class="featuretitle">Product Features:</div>
+                        <div class="feature" packagetype="b1">Responsive Owner &amp; Resident Website</div>
+                        <div class="feature" packagetype="b1">Announcements</div>
+                        <div class="feature" packagetype="b1">Newletters</div>
+                        <div class="feature" packagetype="b1">Complaints &amp; Defects Management</div>
+                        <div class="feature" packagetype="b1">Facility Reservation</div>
+                        <div class="feature" packagetype="b1">Central Document Repository</div>
+                        <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                        <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                        <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                        <div class="dividerbottom"></div>
+                    </div>
+                    <div class="packagecta">
+                        <input class="ctabutton packagetype1" packagetype="b1" type="button" value="Let's Get Started"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <!-- STANDARD PACKAGE -->
+                <div class="pricetable" packagetype="b2">
+                    <div class="packagetitle" packagetype="b2">
+                        Standard
+                    </div>
+                    <div class="packagedesc">
+                        Access all the features in the Essential package plus allow both residents and owners to make payment for bills online. You can also use your own domain name for branding purposes. 
+                    </div>
+                    <div class="packageprice" packagetype="b2">
+                        <span>RM <span id="standard-price">-</span>/mo</span> <br />
+                        <button class="priceinfo" data-toggle="tooltip" data-placement="top" title="Standard package cost RM 600 per year which include 100 units. Each additional unit will cost RM 5.00 per year per unit.">How we charge?</button>
+                    </div>
+                    <div class="packagefeatures">
+                        <div class="dividertop"></div>
+                        <div class="featuretitle">Product Features:</div>
+                        <div class="feature" packagetype="b2">Responsive Owner &amp; Resident Website</div>
+                        <div class="feature" packagetype="b2">Announcements</div>
+                        <div class="feature" packagetype="b2">Newletters</div>
+                        <div class="feature" packagetype="b2">Complaints &amp; Defects Management</div>
+                        <div class="feature" packagetype="b2">Facility Reservation</div>
+                        <div class="feature" packagetype="b2">Central Document Repository</div>
+                        <div class="feature" packagetype="b2">Online Bill Payment</div>
+                        <div class="feature" packagetype="b2">Use Your Own Domain Name</div>
+                        <div class="feature hidden-xs" style="background-color:white;">&nbsp;</div>
+                        <div class="dividerbottom"></div>
+                    </div>
+                    <div class="packagecta">
+                        <input class="ctabutton packagetype2" packagetype="b2" type="button" value="Let's Get Started" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <!-- PREMIUM PACKAGE -->
+                <div class="pricetable" packagetype="b3">
+                    <div class="packagetitle" packagetype="b3">
+                        Premium <span style="font-weight:normal;">- Coming Soon</span>
+                    </div>
+                    <div class="packagedesc">
+                        Get all the features of Essential and Standard packages and have your very own mobile application for maximum convenience of both owners and residents.
+                    </div>
+                    <div class="packageprice" packagetype="b3">
+                        <span>RM <span id="premium-price">-</span>/mo</span> <br />
+                        <button class="priceinfo" data-toggle="tooltip" data-placement="top" title="Premium package cost RM 1500 per year which include 100 units. Each additional unit will cost RM 5.00 per year per unit.">How we charge?</button>
+                    </div>
+                    <div class="packagefeatures">
+                        <div class="dividertop"></div>
+                        <div class="featuretitle">Product Features:</div>
+                        <div class="feature" packagetype="b3">Responsive Owner &amp; Resident Website</div>
+                        <div class="feature" packagetype="b3">Announcements</div>
+                        <div class="feature" packagetype="b3">Newletters</div>
+                        <div class="feature" packagetype="b3">Complaints &amp; Defects Management</div>
+                        <div class="feature" packagetype="b3">Facility Reservation</div>
+                        <div class="feature" packagetype="b3">Central Document Repository</div>
+                        <div class="feature" packagetype="b3">Online Bill Payment</div>
+                        <div class="feature" packagetype="b3">Use Your Own Domain Name</div>
+                        <div class="feature" packagetype="b3">IOS & Android Mobile App</div>
+                        <div class="dividerbottom"></div>
+                    </div>
+                    <div class="packagecta">
+                        <input class="ctabutton packagetype3" packagetype="b3" type="button" style="" value="Launching Q3 2017" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <h1>All Plans Include</h1>
+                <br /> 
+                <h4>Your very own website branded under your property name that comes with:</h4>
+                <br /><br />
+                <div class="col-md-2 col-md-offset-1">
+                    <span class="fa fa-bullhorn icon"></span>
+                    <br />
+                    <h4>Annoucements</h4>
+                </div>
+                <br class="visible-xs visible-sm" />
+                <div class="col-md-2">
+                    <span class="fa fa-list-alt icon"></span>
+                    <br />
+                    <h4>Newletters</h4>
+                </div>
+                <br class="visible-xs visible-sm" />
+                <div class="col-md-2">
+                    <span class="fa  fa-comments icon"></span>
+                    <br />
+                    <h4>Complaints &amp; Defects<br />Management</h4>
+                </div>
+                <br class="visible-xs visible-sm" />
+                <div class="col-md-2">
+                    <span class="fa fa-calendar icon"></span>
+                    <br />
+                    <h4>Facility<br />Reservation</h4>
+                </div>
+                <br class="visible-xs visible-sm" />
+                <div class="col-md-2">
+                    <span class="fa fa-database icon"></span>
+                    <br />
+                    <h4>Central Document<br />Repository</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="moneybackguarantee">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 style="text-align:center; font-weight:700;">Try Resident Portal Totally Risk Free!</h1>
+                    <h2 style="display:none;">TRY RESIDENT PORTAL RIGHT RISK FREE!</h2>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-9">
+                    <p>
+                        Can't decide if Resident Portal is right for you? Well, we don’t want anything to hold you back from getting access to Resident Portal and we want to make it totally risk free for you!
+                    </p>
+                    <p>
+                        That’s why we're going to give you a FULL 30 days to decide if this is for you…
+                        If for any reason, or no reason at all, you’re not 100% satisfied with Resident Portal, simply send us an email, and we’ll refund every penny of your investment…
+                    </p>
+                    <p>
+                        No questions asked!
+                    </p>
+                    <br class="hidden-xs" /><br class="hidden-xs" />
+                </div>
+                <div class="col-xs-12 col-sm-3" style="text-align:center; padding-top:10px;">
+                    <img style="width:200px;" src="images/badge/9882272_S.png">
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12"><h3>Frequently Asked Questions</h3></div>
+            </div>
+            <div class="row" style="padding-bottom: 10px; font-size: 15px;">
+                <div class="col-xs-12 col-md-6 faqcolumn">
+                    <strong class="question">Q. How soon can I start using Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        Your will have access to Resident Portal instantly! As soon as you register, you will receive an email with your access details and you will be able to start using the Resident Portal immediately.
+                    </div>
+                    <br />
+                    <strong class="question">Q. Do I need to install anything to use Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        No installation is needed and no technical knowledge is required either. To use Resident Portal, all you need to do is to open your browser, key in the URL and you can immediately start using it. Resident Portal was designed with simplicity in mind so that non-techies and ordinary users can use it. In fact, all you need to know is how to use a mouse and keyboard.
+                    </div>
+                    <br />
+                </div>
+                <div class="col-xs-12 col-md-6 faqcolumn">
+                    <strong class="question">Q. How do I get training for Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        Once you have registered, you will have access to our library of online video tutorials to assist you to use Resident Portal. You will also have access to a quick guide to help you get started quickly and immediately. Plus, if you need additional support, you can contact our support team for assistance. 
+                    </div>
+                    <br />
+                    <strong class="question">Q. How do I get support for Resident Portal?</strong>
+                    <div class="answer text-justify">
+                        Just email us at support@residentportal.my or should you need to speak to us, dial us at +603-86885821. On top of that, we will be establishing a network of support engineers located throughout Malaysia to assist our valued customers.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="pricetable" style="display:none;">
+        <div class="container">
+            <div class="row pricing">
+                <div class="col-md-4">
+                    <div class="price-blk">
+                        <h2 class="basic">Basic</h2>
+                        <div class="price-range">
+                            <sub>RM</sub> <span>19.99</span> <sub>/ month</sub><br />
+                            <sub>RM</sub> <span>199*</span> <sub>/ year</sub>
+                        </div>
+                        <div class="package-incld">
+                            <div class="package-inner sgrey-bg">Responsive Owner & Resident Website</div>
+                            <div class="package-inner">Announcements</div>
+                            <div class="package-inner sgrey-bg">Newsletter</div>
+                            <div class="package-inner">Enquiries, Complains & Defect Management</div>
+                            <div class="package-inner sgrey-bg">-</div>
+                            <div class="package-inner">-</div>
+                            <div class="package-inner sgrey-bg">-</div>
+                        </div>
+                        <div><a href="#" class="btn btn-basic">Sign Up</a></div>
+                        <p>Or start 30-Days<br />Free Trial</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" style="position:relative;">
+                    <!-- label -->
+                    <div class="most-label">Most Popular</div>
+                    <!-- end label -->
+                    <div class="price-blk">
+                        <h2 class="standard">Standard</h2>
+                        <div class="price-range">
+                            <sub>RM</sub> <span>29.99</span> <sub>/ month</sub><br />
+                            <sub>RM</sub> <span>299*</span> <sub>/ year</sub>
+                        </div>
+                        <div class="package-incld">
+                            <div class="package-inner sgrey-bg">Responsive Owner & Resident Website</div>
+                            <div class="package-inner">Announcements</div>
+                            <div class="package-inner sgrey-bg">Newsletter</div>
+                            <div class="package-inner">Enquiries, Complains & Defect Management</div>
+                            <div class="package-inner sgrey-bg">Online Bill Payment</div>
+                            <div class="package-inner">Use Your Domain Name</div>
+                            <div class="package-inner sgrey-bg">-</div>
+                        </div>
+                        <div><a href="#" class="btn btn-standard">Sign Up</a></div>
+                        <p>Or start 30-Days<br />Free Trial</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="price-blk">
+                        <h2 class="premium">Premium</h2>
+                        <div class="price-range">
+                            <sub>RM</sub> <span>39.99</span> <sub>/ month</sub><br />
+                            <sub>RM</sub> <span>399*</span> <sub>/ year</sub>
+                        </div>
+                        <div class="package-incld">
+                            <div class="package-inner sgrey-bg">Responsive Owner & Resident Website</div>
+                            <div class="package-inner">Announcements</div>
+                            <div class="package-inner sgrey-bg">Newsletter</div>
+                            <div class="package-inner">Enquiries, Complains & Defect Management</div>
+                            <div class="package-inner sgrey-bg">Online Bill Payment</div>
+                            <div class="package-inner">Use Your Domain Name</div>
+                            <div class="package-inner sgrey-bg">IOS & Android Mobile App</div>
+                        </div>
+                        <div><a href="#" class="btn btn-premium">Sign Up</a></div>
+                        <p>Or start 30-Days<br />Free Trial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 footer-img"><img src="images/logo/logo-large.png" alt="Resident Portal" style="width:60%" /></div>
+                <div class="col-md-8">
+                    <!---->
+                    <div class="wrap-footer">
+                        <div class="footer-blk">
+                            <p>Company</p>
+                            <ul class="footer">
+                                <li><a href="#">About</a></li>
+                                <li style="display:none;"><a href="#">Careers</a></li>
+                                <li><a href="#">Affiliate Programme</a></li>
+                                <li><a href="mailto:info@residentportal.my">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-blk">
+                            <p>Help</p>
+                            <ul class="footer">
+                                <li><a href="mailto:support@residentportal.my">Support</a></li>
+                                <li style="display:none;"><a href="#">Knowledge Base</a></li>
+                                <li><a data-toggle="modal" href="common/policy-general/privacy-policy.html" data-target="#modal-privacypolicy">Privacy Policy</a></li>
+                                <li><a data-toggle="modal" href="common/policy-general/terms-of-use.html" data-target="#modal-termsofuse">Terms of Use</a></li>
+                            </ul>
+                            <!-- MODAL POP-UP SECTION -->
+                            <div id="modal-disclaimer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DisclaimerLargeModel">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="modal-privacypolicy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="PrivacyPolicyLargeModel">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="modal-termsofuse" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="TermsOfUseLargeModel">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END OF MODAL POP-UP SECTION -->
+                        </div>
+                        <div class="footer-blk">
+                            <p>Get In Touch</p>
+                            <div><i class="glyphicon glyphicon-envelope"></i> <a href="mailto:info@residentportal.my">info@residentportal.my</a></div>
+                            <div><i class="glyphicon glyphicon-earphone"></i> 603-64110828</div>
+                            <div class="wrap-social" style="display:none;">
+                                <div class="social-fb">
+                                    <a href="#">
+                                        <img src="images/fb.png" alt="Resident Portal" style="width:100%" />
+                                    </a>
+                                </div>
+                                <div class="social-g">
+                                    <a href="#">
+                                        <img src="images/gplus.png" alt="Resident Portal" style="width:100%" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                </div>
+            </div>
+
+            <!-- copyright -->
+            <div class="copyright">
+                <span>Resident Portal &copy; Copyright 2017. All right reserved.</span>
+            </div>
+            <!-- end copyright -->
+
+        </div>
+    </footer>
+    <!-- end footer -->
+
+<!-- account module -->
+<div id="black" class="black-layer"></div>
+<!-- sign in -->
+<div id="login" class="wrap-pop">
+  <div class="pop">
+    <h3 class="text-center">Login With Email</h3>
+    <form method="post" action="">
+      <div class="form-group" style="margin-top:10px;">
+        <input type="email" class="form-control" name="email" placeholder="Email *" required>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="pass" placeholder="Password *" required>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-main"><i class="glyphicon glyphicon-log-in"></i> Login into your account</button>
+      </div>
+    </form>
+    <!-- frt pass -->
+    <a href="javascript:void();" class="frgt-btn" onclick="document.getElementById('login').style.display='none';document.getElementById('frgt').style.display='block';">Forgot Password</a>
+    <!-- end frgt pass -->
+
+    <h3 class="text-center">OR</h3><h3 class="text-center">Login With Social Account</h3>
+    <div class="form-group" style="margin-top:10px;">
+      <a href="javascript:void();" class="btn btn-fb"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+    </div>
+    <div class="form-group">
+      <a href="javascript:void();" class="btn btn-google"><i class="fa fa-google-plus" aria-hidden="true"></i> Google+</a>
+    </div>
+
+    <div class="pop-footer">
+      <p>Don't have an account? <a href="javascript:void();" onclick="document.getElementById('login').style.display='none';document.getElementById('signup').style.display='block';">Register</a></p>
+    </div>
+
+    <!-- close -->
+    <a href="../index.html" class="close-btn" style="color: #404040 !important;" onclick="document.getElementById('black').style.display='none';document.getElementById('login').style.display='none';" title="Close"><i class="glyphicon glyphicon-remove"></i></a>
+    <!-- end close -->
+  </div>
+</div>
+<!-- end sign in -->
+
+<!-- sign up -->
+<div id="signup" class="wrap-pop">
+  <div class="pop">
+    <h3 class="text-center">Sign Up Now</h3>
+    <form method="post" action="">
+      <div class="form-group" style="margin-top:10px;">
+        <input type="email" class="form-control" name="email" placeholder="Email *" required>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="pass" placeholder="Password *" required>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="cpass" placeholder="Confirm Password *" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="noc" placeholder="Name of Contact Person *" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="contact" placeholder="Contact Number *" required>
+      </div>
+      <hr/>
+      <div class="form-group">
+        <input type="text" class="form-control" name="property" placeholder="Property Name *" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="address" placeholder="Address *" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="address2" placeholder="Address">
+      </div>
+      <div class="form-group">
+        <select class="form-control" name="country">
+          <option value="">Country *</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="form-control" name="state">
+          <option value="">State *</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6" style="padding: 0 30px 0 0;">
+            <input type="text" class="form-control" name="city" placeholder="City *" required>
+          </div>
+          <div class="col-md-6" style="padding: 0 0 0 30px;">
+            <input type="text" class="form-control" name="postcode" placeholder="Postcode *" required>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-main"><i class="glyphicon glyphicon-log-in"></i> Sign Up Now</button>
+      </div>
+    </form>
+
+    <h3 class="text-center">OR</h3><h3 class="text-center">Login With Social Account</h3>
+    <div class="form-group" style="margin-top:10px;">
+      <a href="javascript:void();" class="btn btn-fb"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+    </div>
+    <div class="form-group">
+      <a href="javascript:void();" class="btn btn-google"><i class="fa fa-google-plus" aria-hidden="true"></i> Google+</a>
+    </div>
+
+    <div class="pop-footer">
+      <p>Already have an account? <a href="javascript:void();" onclick="document.getElementById('login').style.display='block';document.getElementById('signup').style.display='none';">Sign In Now</a></p>
+    </div>
+
+    <!-- close -->
+    <a href="../index.html" class="close-btn" style="color: #404040 !important;" onclick="document.getElementById('black').style.display='none';document.getElementById('signup').style.display='none';" title="Close"><i class="glyphicon glyphicon-remove"></i></a>
+    <!-- end close -->
+  </div>
+</div>
+<!-- end sign up -->
+
+<!-- frgt pass -->
+<div id="frgt" class="wrap-pop">
+  <div class="pop">
+    <h3 class="text-center">Forgot Password</h3>
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    <form method="post" action="">
+      <div class="form-group" style="margin-top:10px;">
+        <div class="row">
+          <div class="col-md-8" style="padding: 0 0 0 0;">
+            <label>Enter Your Email Address *</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8" style="padding: 0 0 0 0;">
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="col-md-4" style="padding-right: 0;">
+            <button type="submit" class="btn btn-main">Verify Now</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- close -->
+    <a href="../index.html" class="close-btn" style="color: #404040 !important;" onclick="document.getElementById('black').style.display='none';document.getElementById('frgt').style.display='none';" title="Close"><i class="glyphicon glyphicon-remove"></i></a>
+    <!-- end close -->
+  </div>
+</div>
+<!-- end frgt pass -->
+<!-- end account module -->
+    
+    <!-- Vendor Javascript-->
+    <script src="../vendor/backstretch-2.1.15/jquery.backstretch.min.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+        $(window).scroll(function() {
+            $(".slideanim").each(function() {
+                var pos = $(this).offset().top;
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 600) {
+                    $(this).addClass("slide");
+                }
+            });
+        });    
+
+        //$('.features').backstretch("images/background/klccblur.jpg");
+    })
+    </script>
+
+</body>
+</html>

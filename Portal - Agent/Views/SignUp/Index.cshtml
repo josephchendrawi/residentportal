@@ -1,0 +1,81 @@
+﻿@model ResComm.Web.Models.AffiliateSignup
+@{
+    ViewBag.Title = "Sign Up";
+    Layout = "~/Views/Shared/_Layout_Clean.cshtml";
+}
+<link href="@Url.Content("~/Content/progress-wizard-indicator/progress-wizard.min.css")" rel="stylesheet" type="text/css" />
+
+<div class="col-md-8 col-md-offset-2">
+    <ul class="progress-indicator">
+        <li>
+            <span class="bubble"></span>
+            <span class="font14">ADMIN SETUP</span>
+        </li>
+    </ul>
+</div>
+<br /><br />
+
+<div>
+    @using (Html.BeginForm("Index", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="progress-form">
+            <div class="text-right">
+                <button type="submit" class="btn btn-sm btn-success">Submit <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+            <br />
+            <div class="row">
+                @Html.Partial("_AffiliateSetup", Model)
+            </div>
+        </div>
+    }
+</div><!-- /.row -->
+
+<script type="text/javascript">
+    var currentIdx = 0;
+
+    $(function () {
+        $('ul.progress-indicator > li:first').addClass("active");
+        $('.progress-form:first').show();
+    });
+
+    $("form").submit(function (event) {
+        if (currentIdx != $('.progress-form').index($('.progress-form:last'))) {
+            return false;
+        }
+    });
+
+    function progress_next() {
+        $("form").submit();
+
+        if ($("form").valid() == true) {
+            $('.progress-form:eq(' + currentIdx + ')').hide();
+            $('.progress-form:eq(' + (currentIdx + 1) + ')').show("drop", { direction: "right", duration: 600 });
+
+            $('ul.progress-indicator > li').removeClass("active").removeClass("completed");
+            $('ul.progress-indicator > li:lt(' + (currentIdx + 1) + ')').addClass("completed");
+            $('ul.progress-indicator > li:eq(' + (currentIdx + 1) + ')').addClass("active");
+
+            currentIdx++;
+        }
+    }
+
+    function progress_back() {
+        $('.progress-form:eq(' + (currentIdx - 1) + ')').show("drop", { direction: "left", duration: 600 });
+        $('.progress-form:eq(' + currentIdx + ')').hide();
+
+        $('ul.progress-indicator > li').removeClass("active").removeClass("completed");
+        $('ul.progress-indicator > li:lt(' + (currentIdx - 1) + ')').addClass("completed");
+        $('ul.progress-indicator > li:eq(' + (currentIdx - 1) + ')').addClass("active");
+
+        currentIdx--;
+    }
+
+    function checkAgreement() {
+        if (!$("#chkAgreement").prop("checked")) {
+            alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy');
+            e.preventDefault();
+        }
+    }
+</script>

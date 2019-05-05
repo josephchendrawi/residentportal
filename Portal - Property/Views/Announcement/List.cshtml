@@ -1,0 +1,84 @@
+﻿@model ResComm.Web.Models.Announcement
+@{
+    ViewBag.Title = "Announcement List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { List }
+@section ContentHeader{
+}
+
+<!-- DATA TABES -->
+<link href="@Url.Content("~/Content/plugins/datatables/css/dataTables.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/plugins/datatables/css/responsive.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Content/plugins/datatables/js/jquery.dataTables.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/plugins/datatables/js/dataTables.bootstrap.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/plugins/datatables/js/dataTables.responsive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/plugins/datatables/js/responsive.bootstrap.min.js")" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="tbl-list" class="table table-striped table-bordered dt-responsive nowrap table-hover table-compact" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(m => m.Name)</th>
+                            <th>@Html.LabelFor(m => m.CreatedBy)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+<script type="text/javascript">
+    $(function () {
+        loadListTable();
+    });
+
+    function loadListTable() {
+        var oTable = $("#tbl-list").DataTable({
+            "serverSide": true,
+            "ajax": "@Url.Action("ListAnnouncement", "Announcement")",
+            "processing": true,
+            "pageLength": 10,
+            "lengthMenu": [10, 25, 50, 75, 100],
+            "pagingType": "full_numbers",
+            "searching": false,
+            "stateSave": true,
+            "stateSaveCallback": function (settings, data) {
+                localStorage.setItem('DataTablesAnnouncement', JSON.stringify(data));
+            },
+            "stateLoadCallback": function (settings) {
+                return JSON.parse(localStorage.getItem('DataTablesAnnouncement'));
+            },
+            "responsive": true,
+            "autoWidth": false,
+            "columns": [
+                {
+                    "data": "Name",
+                    "width": "75%"
+                },
+                {
+                    "data": "CreatedBy",
+                    "width": "20%"
+                },
+                {
+                    "data": null,
+                    "orderable": false,
+                    "render": function (data, type, full, meta) {
+                        return "<input type='hidden' value='" + data['AccountNoteId'] + "' name='Id[]' />" +
+                            '<a class="btn btn-sm btn-default" href="@Url.Action("View","Announcement")/' + data['AccountNoteId'] + '"><i class="fa fa-eye"></i> View</a>';
+                    },
+                    "width": "5%"
+                },
+            ]
+        });
+
+    }
+</script>

@@ -1,0 +1,2 @@
+
+ALTER TABLE P_BILLING add TOKEN nvarchar(255) NULL

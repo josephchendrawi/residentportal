@@ -1,0 +1,144 @@
+﻿@model ResComm.Web.Models.PropertyInvoice
+@{
+    ViewBag.Title = "Property Invoice Details";
+    Layout = "~/Views/Shared/_Layout_Super_Admin.cshtml";
+}
+@section Title { Property Invoice Details }
+@section ContentHeader{
+    <div class="pull-right">
+        <a href="@Url.Action("PropertyInvoice")" class="btn btn-primary inline"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="@Url.Action("PropertyInvoiceEdit", new { Id = Model.PropertyInvoiceId })" class="btn btn-primary inline"><i class="fa fa-edit"></i> Edit</a>
+    </div>
+}
+
+<div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Invoice Details</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.InvoiceNo)
+                        <div>
+                            @Model.InvoiceNo
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.InvoiceDate)
+                        <div>
+                            @Model.InvoiceDateText
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PropertyName)
+                        <div>
+                            @Model.PropertyName
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description)
+                        <div>
+                            @Model.Description
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Amount)
+                        <div>
+                            @Model.Amount
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Status)
+                        <div>
+                            @Model.StatusName
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+        </div><!--/.col (left) -->
+
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Payment Details</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PaymentStatus)
+                        <div>
+                            @Model.PaymentStatusName
+                        </div>
+                    </div>
+                    <div id="form-paid" style="display:none;">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PaymentDate)
+                            <div>
+                                @Model.PaymentDateText
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PaymentMethod)
+                            <div>
+                                @Model.PaymentMethodName
+                            </div>
+                        </div>
+                        <div class="form-group payment-att cheque-att">
+                            @Html.LabelFor(m => m.ChequeNo)
+                            <div>
+                                @Model.ChequeNo
+                            </div>
+                        </div>
+                        <div class="form-group payment-att banktrf-att creditcard-att">
+                            @Html.LabelFor(m => m.TransactionNo)
+                            <div>
+                                @Model.TransactionNo
+                            </div>
+                        </div>
+                        <div class="form-group payment-att creditcard-att">
+                            @Html.LabelFor(m => m.ApprovalCode)
+                            <div>
+                                @Model.ApprovalCode
+                            </div>
+                        </div>
+                        <div class="form-group payment-att cheque-att banktrf-att creditcard-att">
+                            @Html.LabelFor(m => m.Bank)
+                            <div>
+                                @Model.Bank
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->
+</div><!-- /.row -->
+
+<script>
+    $(function () {
+        show_hide_form();
+    });
+
+    function show_hide_form() {
+        var PaymentStatus = '@Model.PaymentStatusName';
+        if (PaymentStatus == "Paid") {
+            $('#form-paid').show();
+
+            $('.payment-att').hide();
+            var PaymentMethod = '@Model.PaymentMethodName';
+            if (PaymentMethod == "Cheque") {
+                $('.cheque-att').show();
+            }
+            else if (PaymentMethod == "BankTransfer") {
+                $('.banktrf-att').show();
+            }
+            else if (PaymentMethod == "CreditCard") {
+                $('.creditcard-att').show();
+            }
+        }
+        else {
+            $('#form-paid').hide();
+        }
+    }
+</script>

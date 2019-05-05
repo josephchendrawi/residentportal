@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "First Time Login";
+    Layout = "~/Views/Shared/_Layout_Empty.cshtml";
+}
+
+<script type="text/javascript">
+    window.location.href = "@Url.Action("Setup", "Home")";
+    parent.window.location = "@Url.Action("Setup", "Home")";
+</script>

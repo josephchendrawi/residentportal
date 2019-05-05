@@ -1,0 +1,102 @@
+﻿/* GENERAL FLOORMAT CSS */
+
+
+/* REFERENCE: https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp */
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255, 0.95);
+    overflow-y: auto;
+    transition: 0.5s;
+}
+.overlay .closebtn {
+    color: #818181;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+.overlay .closebtn:hover, .overlay .closebtn:focus {
+    color: #f1f1f1;
+}
+@media screen and (max-height: 450px) {
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.topinsert { 
+    height: 0;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255, 1.0);
+    overflow-y: hidden;
+    transition: 2s;
+}
+
+.topinsert .contentwrapper {
+    position: relative;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;   
+    margin: auto;
+}
+
+/* ====== Zoom effect ====== */
+.overlay-zoomin-start {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0.5);
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin-left: -45%;
+    z-index: 5;
+    width: 90%;
+    background-color: rgb(255,255,255);
+    overflow-y:auto;
+}
+.overlay-zoomin-start-bg {
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.overlay-zoomin-ready { opacity: 1; transform: scale(1); }
+.overlay-zoomin-ready-bg { opacity: 0.8; }
+.overlay-zoomin-close { transform: scale(0.5); opacity: 0; }
+.overlay-zoomin-close-bg {  opacity: 0; }
+.overlay-zoomin-start .closebtn {
+    color: #818181;
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    font-size: 60px;
+}
+.overlay-zoomin-start .closebtn:hover, .overlay .closebtn:focus {
+    color: #cbcbcb;
+    text-decoration:none;
+}
+@media (max-width: 450px) {
+    .overlay-zoomin-start .closebtn {
+        font-size: 40px;
+        top: -10px;
+        right: 8px;
+    }
+}

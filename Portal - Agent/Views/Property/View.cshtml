@@ -1,0 +1,94 @@
+﻿@model ResComm.Web.Models.ViewPropertyVM
+@{
+    ViewBag.Title = "Property Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Details }
+@section ContentHeader{
+    <div class="pull-right">
+        <a href="@Url.Action("List", "Property")" class="btn btn-primary inline"><i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Property Information</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PropertyName)
+                    <div>
+                        @Model.PropertyName
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address1)
+                    <div>
+                        @Model.Address1
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address2)
+                    <div>
+                        @Model.Address2
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.City)
+                    <div>
+                        @Model.City
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.State)
+                    <div>
+                        @Model.State
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ZIP)
+                    <div>
+                        @Model.ZIP
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Country)
+                    <div>
+                        @Model.Country
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </div><!--/.col (left) -->
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Contact Information</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ContactName)
+                    <div>
+                        @Model.ContactName
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ContactNo)
+                    <div>
+                        @Model.ContactNo
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ContactEmail)
+                    <div>
+                        @Model.ContactEmail
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </div><!--/.col (left) -->
+</div><!-- /.row -->

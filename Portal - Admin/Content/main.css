@@ -1,0 +1,5 @@
+.skin-blue .main-header .logo img, .skin-purple .main-header .logo img {
+    display: block;
+    max-width: 100%;
+    height: 100%;
+}

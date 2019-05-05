@@ -1,0 +1,1176 @@
+USE [PROPCOM]
+
+/****** Object:  Table [dbo].[P_ACCNT]    Script Date: 2/21/2016 10:59:24 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_ACCNT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[NAME] [nvarchar](100) NOT NULL,
+	[LOC] [nvarchar](30) NULL,
+	[BIRTH_DT] [datetime] NULL,
+	[SALUTATION] [nvarchar](30) NULL,
+	[NATIONALITY] [nvarchar](30) NULL,
+	[ID_TYPE] [nvarchar](30) NULL,
+	[ID_NUM] [nvarchar](50) NULL,
+	[CUST_TYPE_CD] [nvarchar](30) NULL,
+	[ACCNT_TYPE_CD] [nvarchar](30) NOT NULL,
+	[INTEGRATION_ID] [nvarchar](30) NULL,
+	[CUSTOMER_NUM] [nvarchar](30) NULL,
+	[ACCNT_STATUS] [nvarchar](30) NULL,
+	[ADDR_ID] [bigint] NULL,
+	[EMAIL_ADDR] [nvarchar](100) NULL,
+	[MOBILE_NO] [nvarchar](30) NULL,
+	[HOUSE_NO] [nvarchar](30) NULL,
+	[OFFICE_NO] [nvarchar](30) NULL,
+	[FAX_NO] [nvarchar](30) NULL,
+	[BANK_NAME] [varchar](50) NULL,
+	[CUST_SINCE] [date] NULL,
+	[PAR_ACCNT_ID] [bigint] NULL,
+	[MASTER_ACCNT_ID] [bigint] NULL,
+	[CONTACT_NAME] [nvarchar](250) NULL,
+	[BUSINESS_TYPE] [nvarchar](30) NULL,
+	[WEBSITE_URL] [nvarchar](255) NULL,
+	[EMP_NO] [int] NULL,
+	[VIP_FLG] [nvarchar](30) NULL,
+	[BILL_ACCNT_NUM] [nvarchar](30) NULL,
+	[BILL_ACCNT_NAME] [nvarchar](100) NULL,
+	[BILL_COMP_NAME] [nvarchar](100) NULL,
+	[BILL_CYCLE] [nvarchar](10) NULL,
+	[BILL_CURR] [nvarchar](10) NULL,
+	[PAYMENT_METHOD] [nvarchar](30) NULL,
+	[SALES_CD] [nvarchar](30) NULL,
+	[INDUSTRIAL_CD] [nvarchar](30) NULL,
+	[CUST_USER_ID] [bigint] NULL,
+	[ACCNT_SUB_STATUS] [nvarchar](30) NULL,
+ CONSTRAINT [P_ACCNT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_ACCNT_ACT]    Script Date: 2/21/2016 10:59:24 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ACCNT_ACT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ACCNT_ID] [bigint] NULL,
+	[ACT_DESC] [nvarchar](100) NULL,
+	[INSTALL_DT] [datetime] NULL,
+	[ASSIGNEE] [nvarchar](100) NULL,
+	[STATUS] [nvarchar](30) NULL,
+	[REASON] [nvarchar](100) NULL,
+ CONSTRAINT [P_ACCNT_ACT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ACCNT_ATT]    Script Date: 2/21/2016 10:59:24 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ACCNT_ATT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ACCNT_ID] [bigint] NULL,
+	[FILE_PATH_NAME] [nvarchar](255) NULL,
+ CONSTRAINT [P_ACCNT_ATT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+
+/****** Object:  Table [dbo].[P_ACCNT_NOTE]    Script Date: 2/21/2016 10:59:24 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ACCNT_NOTE](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ACCNT_ID] [bigint] NULL,
+	[NOTE] [nvarchar](max) NULL,
+ CONSTRAINT [P_ACCNT_NOTE_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ADDR]    Script Date: 2/21/2016 10:59:25 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ADDR](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ADDR_NAME] [nvarchar](100) NOT NULL,
+	[ADDR_TYPE] [nvarchar](30) NULL,
+	[ADDR] [nvarchar](50) NULL,
+	[ADDR_1] [nvarchar](50) NULL,
+	[ADDR_2] [nvarchar](50) NULL,
+	[BUILDING_NAME] [nvarchar](100) NULL,
+	[STREET_TYPE] [nvarchar](30) NULL,
+	[STREET_NAME] [nvarchar](50) NULL,
+	[SECTION] [nvarchar](100) NULL,
+	[POSTAL_CD] [nvarchar](10) NULL,
+	[CITY] [nvarchar](100) NULL,
+	[STATE] [nvarchar](30) NULL,
+	[COUNTRY] [nvarchar](30) NULL,
+	[INTEGRATION_ID] [nvarchar](15) NULL,
+	[SITE_NAME] [nvarchar](50) NULL,
+	[APPT_DT] [datetime] NULL,
+	[STATUS_CD] [nvarchar](100) NULL,
+ CONSTRAINT [P_ADDR_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ASSET]    Script Date: 2/21/2016 10:59:26 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ASSET](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ASSET_NUM] [nvarchar](100) NOT NULL,
+	[PROD_ID] [bigint] NULL,
+	[STATUS_CD] [nvarchar](30) NULL,
+	[CUST_ID] [bigint] NULL,
+	[BILL_ID] [bigint] NULL,
+	[SVC_AC_ID] [bigint] NULL,
+	[PAR_ASSET_ID] [bigint] NULL,
+	[ROOT_ASSET_ID] [bigint] NULL,
+	[SERVICE_NUM] [nvarchar](40) NULL,
+	[INTEGRATION_ID] [nvarchar](30) NULL,
+	[INSTALL_DT] [datetime] NULL,
+	[END_DT] [datetime] NULL,
+	[QTY] [int] NULL,
+	[SUBNET_MASK] [nvarchar](30) NULL,
+	[BTU_ID] [nvarchar](50) NULL,
+	[WORK_ORDER] [nvarchar](50) NULL,
+ CONSTRAINT [P_ASSET_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ASSET_CON]    Script Date: 2/21/2016 10:59:27 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ASSET_CON](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ASSET_ID] [bigint] NULL,
+	[CON_ID] [bigint] NULL,
+ CONSTRAINT [P_ASSET_CON_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ASSET_OM]    Script Date: 2/21/2016 10:59:27 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ASSET_OM](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[OM_ASSET_ID] [bigint] NULL,
+	[OM_PAR_ASSET_ID] [bigint] NULL,
+ CONSTRAINT [P_ASSET_OM_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_AUDIT_LOG]    Script Date: 2/21/2016 10:59:28 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_AUDIT_LOG](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ENTITY] [nvarchar](30) NULL,
+	[EVENT_TYPE] [nvarchar](30) NULL,
+	[COMMIT_BY] [bigint] NULL,
+	[RECORD_KEY] [bigint] NULL,
+	[LOG_DETAILS] [nvarchar](max) NULL,
+ CONSTRAINT [P_AUDIT_LOG_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_AUDIT_TRAIL]    Script Date: 2/21/2016 10:59:28 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_AUDIT_TRAIL](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[AUDIT_ROW_ID] [bigint] NULL,
+	[ACTION_CD] [nvarchar](30) NULL,
+	[OLD_VAL] [nvarchar](max) NULL,
+	[NEW_VAL] [nvarchar](max) NULL,
+	[MODULE_NAME] [nvarchar](50) NULL,
+	[SCREEN_NAME] [nvarchar](50) NULL,
+	[FIELD_NAME] [nvarchar](50) NULL,
+ CONSTRAINT [P_AUDIT_TRAIL_P011] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_CLIENT_MAP]    Script Date: 2/21/2016 10:59:28 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_CLIENT_MAP](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[CLIENT_TYPE] [nvarchar](30) NULL,
+	[CLIENT_NAME] [nvarchar](30) NULL,
+	[CLIENT_DESC] [nvarchar](100) NULL,
+	[PAIR_DB_TABLE] [nvarchar](30) NULL,
+	[PAIR_DB_ROWID] [bigint] NULL,
+ CONSTRAINT [P_CLIENT_MAP_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_CON_ACCNT]    Script Date: 2/21/2016 10:59:29 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_CON_ACCNT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[CON_ID] [bigint] NULL,
+	[ACCNT_ID] [bigint] NULL,
+ CONSTRAINT [P_CON_ACCNT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_CON_ADDR]    Script Date: 2/21/2016 10:59:29 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_CON_ADDR](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[CON_ID] [bigint] NULL,
+	[ADDR_ID] [bigint] NULL,
+ CONSTRAINT [P_CON_ADDR_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_CONTACT]    Script Date: 2/21/2016 10:59:29 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_CONTACT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[PERSON_UID] [nvarchar](100) NOT NULL,
+	[DEFAULT_FLG] [nvarchar](1) NULL,
+	[CONTACT_FLG] [nvarchar](1) NULL,
+	[SALUTATION] [nvarchar](30) NULL,
+	[FST_NAME] [nvarchar](100) NULL,
+	[MIDDLE_NAME] [nvarchar](50) NULL,
+	[LAST_NAME] [nvarchar](100) NULL,
+	[FULL_NAME] [nvarchar](250) NULL,
+	[ID_TYPE] [nvarchar](30) NULL,
+	[ID_NUM] [nvarchar](50) NULL,
+	[GENDER] [nvarchar](30) NULL,
+	[BIRTH_DT] [datetime] NULL,
+	[NATIONALITY] [nvarchar](30) NULL,
+	[EMAIL_ADDR] [nvarchar](50) NULL,
+	[MOBILE_NO] [nvarchar](30) NULL,
+	[HOUSE_NO] [nvarchar](30) NULL,
+	[OFFICE_NO] [nvarchar](30) NULL,
+	[FAX_NO] [nvarchar](30) NULL,
+	[POSTN] [nvarchar](50) NULL,
+	[INTEGRATION_ID] [nvarchar](30) NULL,
+	[PREF_LANG] [nvarchar](30) NULL,
+ CONSTRAINT [P_CONTACT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_DEMAND_LST]    Script Date: 2/21/2016 10:59:29 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_DEMAND_LST](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[DL_NUM] [nvarchar](30) NULL,
+	[DL_CUST_NAME] [nvarchar](255) NULL,
+	[DL_ADDR_TYPE] [nvarchar](30) NULL,
+	[DL_ADDR] [nvarchar](50) NULL,
+	[DL_ADDR_1] [nvarchar](50) NULL,
+	[DL_ADDR_2] [nvarchar](50) NULL,
+	[DL_BUILDING_NAME] [nvarchar](100) NULL,
+	[DL_STREET_TYPE] [nvarchar](30) NULL,
+	[DL_STREET_NAME] [nvarchar](50) NULL,
+	[DL_SECTION] [nvarchar](50) NULL,
+	[DL_POSTAL_CD] [nvarchar](10) NULL,
+	[DL_CITY] [nvarchar](100) NULL,
+	[DL_STATE] [nvarchar](100) NULL,
+	[DL_COUNTRY] [nvarchar](30) NULL,
+	[DL_STATUS] [nvarchar](30) NULL,
+	[DL_SOURCE] [nvarchar](50) NULL,
+	[DL_REASON] [nvarchar](100) NULL,
+	[DL_COMMENT] [nvarchar](max) NULL,
+	[DL_EMAIL] [nvarchar](50) NULL,
+	[DL_CONTACT_NUM] [nvarchar](30) NULL,
+	[DL_PROD_ID] [bigint] NULL,
+ CONSTRAINT [P_DEMAND_LST_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_EMAIL_LOG]    Script Date: 2/21/2016 10:59:29 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_EMAIL_LOG](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[FROM_EMAIL] [nvarchar](250) NULL,
+	[TP_EMAIL] [nvarchar](250) NULL,
+	[SUBJECT] [nvarchar](250) NULL,
+	[BODY] [nvarchar](max) NULL,
+ CONSTRAINT [PK_P_EMAIL_LOG] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_GROUP]    Script Date: 2/21/2016 10:59:30 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_GROUP](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[GROUP_CD] [nvarchar](50) NULL,
+	[GROUP_DESC] [nvarchar](50) NULL,
+	[ACCESS_LVL] [nvarchar](50) NULL,
+	[ACTIVE_FLG] [char](1) NULL,
+ CONSTRAINT [P_GROUP_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_GROUP_ACCESS]    Script Date: 2/21/2016 10:59:30 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_GROUP_ACCESS](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[GROUP_ID] [bigint] NULL,
+	[MODULE_ID] [bigint] NULL,
+	[IS_VIEWABLE] [int] NULL,
+	[IS_ADDABLE] [int] NULL,
+	[IS_EDITABLE] [int] NULL,
+	[IS_DELETABLE] [int] NULL,
+	[IS_APPROVABLE] [int] NULL,
+	[IS_REJECTABLE] [int] NULL,
+ CONSTRAINT [P_GROUP_ACCESS_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_LKP_GENERAL]    Script Date: 2/21/2016 10:59:30 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_LKP_GENERAL](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[TYPE] [nvarchar](30) NULL,
+	[ACTIVE_FLG] [char](1) NULL,
+	[LKP_DESC] [nvarchar](max) NULL,
+ CONSTRAINT [P_LKP_GENERAL_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_MODULE]    Script Date: 2/21/2016 10:59:30 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_MODULE](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[MODULE_CD] [nvarchar](16) NULL,
+	[MODULE_NM] [nvarchar](50) NULL,
+	[IS_VIEWABLE] [int] NULL,
+	[IS_ADDABLE] [int] NULL,
+	[IS_EDITABLE] [int] NULL,
+	[IS_DELETABLE] [int] NULL,
+	[IS_APPROVABLE] [int] NULL,
+	[IS_REJECTABLE] [int] NULL,
+ CONSTRAINT [P_MODULE_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ORDER]    Script Date: 2/21/2016 10:59:31 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_ORDER](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ORDER_NUM] [nvarchar](100) NOT NULL,
+	[ORDER_TYPE] [nvarchar](30) NULL,
+	[ORDER_STATUS] [nvarchar](30) NULL,
+	[ORDER_SUBMIT_DT] [datetime] NULL,
+	[PREF_INSTALL_DT] [datetime] NULL,
+	[ASSIGNEE] [nvarchar](100) NULL,
+	[ORDER_SOURCE] [nvarchar](30) NULL,
+	[CAMPAIGN_CD] [nvarchar](30) NULL,
+	[ORDER_SUBMITTED_BY] [nvarchar](30) NULL,
+	[CUST_REP_ID] [varchar](100) NULL,
+	[VERIFICATION_ID] [bigint] NULL,
+	[TERM_STATUS_CD] [nvarchar](100) NULL,
+ CONSTRAINT [P_ORDER_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_ORDER_ACT]    Script Date: 2/21/2016 10:59:31 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ORDER_ACT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ORDER_ID] [bigint] NULL,
+	[ACT_DESC] [nvarchar](100) NULL,
+	[INSTALL_DT] [datetime] NULL,
+	[ASSIGNEE] [nvarchar](100) NULL,
+	[RETURNED] [nvarchar](30) NULL,
+	[COMPLETE] [nvarchar](30) NULL,
+	[REASON] [nvarchar](100) NULL,
+ CONSTRAINT [P_ORDER_ACT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ORDER_ATT]    Script Date: 2/21/2016 10:59:31 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ORDER_ATT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ORDER_ID] [bigint] NULL,
+	[FILE_PATH_NAME] [nvarchar](255) NULL,
+ CONSTRAINT [P_ORDER_ATT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ORDER_ITEM]    Script Date: 2/21/2016 10:59:31 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_ORDER_ITEM](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ORDER_ID] [bigint] NOT NULL,
+	[ORDER_ASSET_NUM] [varchar](100) NULL,
+	[PROD_ID] [bigint] NULL,
+	[STATUS_CD] [nvarchar](30) NULL,
+	[CUST_ID] [bigint] NULL,
+	[BILL_ID] [bigint] NULL,
+	[SVC_AC_ID] [bigint] NULL,
+	[PAR_ORDER_ITEM_ID] [bigint] NULL,
+	[ROOT_ORDER_ITEM_ID] [bigint] NULL,
+	[SERVICE_NUM] [nvarchar](40) NULL,
+	[INTEGRATION_ID] [nvarchar](30) NULL,
+	[INSTALL_DT] [datetime] NULL,
+	[END_DT] [datetime] NULL,
+	[QTY] [int] NULL,
+	[CIP_PRICE] [money] NULL,
+	[ACTION_TYPE] [nvarchar](30) NULL,
+	[RADIUS_GROUP_CD] [nvarchar](30) NULL,
+	[SUBNET_MASK] [nvarchar](30) NULL,
+	[ETC_FLG] [char](1) NULL,
+	[OTC_REMARKS] [nvarchar](100) NULL,
+	[OTC_TYPE] [varchar](255) NULL,
+	[OLD_SERVICE_NUM] [nvarchar](50) NULL,
+	[BTU_ID] [nvarchar](50) NULL,
+	[WORK_ORDER] [nvarchar](50) NULL,
+ CONSTRAINT [P_ORDER_ITEM_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_ORDER_ITEM_OM]    Script Date: 2/21/2016 10:59:31 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ORDER_ITEM_OM](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[OM_ORDER_ITEM_ID] [bigint] NULL,
+	[OM_PAR_ORDER_ITEM_ID] [bigint] NULL,
+ CONSTRAINT [P_ORDER_ITEM_OM_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_ORDER_NOTE]    Script Date: 2/21/2016 10:59:31 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_ORDER_NOTE](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ORDER_ID] [bigint] NULL,
+	[NOTE] [text] NULL,
+ CONSTRAINT [P_ORDER_NOTE_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_PROD]    Script Date: 2/21/2016 10:59:32 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_PROD](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[PRD_NAME] [nvarchar](100) NOT NULL,
+	[PRD_DESC] [nvarchar](255) NULL,
+	[PRD_CATEGORY] [nvarchar](50) NULL,
+	[PRD_TYPE] [nvarchar](30) NULL,
+	[PRD_LVL] [nvarchar](10) NULL,
+	[PRD_CURRENCY] [nvarchar](10) NULL,
+	[PRD_PRICE] [money] NULL,
+	[PRD_PRICE_TYPE] [nvarchar](30) NULL,
+	[PROVIDER_ID] [bigint] NULL,
+	[QUOTA] [nvarchar](30) NULL,
+	[DL_SPD] [nvarchar](30) NULL,
+	[UL_SPD] [nvarchar](30) NULL,
+	[CONT_TERM] [int] NULL,
+	[CON_PERIOD] [nvarchar](10) NULL,
+	[POLICY] [nvarchar](max) NULL,
+	[IMAGE_FILE_PATH] [nvarchar](255) NULL,
+	[ACTIVE_FLG] [char](1) NULL,
+	[SEGMENT_TYPE] [nvarchar](30) NULL,
+	[PART_NUM] [nvarchar](50) NULL,
+	[INTEGRATION_ID] [nvarchar](30) NULL,
+	[EXT_PROD_NAME] [nvarchar](100) NULL,
+	[MAX_QTY] [int] NULL,
+	[VIS_ASSET] [char](1) NULL,
+	[VIS_INVOICE] [char](1) NULL,
+	[VAS_FLG] [char](1) NULL,
+	[SVC_ID_REQ] [char](1) NULL,
+	[EQ_ID_REQ] [char](1) NULL,
+	[PWD_REQ] [char](1) NULL,
+	[PROVI_REQ] [char](1) NULL,
+	[GST_CD] [nvarchar](10) NULL,
+	[GST_PT] [int] NULL,
+	[RADIUS_GROUP_CD] [nvarchar](30) NULL,
+	[INV_GROUP] [nvarchar](50) NULL,
+	[OTC_FLG] [char](1) NULL,
+ CONSTRAINT [P_PROD_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_PROD_ATTR]    Script Date: 2/21/2016 10:59:32 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_PROD_ATTR](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[PROD_ID] [bigint] NULL,
+	[ATTR_01] [nvarchar](30) NULL,
+ CONSTRAINT [P_PROD_ATTR_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_PROD_ISP]    Script Date: 2/21/2016 10:59:32 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_PROD_ISP](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[PROVIDER_NAME] [nvarchar](30) NOT NULL,
+	[IMAGE_FILE_PATH] [nvarchar](255) NULL,
+	[PROVIDER_DESC] [nvarchar](255) NULL,
+	[POLICY] [nvarchar](max) NULL,
+ CONSTRAINT [P_PROD_ISP_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_PROD_ITEM]    Script Date: 2/21/2016 10:59:33 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_PROD_ITEM](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[PROD_ITEM_ID] [bigint] NOT NULL,
+	[PROD_ID] [bigint] NOT NULL,
+	[PAR_ITEM_ID] [bigint] NULL,
+	[ROOT_ITEM_ID] [bigint] NULL,
+	[ACTIVE_FLG] [char](1) NULL,
+	[REQ_FLG] [char](1) NULL,
+	[ITEM_ATR1] [nvarchar](50) NULL,
+	[ITEM_ATR2] [nvarchar](50) NULL,
+ CONSTRAINT [P_PROD_ITEM_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_PROD_OM]    Script Date: 2/21/2016 10:59:33 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_PROD_OM](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[OM_ITEM_ID] [bigint] NULL,
+	[OM_PAR_ITEM_ID] [bigint] NULL,
+ CONSTRAINT [P_PROD_OM_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_SRV_ACT]    Script Date: 2/21/2016 10:59:33 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_SRV_ACT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[SRV_ID] [bigint] NULL,
+	[VISIT_DT] [datetime] NULL,
+	[FIELD_STAFF] [nvarchar](100) NULL,
+	[STATUS_CD] [nvarchar](30) NULL,
+	[NOTES] [nvarchar](max) NULL,
+ CONSTRAINT [P_SRV_ACT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_SRV_ATT]    Script Date: 2/21/2016 10:59:33 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_SRV_ATT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[SRV_ID] [bigint] NULL,
+	[FILE_PATH_NAME] [nvarchar](255) NULL,
+ CONSTRAINT [P_SRV_ATT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_SRV_KEYVAL]    Script Date: 2/21/2016 10:59:34 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_SRV_KEYVAL](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[SRV_ID] [bigint] NULL,
+	[KV_TYPE] [varchar](80) NULL,
+	[KV_KEY] [nvarchar](100) NULL,
+	[VALUE] [nvarchar](max) NULL,
+ CONSTRAINT [P_SRV_KEYVAL_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_SRV_NOTE]    Script Date: 2/21/2016 10:59:35 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_SRV_NOTE](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[SRV_ID] [bigint] NULL,
+	[NOTE] [nvarchar](max) NULL,
+ CONSTRAINT [P_SRV_NOTE_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_SRV_TIC]    Script Date: 2/21/2016 10:59:35 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_SRV_TIC](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[SR_NUM] [bigint] NOT NULL,
+	[CUST_ID] [bigint] NULL,
+	[ASSET_ID] [bigint] NULL,
+	[CATEGORY] [nvarchar](100) NULL,
+	[SUB_CATEGORY] [nvarchar](100) NULL,
+	[PRIORITY] [nvarchar](30) NULL,
+	[STATUS_CD] [nvarchar](30) NULL,
+	[CASE_OWNER_ID] [bigint] NULL,
+	[CASE_DUE_DT] [datetime] NULL,
+	[TEAM] [nvarchar](50) NULL,
+	[ASSIGNEE] [nvarchar](100) NULL,
+	[CASE_RESL_DT] [datetime] NULL,
+	[RESOLUTION] [nvarchar](30) NULL,
+	[RES_TYPE] [nvarchar](50) NULL,
+	[CASE_DESC] [nvarchar](max) NULL,
+	[BILL_ACCNT_NUM] [nvarchar](100) NULL,
+	[INV_NUM] [nvarchar](50) NULL,
+	[DISPUTE_AMT] [money] NULL,
+	[CHQ_NUM] [nvarchar](50) NULL,
+	[CUST_COMP_FLG] [char](1) NULL,
+	[SVC_TYPE] [nvarchar](30) NULL,
+	[SVC_NUM] [nvarchar](50) NULL,
+	[NEW_ADR_UNIT] [nvarchar](50) NULL,
+	[NEW_ADR_FLR] [nvarchar](50) NULL,
+	[NEW_ADR_BLDG] [nvarchar](50) NULL,
+	[NEW_ADR_STREET] [nvarchar](50) NULL,
+	[NEW_ADR_SCT] [nvarchar](50) NULL,
+	[NEW_ADR_POST] [nvarchar](10) NULL,
+	[NEW_ADR_CITY] [nvarchar](100) NULL,
+	[NEW_ADR_STATE] [nvarchar](30) NULL,
+	[NEW_ADR_CTY] [nvarchar](100) NULL,
+	[NEW_CON_NUM] [nvarchar](30) NULL,
+	[NEW_CON_NAME] [nvarchar](255) NULL,
+	[NEW_CON_EMAIL] [nvarchar](50) NULL,
+	[NEW_PYMT_MET] [nvarchar](30) NULL,
+	[NEW_BILL_TYPE] [nvarchar](30) NULL,
+	[BILL_AJST_RSN] [nvarchar](30) NULL,
+ CONSTRAINT [P_SRV_TIC_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_USER]    Script Date: 2/21/2016 10:59:35 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_USER](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[FIRST_NAME] [nvarchar](100) NULL,
+	[LAST_NAME] [nvarchar](100) NULL,
+	[USERNAME] [nvarchar](100) NOT NULL,
+	[PASSWORD] [nvarchar](30) NULL,
+	[BIRTH_DT] [datetime] NULL,
+	[SALUTATION] [nvarchar](30) NULL,
+	[NATIONALITY] [nvarchar](30) NULL,
+	[ID_TYPE] [nvarchar](30) NULL,
+	[ID_NUM] [nvarchar](50) NULL,
+	[EMAIL_ADDR] [nvarchar](100) NULL,
+	[MOBILE_NO] [nvarchar](30) NULL,
+	[HOUSE_NO] [nvarchar](30) NULL,
+	[OFFICE_NO] [nvarchar](30) NULL,
+	[FAX_NO] [nvarchar](30) NULL,
+	[USER_TYPE] [nvarchar](30) NULL,
+	[ACCNT_STATUS] [nvarchar](30) NULL,
+	[ACTIVE_FLG] [char](1) NULL,
+	[ADDR_ID] [bigint] NULL,
+	[CACCNT_ID] [bigint] NULL,
+ CONSTRAINT [P_USER_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_USER_GROUP]    Script Date: 2/21/2016 10:59:35 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_USER_GROUP](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[USER_ID] [bigint] NULL,
+	[GROUP_ID] [bigint] NULL,
+ CONSTRAINT [P_USER_GROUP_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_USER_GROUP_DEPT]    Script Date: 2/21/2016 10:59:35 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_USER_GROUP_DEPT](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[GROUP_ID] [int] NULL,
+	[DEPT_ID] [int] NULL,
+	[VALUE] [int] NULL,
+ CONSTRAINT [P_USER_GROUP_DEPT_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+/****** Object:  Table [dbo].[P_VAL_LST]    Script Date: 2/21/2016 10:59:36 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_VAL_LST](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[TYPE] [nvarchar](30) NULL,
+	[NAME] [nvarchar](100) NULL,
+	[VAL] [nvarchar](100) NULL,
+	[SEQUENCE] [int] NULL,
+	[ACTIVE_FLG] [char](1) NULL,
+	[PAR_VAL_ID] [bigint] NULL,
+ CONSTRAINT [P_VAL_LST_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[P_VAL_MST]    Script Date: 2/21/2016 10:59:36 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[P_VAL_MST](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[TYPE] [nvarchar](30) NULL,
+	[ACTIVE_FLG] [char](1) NULL,
+	[PAR_TYPE] [nvarchar](30) NULL,
+ CONSTRAINT [P_VAL_MST_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+SET ANSI_PADDING OFF
+
+
+/**** Property Specific *****/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[P_PROPERTY](
+	[ROW_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[CREATED_BY] [bigint] NULL,
+	[CREATED] [datetime] NULL,
+	[LAST_UPD_BY] [bigint] NULL,
+	[LAST_UPD] [datetime] NULL,
+	[ACCNT_ID] [bigint] NULL,
+	[SITE_CODE] [nvarchar](100) NULL,
+	[NAME] [nvarchar](255) NULL,
+	[ADDR_1] [nvarchar](255) NULL,
+	[ADDR_2] [nvarchar](255) NULL,
+	[POSTAL_CD] [nvarchar](50) NULL,
+	[CITY] [nvarchar](255) NULL,
+	[STATE] [nvarchar](50) NULL,
+	[COUNTRY] [nvarchar](50) NULL,
+ CONSTRAINT [P_PROPERTY_P01] PRIMARY KEY CLUSTERED 
+(
+	[ROW_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+
+
+
+

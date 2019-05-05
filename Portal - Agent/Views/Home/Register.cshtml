@@ -1,0 +1,176 @@
+﻿@model ResComm.Web.Models.Affiliate
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout_Clean.cshtml";
+}
+<link href="@Url.Content("~/Content/progress-wizard-indicator/progress-wizard.min.css")" rel="stylesheet" type="text/css" />
+
+<div>
+    <ul class="progress-indicator">
+        <li>
+            <span class="bubble"></span>
+            <span class="font14">AFFILIATE INFORMATION</span>
+        </li>
+        <li>
+            <span class="bubble"></span>
+            <span class="font14">TERMS AND CONDITIONS</span>
+        </li>
+        <li>
+            <span class="bubble"></span>
+            <span class="font14">COMPLETED</span>
+        </li>
+    </ul>
+</div>
+<br/><br/>
+
+<div>
+    @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="progress-form">
+            <div class="text-right">
+                <span class="btn btn-sm btn-warning" onclick="progress_next();">Next <span class="glyphicon glyphicon-chevron-right"></span></span>
+            </div>
+            <br />
+            <div class="row">
+                @Html.Partial("_AffiliateSetup", Model)
+            </div>
+        </div>
+        <div class="progress-form">
+            <div class="text-right">
+                <span class="btn btn-sm btn-warning" onclick="progress_back();"><span class="glyphicon glyphicon-chevron-left"></span> Back</span>
+                <span class="btn btn-sm btn-warning" onclick="progress_next();">Agree <span class="glyphicon glyphicon-chevron-right"></span></span>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">Terms and Conditions</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div>
+                                <br />
+                                <p class="text-bold">Introduction</p>
+                                These terms and conditions shall govern your use of our website.<br />
+                                By using our website, you accept these terms and conditions in full; accordingly, if you disagree with these terms and conditions or any part of these terms and conditions, you must not use our website.<br />
+                                If you [register with our website, submit any material to our website or use any of our website services], we will ask you to expressly agree to these terms and conditions.<br />
+                                You must be at least [18] years of age to use our website; by using our website or agreeing to these terms and conditions, you warrant and represent to us that you are at least [18] years of age.<br />
+                                Our website uses cookies; by using our website or agreeing to these terms and conditions, you consent to our use of cookies in accordance with the terms of our [privacy and cookies policy].<br />
+
+                                <br />                                
+                                <p class="text-bold">Copyright notice</p>
+                                opyright (c) [year(s) of first publication] [full name].<br />
+                                Subject to the express provisions of these terms and conditions:<br />
+                                (a)	we, together with our licensors, own and control all the copyright and other intellectual property rights in our website and the material on our website; and <br />
+                                (b)	all the copyright and other intellectual property rights in our website and the material on our website are reserved.<br />
+                                
+                                <br />
+                                <p class="text-bold">Registration and accounts</p>
+                                To be eligible for an individual account on our website under this Section 6, you must [be at least 18 years of age and resident in the United Kingdom].<br />
+                                You may register for an account with our website by [completing and submitting the account registration form on our website, and clicking on the verification link in the email that the website will send to you].<br />
+                                You must not allow any other person to use your account to access the website.<br />
+                                You must notify us in writing immediately if you become aware of any unauthorised use of your account.<br />
+                                You must not use any other person's account to access the website[, unless you have that person's express permission to do so].<br />
+                                                                
+                                <br />
+                                <p class="text-bold">User login details</p>
+                                If you register for an account with our website, [we will provide you with] OR [you will be asked to choose] [a user ID and password].<br />
+                                Your user ID must not be liable to mislead and must comply with the content rules set out in Section 10; you must not use your account or user ID for or in connection with the impersonation of any person. <br />
+                                You must keep your password confidential.<br />
+                                You must notify us in writing immediately if you become aware of any disclosure of your password.<br />
+                                You are responsible for any activity on our website arising out of any failure to keep your password confidential, and may be held liable for any losses arising out of such a failure.<br />
+                                                                
+                                <br />
+                                <p class="text-bold">Cancellation and suspension of account</p>
+                                We may:<br />
+                                (a)	[suspend your account];<br />
+                                (b)	[cancel your account]; and/or<br />
+                                (c)	[edit your account details],<br />
+                                at any time in our sole discretion without notice or explanation.<br />
+                                You may cancel your account on our website [using your account control panel on the website].<br />
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+        <div class="progress-form">
+            <div class="col-md-12 text-right">
+                <span class="btn btn-sm btn-warning" onclick="progress_back();"><span class="glyphicon glyphicon-chevron-left"></span> Back</span>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <div class="box box-warning">
+                        <div class="box-header">
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="text-center">
+                                <h3>Thank you for filling out your information!</h3>
+                                <div>Your information will be stored after you click the button below.</div>
+                                <br/><br/>
+                                <div>
+                                    <input type="submit" class="btn btn-warning" value="Submit" />
+                                </div>
+                                <br/>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+    }
+</div><!-- /.row -->
+
+<script type="text/javascript">
+    var currentIdx = 0;
+
+    $(function () {
+        $('ul.progress-indicator > li:first').addClass("active");
+        $('.progress-form:first').show();
+    });
+
+    $("form").submit(function (event) {
+        if (currentIdx != $('.progress-form').index($('.progress-form:last'))) {
+            return false;
+        }
+    });
+
+    function progress_next() {
+        $("form").submit();
+
+        if ($("form").valid() == true) {
+            $('.progress-form:eq(' + currentIdx + ')').hide("drop", { direction: "left", duration: 400 });
+            $('.progress-form:eq(' + (currentIdx+1) + ')').show("drop", { direction: "right", duration: 600 });
+
+            $('ul.progress-indicator > li').removeClass("active").removeClass("completed");
+            $('ul.progress-indicator > li:lt(' + (currentIdx + 1) + ')').addClass("completed");
+            $('ul.progress-indicator > li:eq(' + (currentIdx + 1) + ')').addClass("active");
+
+            currentIdx++;
+        }
+    }
+
+    function progress_back() {
+        $('.progress-form:eq(' + (currentIdx-1) + ')').show("drop", { direction: "left", duration: 600 });
+        $('.progress-form:eq(' + currentIdx + ')').hide("drop", { direction: "right", duration: 400 });
+
+        $('ul.progress-indicator > li').removeClass("active").removeClass("completed");
+        $('ul.progress-indicator > li:lt(' + (currentIdx - 1) + ')').addClass("completed");
+        $('ul.progress-indicator > li:eq(' + (currentIdx - 1) + ')').addClass("active");
+
+        currentIdx--;
+    }
+</script>

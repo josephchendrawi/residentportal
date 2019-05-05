@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Browse File";
+    Layout = null;
+}
+
+<script src="@Url.Content("~/Content/plugins/jQuery/jQuery-2.1.3.min.js")"></script>
+
+@foreach (var URL in ViewBag.URLs)
+{
+    <span style="padding: 10px;">
+        <a href="#" class="returnImage" data-url="@Request.Url.GetLeftPart(UriPartial.Authority)@URL">
+            <div id="#image" class="img" data-source="@URL" style="background:url(@URL) center no-repeat; background-size: 100% auto; "></div>
+        </a>
+    </span>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".returnImage").click("click", function (e) {
+            var urlImage = $(this).attr("data-url");
+            //This takes the data value and id of the editor and sends the data(i.e.,image url) back to the caller page
+            window.opener.updateValue(urlImage);
+            window.close();
+        });
+    });
+</script>
+
+<style>
+    .returnImage
+    {
+        border: 2px solid lightgrey; padding: 0px; display: inline-block;
+    }
+    .returnImage:hover
+    {
+        border: 2px solid #686868;
+    }
+    .returnImage .img
+    {
+        width: 120px; height: 120px;
+    }
+</style>

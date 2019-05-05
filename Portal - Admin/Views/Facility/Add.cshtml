@@ -1,0 +1,42 @@
+﻿@model ResComm.Web.Models.Facility
+@{
+    ViewBag.Title = "Add Facility";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title { Add }
+@section ContentHeader{
+    <script>
+        $(function () {
+            $('#main_title').html("Facility");
+        });
+    </script>
+
+}
+
+<div class="row">
+    @using (Html.BeginForm("Add", "Facility", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-md-5">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Facility Information</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = "4" })
+                    </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer text-right">
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div><!-- /.box -->
+
+        </div><!--/.col (left) -->
+    }
+</div><!-- /.row -->

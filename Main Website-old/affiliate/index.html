@@ -1,0 +1,719 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Resident Portal Affiliate Page</title>
+	<meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet"> 
+    <link href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+        html { font-size: 13px; }
+        body { font-family: 'Lato', sans-serif; }
+        
+        .header { background-color:#169ece; }
+        .header .brandname { font-family: 'Oswald', sans-serif; font-weight:700; text-align:left; color:white; font-size:1.8rem; cursor:default;}
+        .header .brandname:hover { color:white; }
+        .header .menuitem { color:white; font-size:16px; }
+        .header .menuitem a:link { color:white; }
+        .header .menuitem a:visited { color:white; }
+        .header .menuitem:hover a:hover { color:white; font-weight:bold; }
+
+        .banner { text-align:center; background-image:url('image/background-tile/wall4.png'); padding:20px; }
+        .banner h1 { font-family: 'Roboto', sans-serif; font-size:2.8rem; color:black; font-weight:900; letter-spacing:-1px; text-align:center; padding-top:15px; padding-bottom:30px; }
+        .banner .video { width:750px; }
+        .banner .formpopupbutton {font-weight:bold; font-size:1.8rem; height:70px; margin-top:5px; padding:15px 0px; color:white; background-color:#16b233; width:100%; max-width:440px; border-bottom:7px solid #14992d;}
+        .banner .formpopupbutton:hover {background-color:#35c44f; border-bottom:7px solid #14992d;}
+        @media (min-width: 992px) {  
+        }
+
+        .popupoptinbox2 { background:#efefef; border:8px solid #169ece; border-radius:10px; padding:20px 20px; text-align:left; } 
+        .popupoptinbox2 hr { border-color:#c3c3c3; margin-top:10px; margin-bottom:30px; }
+        .popupoptinbox2 .popupoptinlabel { font-family:'Roboto',sans-serif; font-size:1.4rem; font-weight:normal; text-align:center; } 
+        .popupoptinbox2 .textboxname {
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            margin-right:3px; margin-top:5px;
+            font-size:16px; height:40px;
+        } 
+        .popupoptinbox2 .textboxemail {
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); /* yellow glow: rgba(233, 228, 102, 0.80) */
+            margin-right:3px; margin-top:8px;
+            font-size:16px; height:40px;
+        }  
+        .popupoptinbox2 .popupoptinbutton { width:100%; background-color:#0C7DDE; border-color:#0C7DDE; margin-top:10px; padding:15px 30px; font-size:22px; font-family:'Roboto Condensed',sans-serif; font-weight:bold; }
+        .popupoptinbox2 .formarea { padding:0px 0px 0px 0px; text-align:center;}
+        @media (min-width: 992px) {
+            .popupoptinbox2 .formarea { padding:0px 50px 20px 50px; }
+            .popupoptinbox2 .popupoptinbutton { width:auto; margin:auto; margin-top:10px;}
+        }
+                
+        .product { padding:20px; }
+        .product h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .product h2 { font-weight:normal; }
+        .product p { font-size:1.3rem; } 
+        .product b { color:#169ece; } 
+        .product ul { list-style-type:none; margin-left:0px; padding-left:0px; padding-top:8px;}
+        .product li { margin-left:35px; margin-bottom:10px; font-size:1.3rem; }
+        .product li .listcheck { margin-left:-35px; margin-right:15px; }
+        .product .productbox { width:100%; }
+
+        .statement { background-color:black; padding:30px 20px;}
+        .statement h1 { text-align:center; font-size:26px; color:white; line-height:1.3em; padding-bottom:10px; font-weight:500;}
+        @media (min-width: 992px) {
+            .statement { background-color:black; padding:20px;}
+            .statement h1 { text-align:center; font-size:34px; color:white; line-height:1.3em; padding-bottom:10px;}
+        }
+
+        .who { text-align:center; padding:20px; }
+        .who h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .who p { font-family: 'Lato', sans-serif; font-weight:400; font-size:1.6rem; text-align:center;}
+        .who .title { font-family: 'Archivo Narrow', sans-serif; font-size:24px; padding:0px; font-weight:bold; margin:14px 0px 0px 0px; color:#2a69bf; }
+        .who .subtitle { font-size:15px; color:#808080; padding:0px; margin:0px; }
+
+        .rewardstatement { text-align:center; padding:20px; background-image:url('image/background-tile/low_contrast_linen.png'); }
+        .rewardstatement h1 { text-align:center; font-size:2.6em; color:white; line-height:1.3em; padding-bottom:10px;}
+
+        .commission { text-align:center; padding:20px; background-image:url('image/background-tile/cork-wallet.png'); }
+        .commission h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .commission p { font-family: 'Lato', sans-serif; font-weight:400; font-size:1.6rem; text-align:center;}
+        .commission .commstructure table { margin:auto; font-family:'Archivo Narrow', sans-serif; font-size:26px; font-weight:bold; }
+        .commission .commstructure table td { background-color:#e6db3c; padding:5px 10px; }
+        .commission .commprojection table {margin:auto; font-family:'Roboto Condensed', sans-serif; font-size:22px; font-weight:300; border-spacing: 3px; border-collapse: separate;}
+        .commission .commprojection table td { background-color:#efefef; padding:5px 20px; font-weight:400; }
+        .commission .commprojection .lastcol { background-color:transparent; text-align:left; font-size:18px; font-weight:300; }
+
+        .timeneeded { background-color:#0A86B2; padding:0px; } /* 1267ad 003366 101c44*/
+        .timeneeded h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#efefef; font-size:2.7rem; text-align:center;}
+        .timeneeded p { font-family: 'Lato', sans-serif; font-weight:400; font-size:1.8rem; text-align:center; color:#efefef; padding-top:20px; padding-bottom:10px;}
+        .timeneeded .min { font-family: 'Roboto Condensed', 'Roboto', 'Lato' sans-serif; font-weight:400; font-size:1.0rem; text-align:left; color:#efefef; padding-top:10px;}
+
+        .nosalesexp { background-image:url('../image/Background/dust.png'); background-repeat:repeat; }
+        .nosalesexp h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .nosalesexp p { font-family: 'Lato', sans-serif; font-weight:400; font-size:1.8rem; text-align:center; margin:auto; padding-top:20px; }
+
+        .emailswipe { background-color:white; }
+        .emailswipe h1 { font-family: 'Archivo Narrow', sans-serif; font-weight:900; color:#0a86b2; font-size:2.6rem; text-align:center;}
+        .emailswipe p { font-family: 'Lato', sans-serif; font-weight:400; font-size:1.2rem; text-align:center; max-width:600px; margin:auto;}
+        .emailswipe .subject { font-family: 'Oswald', sans-serif; font-weight:400; text-align:left; font-size:20px; }
+        .emailswipe .emailtext { font-family: 'Lato', sans-serif; font-weight:400; text-align:left; font-size:14px;}
+
+        /* Extra small devices (phones, less than 768px) */
+        /* No media query since this is the default in Bootstrap */
+
+        /* Small devices (tablets, 768px and up) */
+        @media (min-width: 768px) {  
+            html { font-size: 14px; }
+            .about .productbox { text-align:center; background-color:#efefef; padding:20px 50px; max-width:800px; margin:auto; border:1px dotted #808080; }
+            .about .productname { font-size:2.6rem; }
+        }
+
+        /* Medium devices (desktops, 992px and up) */
+        @media (min-width: 992px) {  
+        }
+
+        /* Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {  
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <section class="header">
+        <nav class="navbar navbar-default" style="margin-bottom: 0px; background-color:rgba(28, 145, 219,0.8);">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="background-color:#e0e0e0;">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar" style="color:white;"></span>
+                        <span class="icon-bar" style="color:white;"></span>
+                        <span class="icon-bar" style="color:white;"></span>
+                    </button>
+                    <a class="navbar-brand brandname" href="#">Resident Portal Affiliate Programme</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="menuitem"><a href="#About">About</a></li>
+                        <li class="menuitem"><a href="#Bonuses">Bonuses</a></li>
+                        <li class="menuitem"><a href="#EmailSwipe">Email Swipes</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </section>
+    <section class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        Learn How-To Generate Passive Income with Resident Portal Affiliate Programme.
+                        A New Source of Income that Pays You 50% Upfront Commission and 30% Commission For Each Year Onwards. 
+                    </h1>
+                    <br />
+                    <div style="max-width:800px; margin:auto; text-align:center;">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe width="639" height="360" src="https://www.youtube.com/embed/SghI4ovxN9s?rel=0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <img src="image/placeholder/video.jpg" class="video" style="display:none;"/>
+                    <br /><br />
+                    <a id="btnRegisterPopup" class="btn formpopupbutton" data-toggle="modal" data-target="#modal-optinform2">
+                        <span>Register as an Affiliate (It's Free)</span>
+                    </a>
+                    <br /><br /><br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>What Will You Be Promoting?</h1>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-5">
+                    <img src="../images/softwarebox/boxwithfeatures.png" class="productbox" />
+                </div>
+                <div class="col-sm-12 col-md-7">
+                    <h2>Introducing Resident Portal</h2>
+                    <p>Resident Portal is a cost-effective property management software that was designed to help manage, increase effectiveness and efficiency of daily operational activities of a condominium, apartment or housing community. With resident portal, the property management team can enjoy:</p>
+                    <ul>
+                        <li><img src="images/icon/check.png" class="listcheck" /><b>BETTER COMMUNICATE</b> and <b>SERVICE</b> both owners and residents by using a top notch software to provide great service and forge a good relationship.</li>
+                        <li><img src="images/icon/check.png" class="listcheck" /><b>SIMPLIFY</b>, <b>AUTOMATE</b> and <b>STREAMLINE</b> their day-to-day property management work processes, activities and tasks.</li>
+                        <li><img src="images/icon/check.png" class="listcheck" /><b>BETTER CONVENIENCE</b> for both owners and residents access to information and services through their computers and mobile devices.</li>
+                        <li><img src="images/icon/check.png" class="listcheck" /><b>SAVE MONEY </b> and <b>SAVE TIME</b> by cutting the clutters, establishing an efficient workflow systems, reduce paper work, automation, etc.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="statement">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>
+                        Once a property starts using Resident Portal, it's 98% likely that they will automatically renew their subscription every year. This means that you can rake in your commissions yearly for doing practically nothing! Pretty awesome and cool right?
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="who">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Who You Can Promote To?</h1>
+                    <br />
+                    <p>Practically, <u>ANY</u> property or residential that provides facilities and services can benefit from Resident Portal. Probably even the property that you are currently living in now needs Resident Portal. Basically, you can promote Resident Portal to:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4" style="padding-left:0px; padding-right:0px; text-align:center;"> 
+                    <img src="images/section-promote/ExistingProperties.png" class="img-responsive"/> 
+                    <p class="title">Existing Properties</p>
+                    <p class="subtitle">(Condominiums, Apartments, Flats, etc.)</p>
+                </div>
+                <div class="col-xs-12 col-sm-4" style="padding-left:0px; padding-right:0px; text-align:center;"> 
+                    <img src="images/section-promote/NewDevelopment.png" class="img-responsive"/>
+                    <p class="title">Existing Residential</p>
+                    <p class="subtitle">(Guarded &amp; Gated Housing Estates, etc.)</p>
+                </div>
+                <div class="col-xs-12 col-sm-4" style="padding-left:0px; padding-right:0px; text-align:center;"> 
+                    <img src="images/section-promote/ExistingResidentials.png" class="img-responsive"/>
+                    <p class="title">New Developments</p>
+                    <p class="subtitle">(Property Developers)</p>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <br /><br />
+                    <p>
+                        In fact, property purchasers, owners, investors, tenants and even your friends can also help you promote Resident Portal. All you have to do is to ask them to provide you with the contact of the property they are staying in or the property that they have purchased. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="rewardstatement">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Join us to promote Resident Portal and rake in <b style="color:#d5400c">huge commissions</b> from an in demand product and generate passive income year-after-year...</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="commission">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>How Much Will I Earn?</h1>
+                    <p>
+                        Basically, for every property that you sign-up, we will <u>pay you commissions for the rest of your life</u> as long as the property remains registered with us!
+                        For the first year, we will be paying you 50% commission of the subscription fees and every subsequent year, you will be getting 30% commission on the renewal rate.
+                    </p>
+                    <div class="commstructure">
+                        <table>
+                            <tr>
+                                <td>50% Commission = 1st Year</td>
+                            </tr>
+                        </table> 
+                        <table style="margin-top:10px;">
+                            <tr>
+                                <td>30% Commission = 2nd Year Onwards</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:30px;">
+                <div class="col-sm-12">
+                    <h1>So How Rewarding Can This Be?</h1>
+                    <p>Say you sign-up 20 properties each year for the next 10 years and each property averaging about 500 units. Also, let's assume that all the properties signed up for Resident Portal's standard package @ RM 2600. Then you will roughly be getting:</p>
+                    <br />
+                    <div class="commprojection">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td style="background-color:transparent;"></td>
+                                    <td>New Sign-Ups</td>
+                                    <td>Earnings</td>
+                                    <td class="lastcol hidden-xs hidden-sm"><u>Calculation Details</u></td>
+                                </tr>
+                            </thead>
+                            <tr><td>Year 1</td><td>20</td><td>RM 26,000</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm)</td></tr>
+                            <tr><td>Year 2</td><td>20</td><td>RM 41,600</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 20 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 3</td><td>20</td><td>RM 57,200</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 40 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 4</td><td>20</td><td>RM 72,800</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 60 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 5</td><td>20</td><td>RM 88,400</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 80 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 6</td><td>20</td><td>RM 104,000</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 100 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 7</td><td>20</td><td>RM 119,600</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 120 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 8</td><td>None</td><td>RM 109,200</td><td class="lastcol hidden-xs hidden-sm"><span class="fa fa-arrow-left">&nbsp;</span> <mark style="font-weight:400;">Even if you do nothing - you still get paid!</mark> (RM 2600 x 140 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 9</td><td>20</td><td>RM 135,200</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 140 Renew x 30% Comm)</td></tr>
+                            <tr><td>Year 10</td><td>20</td><td>RM 150,800</td><td class="lastcol hidden-xs hidden-sm">(RM 2600 x 20 New x 50% Comm) + (RM 2600 x 160 Renew x 30% Comm)</td></tr> 
+                        </table>
+                    </div>
+                    <br /><br />
+                    <p>This projection is just an estimate based on our standard package. Imagine how much more you can earn if you can get more than 20 properties on board and also if the properties sign up for our premium packages? The sky is the limit. It's up to you to define how much you want to earn!</p>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+</section>
+    <section class="timeneeded">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="padding-top:30px;">
+                    <h1>How Much Time Do I Need to Promote Resident Portal?</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="text-align:center;">
+                    <p>In actual truth, not much! This is because we have <u>DONE</u> all of the work for you. Closing a sale could be as simple as referring someone to your affiliate URL and from there, the website will do all the sales.</p>
+                    <button type="button" class="btn btn-success btn-lg">Click Here to View Sample Affiliate Site</button>
+                    <p>Also, to save you time, we have prepared a complete Affiliate Kit for you! Details are in the section below.</p>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="nosalesexp">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="padding-top:30px;"> 
+                    <h1>What if I Don't Have Any Sales Experience?</h1>
+                    <p>Don't worry, we have got you covered on this as well! Once you sign up as an affiliate, we will provide you with a full fledge Affiliate Kit that will get you started in no time! It contains everything you need to promote Resident Portal!</p>
+                    <p>Here is what you will find in the Affiliate Kit:</p>
+                    <ul>
+                        <li>Your own affiliate promotion website.</li>
+                        <li>Presentation slides.</li>
+                        <li>Brochure.</li>
+                        <li>FAQ for Properties.</li>
+                        <li>Manual registration form.</li>
+                        <li>Email swipes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="emailswipe" style="display:none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <br />
+                    <a name="EmailSwipe"></a>
+                    <h1>Email Swipes</h1>
+                    <div style="padding:20px; max-width:800px; margin:auto; background-color:#e0e0e0; border-radius:10px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#emailswipe1" aria-controls="emailswipe1" role="tab" data-toggle="tab">Swipe 1</a></li>
+                            <li role="presentation"><a href="#emailswipe2" aria-controls="emailswipe2" role="tab" data-toggle="tab">Swipe 2</a></li>
+                            <li role="presentation"><a href="#emailswipe3" aria-controls="emailswipe3" role="tab" data-toggle="tab">Swipe 3</a></li>
+                            <li role="presentation"><a href="#emailswipe4" aria-controls="emailswipe4" role="tab" data-toggle="tab">Swipe 4</a></li>
+                            <li role="presentation"><a href="#emailswipe5" aria-controls="emailswipe5" role="tab" data-toggle="tab">Swipe 5 (Follow-Up)</a></li>
+                            <li role="presentation"><a href="#emailswipe6" aria-controls="emailswipe6" role="tab" data-toggle="tab">Swipe 6 (Follow-Up)</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content" style="background-color:white; margin-left:1px;">
+                            <div role="tabpanel" class="tab-pane fade in active" id="emailswipe1" style="padding:20px;">
+                                <br />
+                                <p class="subject">Subject: Finally it’s here… 2016 Most Highly Anticipated Social Media Training</p> 
+                                <p class="subject">Subject: 'Never-Before-Seen' Social Media Deal... See It Yourself to Believe</p> 
+                                <p class="emailtext" style="padding-top:3px; padding-bottom:8px; font-size:12px; color:#808080; font-family:sans-serif;"><i>*subjects of email swipes 1 and 4 and interchangeable</i></p>
+                                <br />
+                                <p class="emailtext">
+                                    Hi [FIRSTNAME],<br />
+                                    <br /> 
+                                    With almost everyone on social media, it’s no wonder more and more businesses are diverting a lot of their marketing effort and resources into it.<br />
+                                    <br /> 
+                                    •	But where do you start?<br />
+                                    •	Which platforms should you use in your business?<br />
+                                    •	What are the best ways to use it?<br />
+                                    •	How are people generating massive loads of FREE traffic to their sites using social media and I am not? What are the secrets behind these successes?<br />
+                                    <br /> 
+                                    Well, you’re in luck. This brand new Ultimate 6-in-1 Social Media Success Pack consists of SIX of the best social media courses in 2016 with a guide solely on Social Media in general to get you started quickly and then 5 dedicated courses that goes in depth on the techniques and strategies for success for Facebook, Twitter, YouTube, LinkedIn and Instagram.<br />
+                                    <br /> 
+                                    [INSERT LINK]<br />
+                                    <br /> 
+                                    Here are a few things you'll discover:<br />
+                                    <br /> 
+                                    * How to set yourself up for success on the most popular social media networks<br />
+                                    <br /> 
+                                    * How to build a rapport with your visitors and gain their trust<br />
+                                    <br /> 
+                                    * How to provide engaging content that people want to read and share<br />
+                                    <br /> 
+                                    * Create synergy between your social media channels to drive more traffic and grow faster<br />
+                                    <br /> 
+                                    * How to run competitions and other events to get more traffic<br />
+                                    <br /> 
+                                    + much, much more!<br />
+                                    <br /> 
+                                    Make sure your claim your copy right now while it's hot!<br />
+                                    <br /> 
+                                    [INSERT LINK]<br />
+                                    <br /> 
+                                    To Your Success,<br />
+                                    Your Name
+                                    <br /> <br />
+                                    P.S. - This is a special promotion. It’s the first time someone is offering all SIX of their hottest social media courses for the price of ONE! If you have been holding back – don’t! This is the best deal yet and I can’t promise you it will be ever repeated again.<br />
+                                    <br />
+                                    P.P.S. - If there's one thing you look at today, make sure you get this:<br />
+                                    <br />
+                                    [INSERT LINK]<br />
+                                    <br />
+
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="emailswipe2" style="padding:20px;">
+                                <br />
+                                <p class="subject">Subject: (DOWNLOAD NOW) Step-by-Step "BLUEPRINT" to Social Media Success!</p>
+                                <br />
+                                <p class="emailtext">
+                                    Hi [FIRSTNAME],<br />
+                                    <br />
+                                    Unless you’ve been living under a rock, there’s no doubt you’ve heard of social media.<br />
+                                    <br />
+                                    If you’re like most marketers, you’ve probably even tried to use social media a time or two and failed to see the type of results that you had hoped for…<br />
+                                    <br />
+                                    Let me know if this sounds familiar?<br />
+                                    <br />
+                                    You created a Facebook/Twitter/Google+ account sometime in the past 5 years or within the last few months…<br />
+                                    <br />
+                                    At first, you posted and tweet news/updates regularly, but each time you do so - you weren’t really sure what to write that will engage and captivate your readers. And what's even more dissappointing is the fact that your posts and tweets didn’t get shared and is simply not getting the results you expected…..how depressing.<br />
+                                    <br />
+                                    …and, at this point, you’ve either completely gone silent on Social Media, or you’re still seeing similar results (or a lack of results, depending on how you want to look at it) …<br />
+                                    <br />
+                                    Does that mean Social Media doesn’t work for generating traffic?<br />
+                                    <br />
+                                    Of course not.<br />
+                                    <br />
+                                    You’ve seen others that are KILLING it and generating tons of FREE traffic with Social Media, and you know that if you could just get a piece of the action, you could change your business for the better…<br />
+                                    <br />
+                                    So what did you do wrong? What have others done right that you are not aware about? What are the strategies and tools you need to succeed with Social Media?<br />
+                                    <br />
+                                    Well...That's what The Ultimate 6-in-1 Social Media Success course series is all about! It's a blueprint, a stepping stone for you to find success with Social Media!<br />
+                                    <br />
+                                    [INSERT LINK]<br />
+                                    <br />
+                                    Here are a few things you'll discover:<br />
+                                    <br />
+                                    * How to set yourself up for success on the most popular social media networks<br />
+                                    <br />
+                                    * How to build a rapport with your visitors and gain their trust<br />
+                                    <br />
+                                    * How to provide engaging content that people want to read and share<br />
+                                    <br />
+                                    * Create synergy between your social media channels to drive more traffic and grow faster<br />
+                                    <br />
+                                    * How to run competitions and other events to get more traffic<br />
+                                    <br />
+                                    + much, much more!<br />
+                                    <br />
+                                    Make sure your claim your copy right now while it's hot!<br />
+                                    <br />
+                                    [INSERT LINK]<br />
+                                    <br />
+                                    To Your Success,<br />
+                                    Your Name<br />
+                                    <br />
+                                    P.S. This discounted launch price is ending very soon, so act quickly to secure the best possible price.<br />
+                                    <br />
+                                    [INSERT LINK]<br />
+                                    <br />
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="emailswipe3" style="padding:20px;">
+                                <br />
+                                <p class="subject">Subject: "SHOCKING" Social Media Facts!</p>
+                                <br />
+                                <p class="emailtext">
+                                    Hi [FIRSTNAME],<br />
+                                    <br />
+                                    Let me just wake you up with these shocking social media stats:<br />
+                                    <br />
+                                    • Facebook has over 1.55 billion active users with over 1 billion of them are active daily.<br />
+                                    • Facebook commands access to over 70% of all internet users.<br />
+                                    • Facebook users spend an average of 20+ minutes per day on Facebook.<br /><br />
+                                    • YouTube has over 1 billion users – almost one-third of all people on the Internet.<br />
+                                    • YouTube has over 4 billion video views each day.<br />
+                                    • YouTube has over 6 billion hours of videos watched each month.<br /><br />
+                                    • Twitter has over 1.3 billion registered users with 100 million active users daily.<br />
+                                    • Twitter users on average has 208 followers.<br />
+                                    • Twitter garners 120 million ‘unique’ visitors per month.<br /><br />
+                                    • LinkedIn has over 400 million users.<br />
+                                    • LinkedIn has an average of 2 new LinkedIn member per second.<br />
+                                    • LinkedIn covers 200 countries and territories.<br /><br />
+                                    • Instagram has over 400 million monthly ‘active’ users.<br />
+                                    • Instagram has 60 million photos upload every day.<br />
+                                    • Instagram boost an engagement rate that is 15 times higher than Facebook and 20 times higher than Twitter.<br /><br />
+                                    • Pinterest has over 176 million users.<br />
+                                    • Pinterest users are 85% female.<br />
+                                    <br />
+                                    YES, SOCIAL MEDIA IS A DIRECT PIPELINE TO A PROSPECTIVE CUSTOMER BANK THAT IS WIDELY SCATTERED. IT IS A GOLDMINE WAITING TO BE MINED TO LEAPFROG YOUR BUSINESS EASILY.<br />
+                                    <br />
+                                    But the biggest question is, HOW? How do I capitalize on Social Media to reach out to this massive list of leads and customers? What must I do? Where do I start? What's the 'secret' formula to success? How can I DO IT "RIGHT"?<br />
+                                    <br />
+                                    Well, to release all your tensions and worries, here we present the much awaited ladder to your success….<br />
+                                    <br />
+                                    ==> You easily can get access to it by clicking here [INSERT LINK]<br />
+                                    <br />
+                                    Do note that the whole list of awesome bonuses is still available, but may be taken away at any moment - the whole offer may as well. Aside from being a special 6-in-1 training combo for all the popular social media platforms, just by looking at the bonuses itself, you will instantly know that this is a MASSIVE "one-of-a-kind" deal not to be missed.<br />
+                                    <br />
+                                    ==> Click here to claim your massive list of bonuses [INSERT LINK]<br />
+                                    <br />
+                                    To Your Success,<br />
+                                    Your Name<br />
+                                    <br />
+                                    P.S. There is a limited time special offer. Never before have I seen ALL of our social media training in a special combo deal just like this. This Ultimate 6-in-1 Social Media Pack is a one-kind-of-a-deal that is not to be missed and will be taking it down anytime.<br />
+                                    <br />
+                                    ==> Secure your offer by clicking here [INSERT LINK]
+                                    <br />
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="emailswipe4" style="padding:20px;">
+                                <br />
+                                <p class="subject">Subject: Are You Ready To "Level UP" Using Social Media?</p>
+                                <p class="subject">Subject: F@#K-ing AWESOME Social Media 'Bundle' Deal...</p>
+                                <p class="subject">Subject: We went absolutely 'BONKERS' seeing this Social Media deal...</p>
+                                <p class="emailtext" style="padding-top:3px; padding-bottom:8px; font-size:12px; color:#808080; font-family:sans-serif;"><i>*subjects of email swipes 1 and 4 and interchangeable</i></p>
+                                <br />
+                                <p class="emailtext">
+                                    Hi [FIRSTNAME],<br />
+                                    <br />
+                                    What I am showing you today is going to be a real asset to your business. Jim Liong (now there's a name you don't hear everyday) has just released another top shelf package.<br />
+                                    <br />
+                                    ==> Check Out "The Ultimate 6-in-1 Social Media Course Pack" [INSERT LINK]<br />
+                                    <br />
+                                    You may not have heard of him, because he only releases the best products, and doesn't deliver anything but(.) &lt;-- period<br /> 
+                                    <br />
+                                    Marketers jump on his stuff! (like flies on..if you know the phrase..)<br />
+                                    <br />
+                                    And the best news is, in this latest release... he packaged all SIX of his top selling step-by-step social media courses to make a massive MEGA 'BUNDLE' DEAL.<br />
+                                    <br />
+                                    Here is a list of courses you will find in this super pack:<br />
+                                    <br />
+                                    • Training Pack #1 - Social Media Success (53 page guide + 10 videos)<br />
+                                    • Training Pack #2 - Facebook Marketing Success (93 page guide + 15 videos)<br />
+                                    • Training Pack #3 - Twitter Marketing Success (42 page guide + 10 videos)<br />
+                                    • Training Pack #4 - YouTube Marketing Success (83 page guide + 15 videos)<br />
+                                    • Training Pack #5 - LinkedIn Marketing Success (92 page guide + 15 videos)<br />
+                                    • Training Pack #6 - Instagram Marketing Success (82 page guide + 15 videos)<br />
+                                    <br />
+                                    And to ensure that you are successful, Jim is throwing in an ADDITIONAL 20 marketing related guides as bonuses to make this a CRAZY OFFER! He practically covers every aspect of digital marketing to ensure that you are at the top of the game. For example, there is a guide on copywriting to help you churn out attention grabbing headlines and top quality contents. There is also a guide on customer engagement to equipped you with the tools and tips for happier customers... and many many more.<br />
+                                    <br />
+                                    This is on for a steal (but not for long).<br />
+                                    <br />
+                                    ==> Click Here to Grab 2016's Best Social Media Course Deal [INSERT LINK]<br />
+                                    <br />
+                                    To Your Success,<br />
+                                    Your Name<br />
+                                    <br />
+                                    P.S. This is a serious opportunity (Crazy Massive Discount)<br />
+                                    <br />
+                                    ==> Check Your Bonuses [INSERT LINK]<br />
+                                    <br />
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="emailswipe5" style="padding:20px;  text-align:left;">
+                                <br />
+                                <p class="subject">Subject: Could You Spare A Moment Of Your Valuable Time?</p>
+                                <br />
+                                <p class="emailtext">
+                                    Hi [FIRSTNAME],<br />
+                                    <br /> 
+                                    Just checking in.. Did you have a look at that email we sent you, yesterday? It was about Jim's Brand NEW<br />
+                                    <br />
+                                    *Ultimate 6-in-1 Social Media Pack* [INSERT LINK]<br />
+                                    <br />
+                                    Here is a quick list of what's in this super bundle:<br />
+                                    <br />
+                                    • Pack #1 - Social Media Success<br />
+                                    • Pack #2 - Facebook Marketing Success<br />
+                                    • Pack #3 - Twitter Marketing Success<br />
+                                    • Pack #4 - YouTube Marketing Success<br />
+                                    • Pack #5 - LinkedIn Marketing Success<br />
+                                    • Pack #6 - Instagram Marketing Success<br />
+                                    <br />
+                                    ALL SIX of his top selling step-by-step guides with 80 videos are still available (if you act right now) 
+                                    and still on a Great Deal (but you need to check it right away)<br />
+                                    <br />
+                                    Also Included Are Over 30 Awesome Bonuses. Here is just a peek at some of them:<br />
+                                    * 100 Follow Up Marketing Secrets<br />
+                                    * 100 Advertising Design Methods<br />
+                                    * Pro Copywriter<br />
+                                    * Lead Acquisition 101<br />
+                                    * Get and Keep Customers<br />
+                                    * SEO Spy<br />
+                                    * Media Buy 101<br />
+                                    * Traffic Flow<br />
+                                    * ...plus 12 other marketing guides<br />
+                                    * ...plus 6 cheatsheets<br />
+                                    * ...plus 6 resources and tools guidebook<br />
+                                    <br />
+                                    Carefully picked to work in conjunction with Ultimate 6-in-1 Social Media Pack.<br />
+                                    <br />
+                                    This by far an all-inclusive, "most complete" social and digital marketing product that you can find.<br />
+                                    <br />
+                                    Grab It Here [INSERT LINK]<br />
+                                    <br />
+                                    To Your Success,<br />
+                                    Your Name<br />
+                                    <br />
+                                    P.S. This is truly a "not-to-be-missed" offer. Grab all SIX courses for an INSANELY LOW-PRICE of just ONE plus don't forget your 30+ bonuses too... (go get it before it is gone)<br />
+                                    <br />
+                                    ==> Click Here to Download [INSERT LINK]<br />
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="emailswipe6" style="padding:20px;">
+                                <br />
+                                <p class="subject">Subject: [Final Call] Last chance for "Ultimate 6-in-1 Social Media Course Pack" </p>
+                                <p class="subject">Subject: (Last Chance) Offer Ending for "The Ultimate 6-in-1 Social Media Pack" </p>
+                                <br />
+                                <p class="emailtext">
+                                    Hi [FIRSTNAME],<br />
+                                    <br />
+                                    I wanted to make sure you're not missing out on this latest value-buy bundle called "Ultimate 6-in-1 Social Media Pack". Today's the last day for the special.<br />
+                                    <br />
+                                    It includes 6 full social media courses to really get you on the right track for social media success.<br />
+                                    <br />
+                                    ==> Get instant access here [INSERT LINK]<br />
+                                    <br />
+                                    Be quick as there's currently a whooping early-bird special bonus of over 30+ marketing related e-books, guides and resources for fast action takers.<br />
+                                    <br />
+                                    Social media is indeed an evergreen hot topic as more and more people understands that it is the 'key' to success for every online business and this product is the perfect match to help you get started and mastering the arts of social media.<br />
+                                    <br />
+                                    Here's what you can achieve with the product:<br />
+                                    <br />
+                                    – Reach out to a marketspace of over 4 billion social media users<br />
+                                    – Build a reputable and world class brand for your business or product<br />
+                                    – Engage your customers to forge stronger relationships<br />
+                                    – Create viral content that people wants to share<br />
+                                    – Generate massive loads of FREE traffic using social media<br />
+                                    – Synergize all your social media channels to grow faster<br />
+                                    – Build a rapport with your visitors and gain their trust<br />
+                                    – Run competitions and other events to get more traffic and brand awareness <br />
+                                    + much, much more!<br />
+                                    <br />
+                                    ==> Click here to claim your copy and download all the bonuses [INSERT LINK]<br />
+                                    <br />
+                                    To Your Success,<br />
+                                    Your Name<br />
+                                    <br />
+                                    P.S. This is the final call for such an incredible value-buy. Don't miss-out on your golden opportunity to secure 2016's most highly anticipated social media courses.<br />
+                                    <br />
+                                    ==> Grab it now [INSERT LINK]<br />
+                                    <br />
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="emailswipe7" style="padding:20px;">
+                                <br />
+                                <p class="subject"></p>
+                                <br />
+                                <p class="emailtext">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="modal-optinform2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="background-color:rgba(0, 0, 0,0.8);">
+        <div class="modal-dialog modal-md" style="top:10%; max-width:700px; width:100%;">
+            <div class="modal-content" style="text-align:center; margin:auto; background-color:transparent;">
+                <div class="modal-body popupoptinbox2">
+                    <div id="formcontent">
+                        <h2 style="text-align:center;">Join Resident Portal Affiliate Programme</h2>
+                        <div class="formarea">
+                            <div class="popupoptinlabel">
+                                Fill up the form below and register for free.
+                            </div>
+                            <br />
+                            <div class="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control textboxname" id="txtPopUpLeadName1" name="txtName" placeholder="Enter Your Name">
+                                    <input type="email" class="form-control textboxemail" id="txtPopUpLeadEmail1" name="txtEmail" placeholder="Enter Your Email Address">
+                                    <input type="password" class="form-control textboxname" id="txtPassword" name="txtPassword" placeholder="Enter Your Password">
+                                </div>
+                                <button type="button" id="btnRegister" class="btn btn-warning popupoptinbutton" onclick="registerSubscriber($('#txtPopUpLeadName1').val(), $('#txtPopUpLeadEmail1').val(),true)">Register Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="processingcontent" style="display:none; text-align:center;">
+                        <img src="image/loaders/Cube - Light Blue.gif" style="width:75px" />
+                        <br /><br />
+                        <b style="font-family:'Oswald', sans-serif; font-size:30px;">GREAT.</b><br /><br />
+                        <span style="font-family:'Lato', sans-serif; font-size:16px;">Please wait a moment while we prepare your access.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor's JS -->
+    <script src="../vendor/jquery-2.2.4/jquery-2.2.4.min.js"></script>
+    <script src="../vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
